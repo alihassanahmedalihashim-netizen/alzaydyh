@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>منصة الزيدية العلمية – نبذة عن العقيدة الزيدية</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Tajawal (أيضًا خط احتياطي) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== متغيرات الألوان مع خلفية كتابية ===== */
+        :root {
+            --primary-dark: #01579b;
+            --primary: #016fae;
+            --primary-light: #4facfe;
+            --primary-soft: #e3f2fd;
+            --accent: #00b0c7;
+            --white: #ffffff;
+            --offwhite: #f9fcff;
+            --gray-bg: #f2f8fd;
+            --text-dark: #0a384b;
+            --text-soft: #2f5a6e;
+            --text-light: #5f7e8c;
+            --border-light: #e0eff7;
+            --shadow-sm: 0 8px 20px rgba(1,87,155,0.06);
+            --shadow-md: 0 12px 30px rgba(1,87,155,0.1);
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --transition: all 0.25s ease;
+            --paper-bg: #fcf8f0;  /* لون ورق قديم */
+            --paper-dark: #f5efe6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--paper-bg);  /* خلفية كتابية */
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== الهيدر (مع أزرار مدمجة) ===== */
+        .header {
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.92);
+            border-bottom: 1px solid rgba(1,87,155,0.08);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+        }
+        .logo i { font-size: 1.8rem; color: var(--primary); }
+        .logo span.mobile-only { display: none; }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+        }
+        .nav-link {
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+        }
+
+        /* أزرار مصغرة في الهيدر */
+        .btn-icon {
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-icon:hover {
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+        }
+        .auth-icons {
+            display: flex;
+            gap: 8px;
+        }
+        .auth-icons .btn-text {
+            display: none;  /* نخفي النص على الشاشات الكبيرة */
+        }
+        @media (min-width: 992px) {
+            .auth-icons .btn-icon {
+                font-size: 1.2rem;
+                padding: 6px;
+            }
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 8px;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(1,87,155,0.3);
+            backdrop-filter: blur(3px);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        .overlay.active { opacity: 1; visibility: visible; }
+
+        /* ===== المحتوى الرئيسي (بدون قائمة جانبية) ===== */
+        .main-content {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        /* ===== الأكورديون الرئيسي ===== */
+        .accordion-item {
+            background: var(--paper-dark);  /* خلفية كتابية أغمق قليلاً للتمييز */
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(1,87,155,0.15);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: var(--paper-dark);
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 800;
+            font-size: 1.5rem;  /* تكبير الخط */
+            color: var(--primary-dark);
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .accordion-header:hover {
+            background: #e8dfd1;  /* درجة أغمق قليلاً */
+        }
+        .accordion-header i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .accordion-content {
+            padding: 0 25px 25px;
+            display: block;
+        }
+        .accordion-content.collapsed {
+            display: none;
+        }
+
+        /* ===== الأكورديون الداخلي (للعناوين الفرعية) ===== */
+        .sub-accordion-item {
+            margin: 20px 0 15px;
+            border-radius: 16px;
+            background: var(--paper-bg); /* أفتح */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid rgba(1,87,155,0.1);
+        }
+        .sub-accordion-header {
+            background: var(--paper-bg);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            border-bottom: 1px solid transparent;
+            transition: 0.2s;
+        }
+        .sub-accordion-header:hover {
+            background: #f0e8dc;
+        }
+        .sub-accordion-header i {
+            font-size: 1rem;
+            color: var(--primary-light);
+            transition: transform 0.3s;
+        }
+        .sub-accordion-content {
+            padding: 20px;
+            display: block;
+            border-top: 1px dashed var(--border-light);
+        }
+        .sub-accordion-content.collapsed {
+            display: none;
+        }
+
+        /* ===== تنسيقات النصوص لزيادة الوضوح ===== */
+        body, p, li, .arabic-text {
+            font-size: 1.1rem;
+            color: #1e2e3b;  /* أغمق قليلاً */
+        }
+        .quran-verse {
+            font-size: 1.5rem;
+            line-height: 2;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        .arabic-quote {
+            background: #faf3e9;
+            border-right: 4px solid var(--primary);
+            padding: 18px 25px;
+            border-radius: 24px;
+            font-size: 1.15rem;
+            margin: 15px 0;
+        }
+
+        /* تنسيق القوائم */
+        .numbered-list li {
+            margin-bottom: 15px;
+            padding-right: 40px;
+            font-size: 1.1rem;
+        }
+        .numbered-list li::before {
+            width: 30px;
+            height: 30px;
+            font-size: 0.9rem;
+        }
+        .inline-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .argument-card {
+            background: #f5f0e7;
+            border-radius: 20px;
+            padding: 22px;
+            margin: 15px 0;
+            border: 1px solid rgba(1,111,174,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .refutation {
+            background: #fff4e6;
+            border-right: 4px solid #f39c12;
+            padding: 18px;
+            border-radius: 20px;
+            margin-top: 15px;
+        }
+
+        .badge-coming {
+            background: #d4a373;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* خاتمة */
+        .religious-content {
+            background: #efe6d8;
+            padding: 35px 30px;
+            border-radius: 40px;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+
+        /* ===== الفوتر (كما هو) ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+            border-top-left-radius: 60px;
+            border-top-right-radius: 60px;
+        }
+        .footer a { color: rgba(255,255,255,0.85); text-decoration: none; transition: 0.2s; }
+        .footer a:hover { color: white; text-decoration: underline; }
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        #backToTop {
+            position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; border-radius: 50%;
+            background: var(--primary); color: white; border: none; font-size: 1.2rem; cursor: pointer;
+            box-shadow: 0 6px 20px rgba(1,87,155,0.3); display: none; align-items: center; justify-content: center;
+            z-index: 999; transition: 0.2s;
+        }
+        #backToTop:hover { background: var(--primary-dark); transform: scale(1.1); }
+
+        .form-control {
+            font-family: 'Tajawal', sans-serif;
+            background: white;
+            border: 1px solid #d4e3ed;
+            padding: 14px 20px;
+            border-radius: 60px;
+            width: 100%;
+            outline: none;
+        }
+        .form-control:focus { border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(79,172,254,0.2); }
+
+        /* ===== استجابة للهاتف ===== */
+        @media (max-width: 992px) {
+            .accordion-header { font-size: 1.3rem; }
+        }
+        @media (max-width: 768px) {
+            .navbar { height: 60px; }
+            .logo .desktop-only { display: none; }
+            .logo span.mobile-only { display: inline; }
+            .hamburger { display: block; }
+            .nav-menu {
+                position: fixed; top: 0; right: -300px; width: 280px; height: 100vh;
+                background: white; flex-direction: column; justify-content: flex-start;
+                padding: 80px 20px 30px; box-shadow: -5px 0 30px rgba(0,0,0,0.05);
+                transition: 0.3s ease-in-out; z-index: 999; gap: 5px;
+            }
+            .nav-menu.active { right: 0; }
+            .nav-link { width: 100%; padding: 14px 20px; border-radius: 12px; }
+            .auth-icons .btn-icon {
+                font-size: 1.2rem;
+            }
+            /* نظهر النص في القائمة المنسدلة */
+            .nav-menu .btn-icon .btn-text {
+                display: inline;
+                margin-right: 8px;
+            }
+            .d-md-none { display: block; }
+        }
+
+        /* helper classes */
+        .d-flex { display: flex; }
+        .gap-3 { gap: 16px; }
+        .text-white { color: white; }
+        .mb-3 { margin-bottom: 20px; }
+        .mt-3 { margin-top: 20px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap:28px; }
+        @media (max-width:992px){ .grid-4{grid-template-columns:repeat(2,1fr);} }
+        @media (max-width:768px){ .grid-4{grid-template-columns:1fr;} }
+    </style>
+</head>
+<body>
+    <!-- ======= الهيدر (مع أيقونات تسجيل الدخول فقط) ======= -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    <span class="desktop-only">منصة الزيدية العلمية</span>
+                    <span class="mobile-only">الزيدية</span>
+                </div>
+
+                <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                    <li><a href="discussion.html" class="nav-link">الحوار والمناقشة</a></li>
+                    <li><a href="levels.html" class="nav-link">الاكادمية العلمية</a></li>
+                    <li><a href="library.html" class="nav-link">المكتبة</a></li>
+                    <li><a href="research.html" class="nav-link">الأبحاث</a></li>
+                    <li><a href="fatwa.html" class="nav-link">الفتاوى</a></li>
+                    <li><a href="about.html" class="nav-link">عن المنصة</a></li>
+                    <!-- أزرار تسجيل الدخول في القائمة للجوال -->
+                    <li class="d-flex flex-column w-100 mt-3 d-md-none">
+                        <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
+                        <button class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
+                    </li>
+                </ul>
+
+                <!-- أيقونات تسجيل الدخول المصغرة (بدون نص) -->
+                <div class="auth-icons">
+                    <button class="btn-icon" title="تسجيل الدخول"><i class="fas fa-user"></i></button>
+                    <button class="btn-icon" title="إنشاء حساب"><i class="fas fa-user-plus"></i></button>
+                </div>
+            </nav>
+        </div>
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <main class="container">
+        <!-- عنوان الصفحة -->
+        <div style="margin: 30px 0 10px;">
+            <h1 style="font-size: 2.2rem; font-weight:800; color: var(--primary-dark);">نبذة تعريفية عن العقيدة الزيدية</h1>
+            <p style="font-size:1.2rem; color:var(--text-soft);">الأصول والمعتقدات الثابتة عن أئمة العترة الطاهرة عليهم السلام</p>
+        </div>
+
+        <!-- المحتوى الرئيسي (بدون قائمة جانبية) -->
+        <div class="main-content" id="mainContent">
+
+            <!-- القسم أ: من هم الزيدية (رئيسي) -->
+            <div class="accordion-item" id="accordion-a">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>أ- من هم الزيدية</span>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="accordion-content collapsed">
+                    <p>الزيدية: اسم علم على جماعة المنتسبين إلى مذهب العترة المطهرة الذين أمر الله ورسوله بالتمسك بهم في آياتٍ وأحاديثَ معلومة، منها: قوله تعالى: <span class="quran-verse">﴿قُلْ لَا أَسْأَلُكُمْ عَلَيْهِ أَجْرًا إِلَّا الْمَوَدَّةَ فِي الْقُرْبَى﴾</span> [الشورى:23]، والمودة تقتضي الاتباع، ونحو قوله صلى الله عليه وآله وسلم: ((تركت فيكم ما إن تمسكتم به لن تضلوا من بعدي أبدًا، كتاب الله وعترتي أهل بيتي، إن اللطيف الخبير نبأني أنهما لن يفترقا حتى يردا عليَّ الحوض)).</p>
+                </div>
+            </div>
+
+            <!-- القسم ب: من هم العترة -->
+            <div class="accordion-item" id="accordion-b">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>ب- من هم العترة الذين تنتسب إليهم الزيدية؟</span>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="accordion-content collapsed">
+                    <p>هم أهل الكساء وما تناسل منهم إلى يوم القيامة، فمنهم زين العابدين، وزيد بن علي، والباقر، والصادق، والقاسم بن إبراهيم، والهادي إلى الحق يحيى بن الحسين، والمنصور بالله عبدالله بن حمزة، وصولًا إلى الإمام المجدد للدين في القرن الرابع عشر مجد الدين بن محمد بن منصور المؤيدي، وتلميذه السيد العلامة الحجة الحسين بن يحيى الحوثي عليهم السلام، ويمثلهم في يومنا هذا مولانا السيد العلامة الحجة محمد بن عبدالله عوض المؤيدي (حفظه الله).</p>
+                </div>
+            </div>
+
+            <!-- أولاً: التوحيد -->
+            <div class="accordion-item" id="accordion-1">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>أولاً: التوحيد</span>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="accordion-content collapsed">
+                    <p>هو العلم بما لله جل جلاله من الوحدانية، ونفي الشريك والصاحبة والولد وبما يستحقه من الأسماء الحسنى والصفات العليا، وبما يستحيل عليه تعالى، وبما يلحق بذلك ويتصل به، وقد أوجز أمير المؤمنين عليه السلام معنى التوحيد في عبارة قصيرة فقال عليه السلام: (التوحيد أن لا تتوهمه)، ومعنى هذه العبارة البليغة: أن الله تعالى لا يشابه شيئاً من مخلوقاته، فليس بجسم وليس بذي مكان، ولا يتصف بصفات المخلوقات، فلا تكييف ولا تمثيل.. إلخ. وعبارته عليه السلام قد أفادت جميع ذلك، وذلك أن التوهم هو التصور، والتصور لا يكون إلا لما كان جسماً أو عرضاً، فكل ما تصوره الإنسان فهو جسم أو عرض، فعرفنا من ذلك أن الله تعالى ليس بجسم، وأن صفاته ليست بأعراض كما هي الحال في المخلوقات، وأنه ليس بذي مكان ولا تحله الأعراض، لأن ذلك لا يكون إلا في الجسم الذي يتصور.</p>
+                </div>
+            </div>
+
+            <!-- ثانياً: العدل (به أكورديون داخلي) -->
+            <div class="accordion-item" id="accordion-2">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>ثانياً: العدل</span>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="accordion-content collapsed">
+                    <!-- مسائل العدل (فرعي) -->
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>مسائل العدل التي أجمع عليها أئمة العترة</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed">
+                            <ul class="numbered-list">
+                                <li>أَنَّ اللهَ تَعَالَى عَدْلٌ حَكِيْمٌ</li>
+                                <li>أَنَّ أَفْعَالَ العِبَادِ حَسَنَهَا وَقَبِيْحَهَا مِنْهُمْ لَا مِنَ اللهِ تَعَالَى</li>
+                                <li>أَنَّ اللهَ تَعَالَى لاَ يُثِيْبُ أَحَدًا إِلَّا بِعَمَلِهِ، وَلَا يُعَذِّبُهُ إِلَّا بِذَنْبِهِ</li>
+                                <li>أَنَّ اللهَ تَعَالَى لَا يَقْضِي بِالْمَعَاصِي</li>
+                                <li>أَنَّ اللهَ تَعَالَى لَا يُكَلِّفُ أَحَدًا مِنْ عِبَادِهِ مَا لَا يُطِيْقُهُ</li>
+                                <li>أَنَّ جَمِيْعَ الأَمْرَاضِ وَالأَسْقَامِ وَالنَّقَآئِصِ مِنْ فِعْلِ اللهِ تَعَالَى، وأَنَّهَا حِكْمَةٌ وَصَوَابٌ</li>
+                                <li>أَنَّ الله لَا يُرِيْدُ شَيْئًا مِنْ مَعَاصِي العِبَادِ، ولَا يُحِبُّهَا ولَا يَرْضَاهَا</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- الأدلة الإجمالية (فرعي) -->
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>الأدلة الإجمالية على مسائل العدل</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed">
+                            <p>العبد مختار في أفعاله يحدثها كيفما شاء على حسب إرادته وداعي نفسه، وهذا هو مذهب الزيدية والمعتزلة وغيرهم وجوابهم على من خالفهم في ذلك ما يلي:</p>
+                            <div class="argument-card">
+                                <ul class="inline-list">
+                                    <li><i class="fas fa-check-circle"></i> <strong>1- مذهب الجبر متصادم مع ما يجده كل عاقل من نفسه</strong>، ويلمسه بضرورة عقله، من غير أي شعور بأي دافع سوى إرادته. وأقوى الأدلة على الإطلاق ما يحصل عن طريق الوجدان.</li>
+                                    <li><i class="fas fa-check-circle"></i> <strong>2- الفرق بين حركة المرتعش وحركة المختار</strong> لا يستطيع الجبري دفعه.</li>
+                                    <li><i class="fas fa-check-circle"></i> <strong>3- من القرآن: ﴿اعْمَلُوا مَا شِئْتُمْ﴾ [فصلت:40]</strong> ونحو ذلك كثير.</li>
+                                    <li><i class="fas fa-check-circle"></i> <strong>4- لو كان الأمر كما تقوله المجبرة</strong> للزم أن يسمى الباري كافراً وظالماً – تعالى الله عن ذلك.</li>
+                                    <li><i class="fas fa-check-circle"></i> <strong>5- ويلزم المجبرة بطلان الأوامر والنواهي</strong> وإرسال الرسل، لأن أمر من لا يستطيع الفعل والترك قبيح.</li>
+                                </ul>
+                            </div>
+                            <p>وعلى الجملة فهذا المذهب مذهب خرافي باطل، تَمُجُّهُ الفطرة، ويكذبه الوجدان والضرورة، وترده نصوص القرآن والسنة، ويتبرأُ منه العدل والحكمة.</p>
+                        </div>
+                    </div>
+
+                    <!-- شبه والردود (فرعي) -->
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>شبه والردود عليها</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed">
+                            <div class="refutation">
+                                <p><strong>شبهة:</strong> إن الله لا يرضى لعباده الكفر، ولا يحب الفساد؛ لكنه تعالى يريد ذلك ويشاؤه.</p>
+                                <p><strong>الرد:</strong> لا يصح اجتماع ذلك لما فيه من المنافاة. ألا ترى لو أن رجلاً قال لأولاده: لا أرضى لكم أكل القات ولا أحبه، ولكني أريد لكم أكله وأشاؤه، كيف يكون موقف السامعين؟ لاشك أنهم يحكمون بجهل الرجل وتناقضه.</p>
+                            </div>
+                            <div class="refutation mt-3">
+                                <p><strong>شبهة أخرى:</strong> إن الصائم قد يحب الأكل في نهار رمضان لما فيه من الجوع، ولكنه لا يريده لما فيه من معصية الله.</p>
+                                <p><strong>الرد:</strong> المؤمن الصائم لا يحب الأكل في نهار رمضان لما فيه من معصية الله، بل ينفر عن ذلك أشد النفور ويكرهه، ولا يريده ولا يشاؤه.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ثالثاً: الوعد والوعيد (به أكورديون داخلي) -->
+            <div class="accordion-item" id="accordion-3">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>ثالثاً: الوعد والوعيد</span>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="accordion-content collapsed">
+                    <!-- مسائل الوعد والوعيد (فرعي) -->
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>مسائل الوعد والوعيد</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed">
+                            <ul class="numbered-list">
+                                <li>أَنَّ مَنْ وَعَدَهُ اللهُ بِالثَّوَابِ مِنَ الْمُؤْمِنِيْنَ فإِنَّهُ مَتَى مَاتَ مُسْتَقِيْمًا عَلَى إِيْمَانِهِ صَآئِرٌ إِلَى الْجَنَّةِ لَا مَحَالَةَ، وَمُخَلَّدٌ فِيْهَا خُلُودًا دَائِمًا فِي ثَوَابٍ لَا يَنْقَطِعُ</li>
+                                <li>أَنَّ مَنْ تَوَعَّدَهُ اللهُ تَعَالَى بِالْعِقَابِ مِنَ الْكُفَّارِ، فَإِنَّهُ مَتَى مَاتَ مُصِرًّا عَلَى كُفْرِهِ، صَآئِرٌ إِلَى النَّارِ لَا مَحَالَة، مُخَلَّدٌ فِيْهَا خُلُودًا دَائِمًا</li>
+                                <li>أَنَّ مَنْ تَوَعَّدَهُ اللهُ بِالْعِقَابِ مِنَ الفُسَّاقِ، فَإِنَّهُ مَتَى مَاتَ مُصِرًّا عَلَى فِسْقِهِ فَإِنَّهُ يُدْخِلُهُ النَّارَ وَيُخَلِّدُهُ فِيْهَا خُلُودًا دَائِمًا</li>
+                                <li>أَنَّ أَصْحَابَ الكَبَائِرَِ مِنْ هَذِهِ الأُمَّةِ يُسَمَّوْنَ فُسَّاقًا وَلَا يُسَمَّوْنَ كُفَّارًا</li>
+                                <li>أَنَّ شَفَاعَةَ النَّبِيِّ صلى الله عليه وآله وسلم يَوْمَ الْقِيَامَةِ ثَابِتَةٌ قَاطِعَةٌ.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- الأقسام القادمة (كلها فرعية) -->
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>معنى الوعد والوعيد <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed">
+                            <p class="text-soft">النص الكامل لهذا المحور قيد الإعداد وسيتم نشره قريباً.</p>
+                        </div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>خلف الوعد والوعيد <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed">
+                            <p class="text-soft">قيد التجهيز.</p>
+                        </div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>الأدلة على خلود من دخل النار <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>اعتراضات والرد عليها <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>تابع اعتراضات والرد عليها <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>الشفاعة <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رابعاً: الإمامة (به أكورديون داخلي) -->
+            <div class="accordion-item" id="accordion-4">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>رابعاً: الإمامة</span>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="accordion-content collapsed">
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>مسائل الإمامة عند أهل البيت <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>أهمية الإمامة <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>لا يخلو زمان ممن يصلح للإمامة <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>أهم شروط الإمامة <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>لا تدين الزيدية بإمام إلا إذا كان شاغلاً لمقام الرسول <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>الطريق للإمامة <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>حجج الزيدية على قولها في الإمامة <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>تابع حجج الزيدية على قولهم في الإمامة <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>إشكال وارد على الإمامة عند الزيدية <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>الإمامة الإسلامية عند الزيدية <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>نموذج من ورع العترة عن تحمل أعباء الخلافة <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>نموذج من زهدهم عليهم السلام <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>نموذج من سيرة أئمة العترة اليومية في رعيتهم <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>نموذج من اهتمام أئمة العترة بإقامة معالم الدين <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>نموذج من حرص أئمة العترة على ترسيخ الحق <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                    <div class="sub-accordion-item">
+                        <div class="sub-accordion-header" onclick="toggleSubAccordion(event, this)">
+                            <span>نموذج من معاناة أهل البيت في سبيل الحق <span class="badge-coming">سيضاف لاحقاً</span></span>
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="sub-accordion-content collapsed"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- خاتمة -->
+            <div class="religious-content" style="margin: 20px 0; text-align:center;">
+                <i class="fas fa-book-open" style="font-size:2rem; color:var(--primary);"></i>
+                <p class="mt-2">هذه نبذة مختصرة عن أصول العقيدة الزيدية، وسيتم استكمال الأقسام الأخرى تباعاً. نسأل الله أن ينفع بها.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ======= الفوتر (مطابق للصفحة الرئيسية) ======= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid grid-4">
+                <div>
+                    <h4 class="text-white mb-3">المنصة العلمية الزيدية</h4>
+                    <p style="opacity:0.9;">نشر التراث العلمي الزيدي والفكر الإسلامي الأصيل.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">أقسام المنصة</h5>
+                    <ul style="list-style: none; padding:0;">
+                        <li style="margin-bottom:10px;"><a href="levels.html">المستويات العلمية</a></li>
+                        <li style="margin-bottom:10px;"><a href="library.html">المكتبة</a></li>
+                        <li style="margin-bottom:10px;"><a href="research.html">الأبحاث العلمية</a></li>
+                        <li style="margin-bottom:10px;"><a href="fatwa.html">الفتاوى الشرعية</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">روابط مهمة</h5>
+                    <ul style="list-style: none; padding:0;">
+                        <li style="margin-bottom:10px;"><a href="#">شروط الاستخدام</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">سياسة الخصوصية</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">اتصل بنا</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">النشرة البريدية</h5>
+                    <p style="opacity:0.9;">اشترك في نشرتنا البريدية ليصلك جديد المنصة.</p>
+                    <div class="form-group mt-3">
+                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني" style="margin-bottom:10px;">
+                        <button class="btn btn-outline" style="border-color:white; color:white; width:100%;">اشتراك</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة © منصة الزيدية العلمية 2024</p>
+                <p class="mt-2">تم التطوير بواسطة فريق المنصة - للإبلاغ عن أخطاء: <a href="mailto:support@alzaydiyah.org">support@alzaydiyah.org</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" title="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        // === هامبرغر ===
+        (function() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            const overlay = document.getElementById('overlay');
+            function toggleMenu() {
+                navMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+            if (hamburger) hamburger.addEventListener('click', toggleMenu);
+            if (overlay) overlay.addEventListener('click', toggleMenu);
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) toggleMenu();
+                });
+            });
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            });
+
+            // زر العودة للأعلى
+            const backBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                backBtn.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
+            });
+            backBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+
+        // === وظيفة الأكورديون الرئيسي ===
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                icon.classList.remove('fa-chevron-left');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                content.classList.add('collapsed');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-left');
+            }
+        }
+
+        // === وظيفة الأكورديون الفرعي (لمنع انتشار الحدث للأكورديون الأب) ===
+        function toggleSubAccordion(event, header) {
+            event.stopPropagation();  // منع تأثير الأكورديون الأب
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                icon.classList.remove('fa-chevron-left');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                content.classList.add('collapsed');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-left');
+            }
+        }
+
+        // (اختياري) إغلاق جميع الأكورديونات الداخلية عند فتح الأكورديون الرئيسي؟ لا حاجة.
+    </script>
+    <style>
+        /* تحسينات إضافية */
+        .footer .fab { font-size: 1.5rem; margin-left: 10px; }
+        .btn-block { width: 100%; }
+        .sub-accordion-content { font-size: 1.1rem; }
+        .sub-accordion-header { font-size: 1.1rem; }
+    </style>
+</body>
+</html>
