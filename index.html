@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>
-      منصة الزيدية العلمية – البوابة الرئيسية
-      
-      </title>
+    <title>منصة الزيدية العلمية – البوابة الرئيسية</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Font: Tajawal (أنيق وحديث) -->
@@ -47,7 +44,6 @@
             overflow-x: hidden;
         }
 
-        /* حاوية مركزية متجاوبة */
         .container {
             width: 100%;
             max-width: 1280px;
@@ -55,7 +51,7 @@
             padding: 0 20px;
         }
 
-        /* ===== الهيدر / شريط التنقل – تصميم ثابت ونظيف ===== */
+        /* ===== الهيدر ===== */
         .header {
             background: var(--white);
             box-shadow: 0 4px 12px rgba(0,0,0,0.02);
@@ -92,7 +88,6 @@
             display: none;
         }
 
-        /* القائمة الرئيسية */
         .nav-menu {
             display: flex;
             align-items: center;
@@ -116,7 +111,6 @@
             color: var(--primary-dark);
         }
 
-        /* أزرار تسجيل الدخول */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -165,7 +159,6 @@
             width: 100%;
         }
 
-        /* همبرغر للجوال */
         .hamburger {
             display: none;
             background: none;
@@ -176,7 +169,6 @@
             padding: 8px;
         }
 
-        /* طبقة خلفية عند فتح القائمة */
         .overlay {
             position: fixed;
             top: 0;
@@ -232,6 +224,88 @@
             flex-wrap: wrap;
         }
 
+        /* ===== القسم: منهجنا نحن الزيدية ===== */
+        .message-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px 35px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(1,87,155,0.12);
+            margin: 40px 0 20px;
+            position: relative;
+            border-right: 8px solid var(--primary-dark);
+        }
+
+        .message-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .message-title i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .message-text {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            line-height: 1.9;
+        }
+
+        .message-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .message-text .ayah {
+            font-weight: 700;
+            color: var(--primary-dark);
+            background: var(--primary-soft);
+            display: inline-block;
+            padding: 0 8px;
+            border-radius: 12px;
+            font-size: 1.3rem;
+        }
+
+        .message-text .ayah-number {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-right: 5px;
+        }
+
+        .signature {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px dashed var(--border-light);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .signature i {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .signature-name {
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+
+        .signature-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
         /* ===== بطاقات الإحصائيات ===== */
         .stats-grid {
             display: grid;
@@ -275,7 +349,136 @@
             font-weight: 600;
         }
 
-        /* ===== شبكة عامة ===== */
+        /* ===== القسم الجديد: الأكاديمية العلمية ===== */
+        .academy-card {
+            background: linear-gradient(145deg, #ffffff, #f6fbfe);
+            border-radius: var(--radius-lg);
+            padding: 45px 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--primary-soft);
+            margin: 30px 0 50px;
+            text-align: center;
+        }
+
+        .academy-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .academy-title i {
+            font-size: 2.8rem;
+            color: var(--primary);
+        }
+
+        .academy-quote {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0 20px;
+            line-height: 1.4;
+        }
+
+        .academy-quote small {
+            font-size: 1rem;
+            color: var(--text-light);
+            display: block;
+            margin-top: 5px;
+        }
+
+        .academy-description {
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            max-width: 800px;
+            margin: 0 auto 35px;
+            line-height: 1.8;
+        }
+
+        .academy-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: right;
+            margin: 40px 0 30px;
+        }
+
+        .academy-item {
+            background: var(--white);
+            padding: 20px 25px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .academy-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .academy-item i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            width: 40px;
+            text-align: center;
+        }
+
+        .academy-item span {
+            flex: 1;
+        }
+
+        .academy-btn {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 16px 50px;
+            font-size: 1.2rem;
+            background: var(--primary-dark);
+            color: white;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(1,87,155,0.3);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .academy-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(1,111,174,0.4);
+        }
+
+        /* باقي الأنماط كما هي (مكتبة، أبحاث، الخ) */
+        .grid {
+            display: grid;
+            gap: 28px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
         .section-title {
             font-size: 2rem;
             font-weight: 800;
@@ -296,24 +499,6 @@
             border-radius: 4px;
         }
 
-        .grid {
-            display: grid;
-            gap: 28px;
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .grid-4 {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        /* ===== كروت الدروس ===== */
         .card {
             background: var(--white);
             border-radius: var(--radius-md);
@@ -332,50 +517,6 @@
             border-color: var(--primary-soft);
         }
 
-        .lesson-card .card-header {
-            background: var(--primary-dark);
-            color: white;
-            padding: 20px 18px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-        }
-
-        .badge-success {
-            background: #2ecc71;
-            color: white;
-        }
-
-        .badge-warning {
-            background: #f39c12;
-            color: white;
-        }
-
-        .badge-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .progress {
-            background: #ecf5fa;
-            border-radius: 40px;
-            height: 8px;
-            overflow: hidden;
-            margin: 16px 0 8px;
-        }
-
-        .progress-bar {
-            background: var(--primary-light);
-            height: 8px;
-            border-radius: 40px;
-        }
-
         .card-body {
             padding: 20px;
             flex: 1;
@@ -384,15 +525,6 @@
         .card-footer {
             padding: 16px 20px;
             border-top: 1px solid var(--border-light);
-        }
-
-        /* ===== كتب وأبحاث ===== */
-        .book-card,
-        .research-card,
-        .fatwa-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
         .book-cover {
@@ -437,7 +569,6 @@
             margin-top: 12px;
         }
 
-        /* ===== قسم النقاش ===== */
         .message-bubble {
             background: #f2f8fd;
             padding: 16px 20px;
@@ -454,7 +585,6 @@
             border-bottom-right-radius: 22px;
         }
 
-        /* ===== محتوى ديني ===== */
         .religious-content {
             background: linear-gradient(145deg, #f1faff, white);
             padding: 32px 28px;
@@ -465,7 +595,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* ===== فوتر ===== */
         .footer {
             background: var(--primary-dark);
             color: white;
@@ -495,7 +624,6 @@
             color: rgba(255,255,255,0.7);
         }
 
-        /* ===== أزرار ثابتة ===== */
         #backToTop {
             position: fixed;
             bottom: 20px;
@@ -521,13 +649,15 @@
             transform: scale(1.1);
         }
 
-        /* ===== تحسينات متجاوبة (موبايل-فيرست) ===== */
         @media (max-width: 992px) {
             .grid-4 {
                 grid-template-columns: repeat(2, 1fr);
             }
             .grid-3 {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .academy-list {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -578,9 +708,6 @@
             .d-md-flex {
                 display: none;
             }
-            .mt-3 {
-                margin-top: 20px;
-            }
             .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
             }
@@ -596,6 +723,21 @@
             }
             .stat-number {
                 font-size: 1.8rem;
+            }
+            .message-card {
+                padding: 30px 20px;
+            }
+            .message-title {
+                font-size: 1.8rem;
+            }
+            .academy-card {
+                padding: 30px 20px;
+            }
+            .academy-title {
+                font-size: 2rem;
+            }
+            .academy-quote {
+                font-size: 1.3rem;
             }
         }
 
@@ -630,9 +772,7 @@
         .text-white { color: white; }
         .text-primary { color: var(--primary); }
         .text-secondary { color: var(--text-soft); }
-  
-    <!-- تنسيق إضافي بسيط للحقول -->
-    
+
         .form-control {
             font-family: 'Tajawal', sans-serif;
             background: white;
@@ -675,8 +815,6 @@
         }
         .gap-3 { gap: 16px; }
     </style>
-    
-    
 </head>
 <body>
     <!-- ======= الهيدر بشريط التنقل ======= -->
@@ -695,14 +833,8 @@
 
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-link active">الرئيسية</a></li>
-                    <br>
-                     <li><a href="discussion.html" class="nav-link">
-                      الحوار والمناقشة 
-                       
-                     </a></li>
-                     <br>
-                    <li><a href="levels.html" class="nav-link">
-                    الاكادمية العلمية</a></li>
+                    <li><a href="discussion.html" class="nav-link">الحوار والمناقشة</a></li>
+                    <li><a href="levels.html" class="nav-link">الاكادمية العلمية</a></li>
                     <li><a href="library.html" class="nav-link">المكتبة</a></li>
                     <li><a href="research.html" class="nav-link">الأبحاث</a></li>
                     <li><a href="fatwa.html" class="nav-link">الفتاوى</a></li>
@@ -735,97 +867,77 @@
                         منصة علمية متكاملة تقدم تراث المذهب الزيدي والفكر الإسلامي الأصيل عبر دروس علمية، مكتبة شاملة، أبحاث محكمة وفتاوى شرعية
                     </p>
                     <div class="hero-buttons">
-                        <a href="levels.html" class="btn btn-primary btn-lg"><i class="fas fa-graduation-cap"></i>
-                        المستويات العلمية
-                        
-                        </a>
-                        <a href="library.html" class="btn btn-outline btn-lg"><i class="fas fa-book"></i> استكشف المكتبة</a>
+                        <a href="levels.html" class="btn btn-primary btn-lg"><i class="fas fa-graduation-cap"></i> المستويات العلمية</a>
+                        <a href="#library" class="btn btn-outline btn-lg"><i class="fas fa-book"></i> استكشف المكتبة</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ======= إحصائيات المنصة ======= -->
+        <!-- ======= منهجنا نحن الزيدية ======= -->
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-book"></i></div>
-                    <div class="stat-number">١٬٢٥٠+</div>
-                    <div class="stat-label">مصدر علمي</div>
+            <div class="message-card">
+                <div class="message-title">
+                    <i class="fas fa-quote-right"></i>
+                    منهجنا نحن الزيدية
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-users"></i></div>
-                    <div class="stat-number">٥٬٣٠٠+</div>
-                    <div class="stat-label">طالب علم</div>
+                <div class="message-text">
+                    <p>قال تعالى: <span class="ayah">﴿ وَبِٱلۡحَقِّ أَنزَلۡنَٰهُ وَبِٱلۡحَقِّ نَزَلَۗ وَمَآ أَرۡسَلۡنَٰكَ إِلَّا مُبَشِّرٗا وَنَذِيرٗا ﴾</span><span class="ayah-number">(الإسراء: ١٠٥)</span> فدين الحق هو واحد، وما سواه فهو غير حق.</p>
+                    <p>وصف الله تعالى نبيه محمداً صلى الله عليه وآله وسلم بقوله تعالى: <span class="ayah">﴿ يَأۡمُرُهُم بِٱلۡمَعۡرُوفِ وَيَنۡهَىٰهُمۡ عَنِ ٱلۡمُنكَرِ ﴾</span><span class="ayah-number">(الأعراف: ١٥٧)</span> أي: بالمعروف المعهود عندهم في فطر عقولهم، وينهاهم عن المنكر الذي تنكره فطر عقولهم.</p>
+                    <p>وقد بُني المذهب الزيدي على أُسس قوية: أولها فطر العقول، ثم محكمات الكتاب الكريم، وما صح وثبت عند طوائف المسلمين من الحديث، وما أجمعوا على صحته وروايته أو ثبت تواتره عندهم، فهذا هو أساس دينهم ومذهبهم في عقائدهم، فلا وجود فيه للخرافات أو الغلو أو ما تستنكره العقول.</p>
+                    <p>أما الروايات للأحاديث النبوية التي ليست كما ذكرنا فلا يجوز الاعتماد عليها في العقائد؛ لأن المطلوب في العقائد هو حصول العلم والإيمان والتصديق الجازم، والأحاديث التي ليست كما ذكرنا لا توجب العلم الجازم.</p>
+                    <p>هذا هو منهجنا نحن الزيدية في ديننا، ومن الله التوفيق.</p>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <div class="stat-number">١٢٠+</div>
-                    <div class="stat-label">دورة تعليمية</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-comments"></i></div>
-                    <div class="stat-number">٨٩٠+</div>
-                    <div class="stat-label">فتوى شرعية</div>
+                <div class="signature">
+                    <i class="fas fa-feather-alt"></i>
+                    <span class="signature-name">السيد العلامة الحجة/ محمد بن عبدالله عوض المؤيدي</span>
+                    <span class="signature-title">(حفظه الله)</span>
                 </div>
             </div>
         </div>
 
-        <!-- ======= الدروس العلمية ======= -->
+        <!-- ======= إحصائيات المنصة ======= -->
+
+        <!-- ======= قسم الأكاديمية العلمية (بدلاً من الدروس العلمية) ======= -->
         <section id="courses" class="container mt-5">
-            <h2 class="section-title">الدروس العلمية</h2>
-            <div class="grid grid-3">
-                <div class="card lesson-card">
-                    <div class="card-header">
-                        <h4 class="text-white">أصول الفقه الزيدي</h4>
-                        <div class="badge badge-success mt-2">مكتمل</div>
+            <div class="academy-card">
+                <div class="academy-title">
+                    <i class="fas fa-kaaba"></i>
+                    الأكاديمية العلمية
+                    <i class="fas fa-kaaba"></i>
+                </div>
+                <div class="academy-quote">
+                    "وعلَّمك ما لم تكن تعلم وكان فضلُ الله عليك عظيماً"
+                    <small>(النساء: 113)</small>
+                </div>
+                <p class="academy-description">
+                    بين يدي نبع العلم الصافي، وبأيدي نخبة من أهل الاختصاص، تدعوكم الأكاديمية العلمية للانضمام إلى برامجها التعليمية المتكاملة، لنهجٍ يجمع بين نور الروح وقوة الدليل.
+                </p>
+
+                <h3 style="font-size:1.8rem; color:var(--primary-dark); margin:30px 0 20px;">💎 مساراتنا المعرفية والتربوية:</h3>
+                
+                <div class="academy-list">
+                    <div class="academy-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>🛡️ عقيدة راسخة: بناء اليقين وتثبيت أصول الإيمان بوعيٍ وبصيرة.</span>
                     </div>
-                    <div class="card-body">
-                        <p class="text-secondary">دورة شاملة في أصول الفقه على المذهب الزيدي، تشمل الأدلة الشرعية وقواعد الاستنباط.</p>
-                        <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <span><i class="fas fa-clock"></i> 24 ساعة</span>
-                            <span><i class="fas fa-user-graduate"></i> 450 طالب</span>
-                        </div>
+                    <div class="academy-item">
+                        <i class="fas fa-scale-balanced"></i>
+                        <span>⚖️ الفقه وأصوله: فهم الأحكام الشرعية وقواعد الاستنباط بدقة وعمق.</span>
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary btn-block">الدخول للدورة</button>
+                    <div class="academy-item">
+                        <i class="fas fa-language"></i>
+                        <span>📖 لغة القرآن: إتقان اللغة العربية لتذوق أسرار الوحي وجمال الخطاب.</span>
+                    </div>
+                    <div class="academy-item">
+                        <i class="fas fa-hadith"></i>
+                        <span>📜 الحديث الشريف: الارتباط بسنة المصطفى ﷺ ومنهج آل البيت (عليهم السلام).</span>
                     </div>
                 </div>
-                <div class="card lesson-card">
-                    <div class="card-header">
-                        <h4 class="text-white">التفسير الموضوعي</h4>
-                        <div class="badge badge-warning mt-2">قيد التقدم</div>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-secondary">دراسة تفسير القرآن الكريم وفق المنهج الموضوعي مع التركيز على المنظور الزيدي.</p>
-                        <div class="progress"><div class="progress-bar" style="width:65%"></div></div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <span><i class="fas fa-clock"></i> 32 ساعة</span>
-                            <span><i class="fas fa-user-graduate"></i> 320 طالب</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary btn-block">استئناف التعلم</button>
-                    </div>
-                </div>
-                <div class="card lesson-card">
-                    <div class="card-header">
-                        <h4 class="text-white">السيرة النبوية</h4>
-                        <div class="badge badge-primary mt-2">جديد</div>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-secondary">سيرة رسول الله ﷺ وفق المصادر المعتمدة في المذهب الزيدي مع الدروس المستفادة.</p>
-                        <div class="progress"><div class="progress-bar" style="width:0%"></div></div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <span><i class="fas fa-clock"></i> 18 ساعة</span>
-                            <span><i class="fas fa-user-graduate"></i> 180 طالب</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary btn-block">الالتحاق بالدورة</button>
-                    </div>
-                </div>
+
+                <a href="levels.html" class="academy-btn">
+                    <i class="fas fa-graduation-cap"></i> استكشف المسارات العلمية
+                </a>
             </div>
         </section>
 
@@ -942,29 +1054,20 @@
                 </div>
                 <div class="card fatwa-card">
                     <div class="card-body">
-                        <h4>الصلاة                        <p class="text-secondary mt-2">
-
-ما حكم صلاة الجماعة
-</p>
+                        <h4>ضوابط الاختلاط في المؤسسات التعليمية</h4>
+                        <p class="text-secondary mt-2">س: ما هي الضوابط الشرعية للاختلاط بين الجنسين في الجامعات؟</p>
                         <div class="arabic-quote">
-
-
-                            ج: 
-سنة مؤكدة
-
+                            ج: الأصل في الشريعة الإسلامية الفصل بين الجنسين، بضوابط شرعية صارمة...
                         </div>
                         <div class="fatwa-tags">
                             <span class="fatwa-tag">الأسرة والمجتمع</span>
                             <span class="fatwa-tag">الأحكام المعاصرة</span>
-                            <span class="fatwa-tag">
-الصلاة
-
-</span>
+                            <span class="fatwa-tag">المرأة في الإسلام</span>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-between">
-                            <span><i class="fas fa-user"></i> . محمد عبدالله عوض</span>
+                            <span><i class="fas fa-user"></i> د. محمد عبدالله عوض</span>
                             <span><i class="fas fa-calendar"></i> ١٠ صفر ١٤٤٥</span>
                         </div>
                     </div>
@@ -981,25 +1084,21 @@
                 <div class="card-body">
                     <div class="message-bubble received">
                         <div class="d-flex justify-content-between">
-                            <strong> فارس هوشان</strong>
+                            <strong>فارس هوشان</strong>
                             <small style="color: var(--text-light);">منذ ساعتين</small>
                         </div>
-                        <p class="mt-2">في رأيي أن الاجتهاد في المذهب الزيدي مجدد   في مايحتاجه العصر ومستند الى مذهب العترة الطاهرة
-                        مع الحفاظ على الأصول، خاصة في القضايا المعاصرة.</p>
+                        <p class="mt-2">في رأيي أن الاجتهاد في المذهب الزيدي مجدد في مايحتاجه العصر ومستند الى مذهب العترة الطاهرة مع الحفاظ على الأصول، خاصة في القضايا المعاصرة.</p>
                     </div>
                     <div class="message-bubble sent">
                         <div class="d-flex justify-content-between">
-                            <strong> 
-                         العلامة علي مسعود الرابضي   
-                            </strong>
+                            <strong>العلامة علي مسعود الرابضي</strong>
                             <small style="color: var(--text-light);">منذ ساعة</small>
                         </div>
                         <p class="mt-2">أوافقك الرأي، ولكن يجب أن يكون هذا التجديد ضمن ضوابط أصول الفقه الزيدي التي أسسها الأئمة الأوائل.</p>
                     </div>
                     <div class="message-bubble received">
                         <div class="d-flex justify-content-between">
-                            <strong>
-                            عبدالله المؤيدي</strong>
+                            <strong>عبدالله المؤيدي</strong>
                             <small style="color: var(--text-light);">منذ ٤٥ دقيقة</small>
                         </div>
                         <p class="mt-2">هناك تجارب رائدة في اليمن والمغرب في تجديد الفقه الزيدي يمكن الاستفادة منها، مثل مؤلفات العلامة مجد الدين المؤيدي.</p>
@@ -1021,7 +1120,7 @@
                     <p class="mt-3" style="font-size:0.9rem;">الحجرات: 13</p>
                 </div>
                 <div class="religious-content">
-                    <p>قال رسول الله صلى الله عليه  آلهوسلم: "طلب العلم فريضة على كل مسلم، وإن طالب العلم تستغفر له الملائكة، وتضع له أجنحتها رضًا بما يصنع".</p>
+                    <p>قال رسول الله صلى الله عليه وآله وسلم: "طلب العلم فريضة على كل مسلم، وإن طالب العلم تستغفر له الملائكة، وتضع له أجنحتها رضًا بما يصنع".</p>
                     <p class="mt-3 text-left" style="font-size:0.8rem;">رواه ابن ماجه</p>
                 </div>
             </div>
@@ -1076,10 +1175,7 @@
         <div class="container">
             <div class="grid grid-4">
                 <div>
-                    <h4 class="text-white mb-3">
-                    المنصة العلمية الزيدية
-                    
-                    </h4>
+                    <h4 class="text-white mb-3">المنصة العلمية الزيدية</h4>
                     <p style="opacity:0.9;">نشر التراث العلمي الزيدي والفكر الإسلامي الأصيل.</p>
                     <div class="d-flex gap-3 mt-3">
                         <a href="#"><i class="fab fa-twitter icon-lg"></i></a>
@@ -1091,10 +1187,7 @@
                 <div>
                     <h5 class="text-white mb-3">أقسام المنصة</h5>
                     <ul style="list-style: none; padding:0;">
-                        <li style="margin-bottom:10px;"><a href="levels.html">
-                          المستويات العلمية 
-                          
-                          </a></li>
+                        <li style="margin-bottom:10px;"><a href="levels.html">المستويات العلمية</a></li>
                         <li style="margin-bottom:10px;"><a href="library.html">المكتبة</a></li>
                         <li style="margin-bottom:10px;"><a href="research.html">الأبحاث العلمية</a></li>
                         <li style="margin-bottom:10px;"><a href="fatwa.html">الفتاوى الشرعية</a></li>
@@ -1136,7 +1229,6 @@
             const overlay = document.getElementById('overlay');
             const navLinks = document.querySelectorAll('.nav-link');
 
-            // فتح/غلق القائمة
             function toggleMenu() {
                 navMenu.classList.toggle('active');
                 overlay.classList.toggle('active');
@@ -1153,19 +1245,16 @@
                 overlay.addEventListener('click', toggleMenu);
             }
 
-            // إغلاق القائمة عند النقر على أي رابط
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     if (navMenu.classList.contains('active')) {
                         toggleMenu();
                     }
-                    // تفعيل الرابط الحالي
                     navLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
 
-            // إغلاق القائمة عند تغيير حجم الشاشة
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
@@ -1187,7 +1276,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // === تفعيل الرابط النشط عند التمرير (بسيط) ===
+            // === تفعيل الرابط النشط عند التمرير ===
             const sections = document.querySelectorAll('section[id]');
             window.addEventListener('scroll', function() {
                 let current = '';
@@ -1206,12 +1295,7 @@
                     }
                 });
             });
-
-            // محاكاة التحميل (اختياري)
-            // لا حاجة لها هنا.
         })();
     </script>
-
-    
 </body>
 </html>
