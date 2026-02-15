@@ -6,7 +6,7 @@
     <title>منصة الزيدية العلمية – البوابة الرئيسية</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font: Tajawal (أنيق وحديث) -->
+    <!-- Google Font: Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         /* ===== متغيرات الألوان والتصميم ===== */
@@ -88,75 +88,153 @@
             display: none;
         }
 
+        /* القائمة الرئيسية */
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             list-style: none;
         }
 
-        .nav-link {
-            padding: 8px 18px;
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.95rem;
             color: var(--text-soft);
             text-decoration: none;
             transition: var(--transition);
+            border: 2px solid transparent;
+            background: transparent;
+            cursor: pointer;
+            white-space: nowrap;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
+        .nav-btn i {
+            font-size: 1.1rem;
+            color: var(--primary);
+            transition: 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn:hover i {
+            color: var(--primary-dark);
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 6px 16px rgba(1,111,174,0.25);
+        }
+
+        .nav-btn.active i {
+            color: white;
+        }
+
+        /* القائمة المنسدلة */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            padding-left: 12px;
+        }
+
+        .dropdown-toggle i:last-child {
+            font-size: 0.8rem;
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+
+        .dropdown:hover .dropdown-toggle i:last-child {
+            transform: rotate(-90deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            min-width: 200px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            padding: 8px 0;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s;
+            z-index: 1001;
+            border: 1px solid var(--border-light);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .dropdown-item i {
+            color: var(--primary);
+            width: 20px;
+            font-size: 1rem;
+        }
+
+        .dropdown-item:hover {
             background: var(--primary-soft);
             color: var(--primary-dark);
         }
 
-        .btn {
+        .dropdown-item:hover i {
+            color: var(--primary-dark);
+        }
+
+        /* أزرار تسجيل الدخول */
+        .auth-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-icon {
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: 0.2s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            border: 2px solid transparent;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 6px 16px rgba(1,111,174,0.25);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(1,87,155,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
+        .btn-icon:hover {
             background: var(--primary-soft);
-            border-color: var(--primary-dark);
-        }
-
-        .btn-lg {
-            padding: 14px 36px;
-            font-size: 1rem;
-        }
-
-        .btn-block {
-            width: 100%;
+            color: var(--primary-dark);
+            transform: scale(1.1);
         }
 
         .hamburger {
@@ -222,6 +300,54 @@
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 6px 16px rgba(1,111,174,0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(1,87,155,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-soft);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-lg {
+            padding: 14px 36px;
+            font-size: 1rem;
+        }
+
+        .btn-block {
+            width: 100%;
         }
 
         /* ===== القسم: منهجنا نحن الزيدية ===== */
@@ -461,7 +587,196 @@
             box-shadow: 0 15px 30px rgba(1,111,174,0.4);
         }
 
-        /* باقي الأنماط كما هي (مكتبة، أبحاث، الخ) */
+        /* ===== المكتبة المتحركة (كاروسيل) ===== */
+        .library-carousel {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: var(--radius-md);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            flex: 0 0 calc(33.333% - 20px);
+            min-width: 280px;
+            margin: 0 10px;
+        }
+
+        .carousel-slide .card {
+            height: 100%;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: var(--shadow-md);
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .carousel-btn.prev {
+            right: -25px;
+        }
+
+        .carousel-btn.next {
+            left: -25px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-light);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .indicator.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+
+        /* ===== قسم أحدث الفيديوهات (مضاف حديثاً) ===== */
+        .videos-section {
+            margin-top: 60px;
+        }
+
+        .video-carousel {
+            position: relative;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .video-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 20px;
+        }
+
+        .video-slide {
+            flex: 0 0 calc(33.333% - 14px);
+            min-width: 280px;
+            background: var(--offwhite);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .video-slide iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .video-meta {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .video-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            z-index: 10;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .video-carousel-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .video-carousel-btn.prev {
+            right: -15px;
+        }
+
+        .video-carousel-btn.next {
+            left: -15px;
+        }
+
+        .video-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .video-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-light);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .video-indicator.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* باقي الأقسام (الأبحاث، الفتاوى، النقاش، إلخ) */
         .grid {
             display: grid;
             gap: 28px;
@@ -649,7 +964,14 @@
             transform: scale(1.1);
         }
 
+        /* تحسينات للجوال */
         @media (max-width: 992px) {
+            .carousel-slide {
+                flex: 0 0 calc(50% - 20px);
+            }
+            .video-slide {
+                flex: 0 0 calc(50% - 10px);
+            }
             .grid-4 {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -662,6 +984,30 @@
         }
 
         @media (max-width: 768px) {
+            .carousel-slide {
+                flex: 0 0 calc(100% - 20px);
+            }
+            .video-slide {
+                flex: 0 0 calc(100% - 20px);
+            }
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .carousel-btn.prev {
+                right: -10px;
+            }
+            .carousel-btn.next {
+                left: -10px;
+            }
+            .video-carousel-btn.prev {
+                right: -5px;
+            }
+            .video-carousel-btn.next {
+                left: -5px;
+            }
+
             .arabic-title {
                 font-size: 2rem;
             }
@@ -693,14 +1039,44 @@
                 transition: 0.3s ease-in-out;
                 z-index: 999;
                 gap: 5px;
+                overflow-y: auto;
             }
             .nav-menu.active {
                 right: 0;
             }
-            .nav-link {
+            .nav-btn {
                 width: 100%;
                 padding: 14px 20px;
                 border-radius: 12px;
+                font-size: 1rem;
+                justify-content: flex-start;
+            }
+            .nav-btn i {
+                width: 25px;
+            }
+            .dropdown {
+                width: 100%;
+            }
+            .dropdown-toggle {
+                justify-content: space-between;
+            }
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding: 0 10px;
+                margin-top: 5px;
+                background: transparent;
+                border: none;
+                display: none;
+            }
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            .dropdown-item {
+                padding: 12px 30px;
             }
             .d-none {
                 display: none;
@@ -832,15 +1208,27 @@
                 </button>
 
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="nav-link active">الرئيسية</a></li>
-                    <li><a href="discussion.html" class="nav-link">الحوار والمناقشة</a></li>
-                    <li><a href="levels.html" class="nav-link">الاكادمية العلمية</a></li>
-                    <li><a href="library.html" class="nav-link">المكتبة</a></li>
-                    <li><a href="research.html" class="nav-link">الأبحاث</a></li>
-                    <li><a href="fatwa.html" class="nav-link">الفتاوى</a></li>
-                    <li><a href="about.html" class="nav-link">عن المنصة</a></li>
-                    <li><a href="library-vidue.html" class="nav-link">مكتبة الفيديو</a></li>
+                    <li><a href="#home" class="nav-btn active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="discussion.html" class="nav-btn"><i class="fas fa-comments"></i> الحوار والمناقشة</a></li>
+                    <li><a href="levels.html" class="nav-btn"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</a></li>
+                    
+                    <!-- قائمة المكتبة المنسدلة -->
+                    <li class="dropdown">
+                        <a href="#" class="nav-btn dropdown-toggle" id="libraryDropdown">
+                            <i class="fas fa-book"></i> المكتبة
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="library-books.html" class="dropdown-item"><i class="fas fa-book"></i> الكتب</a></li>
+                            <li><a href="library-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> الصوتيات</a></li>
+                            <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
+                        </ul>
+                    </li>
 
+                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
+                    <li><a href="fatwa.html" class="nav-btn"><i class="fas fa-balance-scale"></i> الفتاوى</a></li>
+                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
+                    
                     <!-- أزرار للجوال -->
                     <li class="d-flex flex-column w-100 mt-3 d-md-none">
                         <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
@@ -849,9 +1237,9 @@
                 </ul>
 
                 <!-- أزرار سطح المكتب -->
-                <div class="d-flex align-items-center d-none d-md-flex">
-                    <button class="btn btn-outline me-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
-                    <button class="btn btn-primary"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
+                <div class="auth-icons d-none d-md-flex">
+                    <button class="btn-icon" title="تسجيل الدخول"><i class="fas fa-user"></i></button>
+                    <button class="btn-icon" title="إنشاء حساب"><i class="fas fa-user-plus"></i></button>
                 </div>
             </nav>
         </div>
@@ -865,36 +1253,15 @@
             <div class="container">
                 <div class="hero-content">
                     <h1 class="arabic-title">المنصة الزيدية العلمية</h1>
-<div class="hero-content">
-                    <h1 class="arabic-title">
-(العروة الوثقى)
-
-</h1>
-
-
+                    <h1 class="arabic-title">(العروة الوثقى)</h1>
                     <p class="hero-description">
                         منصة علمية متكاملة تقدم تراث المذهب الزيدي والفكر الإسلامي الأصيل عبر دروس علمية، مكتبة شاملة، أبحاث محكمة وفتاوى شرعية
                     </p>
-
-
-
                     <div class="hero-buttons">
-                        
-  <a href="library.html" class="btn btn-outline btn-lg"><i class="fas fa-book"></i> استكشف المكتبة</a>
-                   
-
-<a href="levels.html" class="btn btn-primary btn-lg"><i class="fas fa-graduation-cap"></i> المستويات العلمية</a>
-
-    
-                        <a href="fatwa.html" class="btn btn-primary btn-lg"><i class="fas fa-graduation-cap"></i> استكشف الفتاوى</a>
-
-
-
-
-
-                      
-
- </div>
+                        <a href="library-books.html" class="btn btn-outline btn-lg"><i class="fas fa-book"></i> استكشف المكتبة</a>
+                        <a href="levels.html" class="btn btn-primary btn-lg"><i class="fas fa-graduation-cap"></i> المستويات العلمية</a>
+                        <a href="fatwa.html" class="btn btn-primary btn-lg"><i class="fas fa-fatwa"></i> استكشف الفتاوى</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -907,9 +1274,7 @@
                     منهجنا نحن الزيدية
                 </div>
                 <div class="message-text">
-                    <p>قال تعالى: <span class="ayah">﴿ وَبِٱلۡحَقِّ أَنزَلۡنَٰهُ وَبِٱلۡحَقِّ نَزَلَۗ وَمَآ أَرۡسَلۡنَٰكَ إِلَّا مُبَشِّرٗا وَنَذِيرٗا ﴾</span>
-
-<span class="ayah-number">(الإسراء: ١٠٥)</span> فدين الحق هو واحد، وما سواه فهو غير حق.</p>
+                    <p>قال تعالى: <span class="ayah">﴿ وَبِٱلۡحَقِّ أَنزَلۡنَٰهُ وَبِٱلۡحَقِّ نَزَلَۗ وَمَآ أَرۡسَلۡنَٰكَ إِلَّا مُبَشِّرٗا وَنَذِيرٗا ﴾</span> <span class="ayah-number">(الإسراء: ١٠٥)</span> فدين الحق هو واحد، وما سواه فهو غير حق.</p>
                     <p>وصف الله تعالى نبيه محمداً صلى الله عليه وآله وسلم بقوله تعالى: <span class="ayah">﴿ يَأۡمُرُهُم بِٱلۡمَعۡرُوفِ وَيَنۡهَىٰهُمۡ عَنِ ٱلۡمُنكَرِ ﴾</span><span class="ayah-number">(الأعراف: ١٥٧)</span> أي: بالمعروف المعهود عندهم في فطر عقولهم، وينهاهم عن المنكر الذي تنكره فطر عقولهم.</p>
                     <p>وقد بُني المذهب الزيدي على أُسس قوية: أولها فطر العقول، ثم محكمات الكتاب الكريم، وما صح وثبت عند طوائف المسلمين من الحديث، وما أجمعوا على صحته وروايته أو ثبت تواتره عندهم، فهذا هو أساس دينهم ومذهبهم في عقائدهم، فلا وجود فيه للخرافات أو الغلو أو ما تستنكره العقول.</p>
                     <p>أما الروايات للأحاديث النبوية التي ليست كما ذكرنا فلا يجوز الاعتماد عليها في العقائد؛ لأن المطلوب في العقائد هو حصول العلم والإيمان والتصديق الجازم، والأحاديث التي ليست كما ذكرنا لا توجب العلم الجازم.</p>
@@ -919,35 +1284,19 @@
                     <i class="fas fa-feather-alt"></i>
                     <span class="signature-name">السيد العلامة الحجة/ محمد بن عبدالله عوض المؤيدي</span>
                     <span class="signature-title">(حفظه الله)</span>
-               
-<section id="courses" class="container mt-5">
-            <div class="academy-card">
-
-<a href="about-alzaydiyah.html" class="academy-btn">
-                    <i class="fas fa-graduation-cap"></i>
-
-
-      تعرف على العقيدة الزيدية
-ماهي؟            </a>
-   
-
-
-  
-</section>
-
-      </div>
-      
-
- </div>
+                </div>
             </div>
-    
-    </div>
- 
+        </div>
 
+        <section id="courses" class="container mt-5">
+            <div class="academy-card">
+                <a href="#levels" class="academy-btn">
+                    <i class="fas fa-graduation-cap"></i> تعرف على العقيدة الزيدية ماهي؟
+                </a>
+            </div>
+        </section>
 
-        <!-- ======= إحصائيات المنصة ======= -->
-
-        <!-- ======= قسم الأكاديمية العلمية (بدلاً من الدروس العلمية) ======= -->
+        <!-- ======= قسم الأكاديمية العلمية ======= -->
         <section id="courses" class="container mt-5">
             <div class="academy-card">
                 <div class="academy-title">
@@ -956,84 +1305,50 @@
                     <i class="fas fa-kaaba"></i>
                 </div>
                 <div class="academy-quote">
-
-
-<span class="ayah">
-
-                    "وعلَّمك ما لم تكن تعلم وكان فضلُ الله عليك عظيماً"
-
-</span>
-                  <small>(النساء: 113)</small>
+                    <span class="ayah">"وعلَّمك ما لم تكن تعلم وكان فضلُ الله عليك عظيماً"</span>
+                    <small>(النساء: 113)</small>
                 </div>
                 <p class="academy-description">
                     بين يدي نبع العلم الصافي، وبأيدي نخبة من أهل الاختصاص، تدعوكم الأكاديمية العلمية للانضمام إلى برامجها التعليمية المتكاملة، لنهجٍ يجمع بين نور الروح وقوة الدليل.
                 </p>
-
                 <h3 style="font-size:1.8rem; color:var(--primary-dark); margin:30px 0 20px;">💎 مساراتنا المعرفية والتربوية:</h3>
-                
                 <div class="academy-list">
-                    <div class="academy-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>🛡️ عقيدة راسخة: بناء اليقين وتثبيت أصول الإيمان بوعيٍ وبصيرة.</span>
-                    </div>
-                    <div class="academy-item">
-                        <i class="fas fa-scale-balanced"></i>
-                        <span>⚖️ الفقه وأصوله: فهم الأحكام الشرعية وقواعد الاستنباط بدقة وعمق.</span>
-                    </div>
-                    <div class="academy-item">
-                        <i class="fas fa-language"></i>
-                        <span>📖 لغة القرآن: إتقان اللغة العربية لتذوق أسرار الوحي وجمال الخطاب.</span>
-                    </div>
-                    <div class="academy-item">
-                        <i class="fas fa-hadith"></i>
-                        <span>📜 الحديث الشريف: الارتباط بسنة المصطفى ﷺ ومنهج آل البيت (عليهم السلام).</span>
-                    </div>
+                    <div class="academy-item"><i class="fas fa-shield-alt"></i><span>🛡️ عقيدة راسخة: بناء اليقين وتثبيت أصول الإيمان بوعيٍ وبصيرة.</span></div>
+                    <div class="academy-item"><i class="fas fa-scale-balanced"></i><span>⚖️ الفقه وأصوله: فهم الأحكام الشرعية وقواعد الاستنباط بدقة وعمق.</span></div>
+                    <div class="academy-item"><i class="fas fa-language"></i><span>📖 لغة القرآن: إتقان اللغة العربية لتذوق أسرار الوحي وجمال الخطاب.</span></div>
+                    <div class="academy-item"><i class="fas fa-hadith"></i><span>📜 الحديث الشريف: الارتباط بسنة المصطفى ﷺ ومنهج آل البيت (عليهم السلام).</span></div>
                 </div>
-
-                <a href="levels.html" class="academy-btn">
-                    <i class="fas fa-graduation-cap"></i> استكشف المسارات العلمية
-                </a>
+                <a href="levels.html" class="academy-btn"><i class="fas fa-graduation-cap"></i> استكشف المسارات العلمية</a>
             </div>
         </section>
 
-        <!-- ======= المكتبة ======= -->
+        <!-- ======= المكتبة المتحركة (كاروسيل) ======= -->
         <section id="library" class="container mt-5">
             <h2 class="section-title">مكتبة المنصة</h2>
-            <div class="grid grid-2">
-                <div class="card book-card">
-                    <div class="book-cover"><i class="fas fa-book-quran"></i></div>
-                    <div class="card-body">
-                        <h4>الأحكام الشرعية - الإمام الهادي</h4>
-                        <p class="text-secondary mt-2">كتاب جامع في الفقه الزيدي للإمام الهادي يحيى بن الحسين، يشمل أبواب العبادات والمعاملات.</p>
-                        <div class="research-meta">
-                            <span><i class="fas fa-user"></i> الإمام الهادي</span>
-                            <span><i class="fas fa-calendar"></i> القرن 3 هـ</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-primary"><i class="fas fa-book-open"></i> قراءة</button>
-                            <button class="btn btn-outline"><i class="fas fa-download"></i> تحميل</button>
-                        </div>
+            <div class="library-carousel">
+                <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- البطاقات ستضاف هنا عبر JavaScript -->
                     </div>
                 </div>
-                <div class="card book-card">
-                    <div class="book-cover"><i class="fas fa-scroll"></i></div>
-                    <div class="card-body">
-                        <h4>تبصرة المتعلمين - المؤيدي</h4>
-                        <p class="text-secondary mt-2">متن فقهي مختصر جامع لأحكام المذهب الزيدي مع شرح للأدلة والتعليقات.</p>
-                        <div class="research-meta">
-                            <span><i class="fas fa-user"></i> العلامة مجدالدين المؤيدي</span>
-                            <span><i class="fas fa-calendar"></i> القرن 14 هـ</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-primary"><i class="fas fa-book-open"></i> قراءة</button>
-                            <button class="btn btn-outline"><i class="fas fa-download"></i> تحميل</button>
-                        </div>
+                <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-indicators" id="indicators"></div>
+            </div>
+        </section>
+
+        <!-- ======= قسم أحدث الفيديوهات (مضاف حديثاً) ======= -->
+        <section class="videos-section container mt-5">
+            <h2 class="section-title">أحدث فيديوهات قناة العروة الوثقى الزيدية</h2>
+            <div class="video-carousel">
+                <button class="video-carousel-btn prev" id="videoPrevBtn"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-container">
+                    <div class="video-track" id="videoTrack">
+                        <!-- الفيديوهات ستضاف هنا عبر JavaScript -->
                     </div>
                 </div>
+                <button class="video-carousel-btn next" id="videoNextBtn"><i class="fas fa-chevron-left"></i></button>
+                <div class="video-indicators" id="videoIndicators"></div>
             </div>
         </section>
 
@@ -1046,12 +1361,7 @@
                         <h4>منهج الاستدلال عند الإمام زيد بن علي</h4>
                         <p class="text-secondary mt-2">بحث أكاديمي يدرس منهج الإمام زيد بن علي في الاستدلال الفقهي والأصولي، مع تحليل لأبرز مؤلفاته.</p>
                         <div class="research-meta">
-                            <span><i class="fas fa-user-graduate"></i>
-
- د. أحمد الزيدي
-
-
-</span>
+                            <span><i class="fas fa-user-graduate"></i> د. أحمد الزيدي</span>
                             <span><i class="fas fa-university"></i> جامع ال عامري</span>
                             <span><i class="fas fa-calendar"></i> 2023</span>
                         </div>
@@ -1248,9 +1558,9 @@
                     <h5 class="text-white mb-3">أقسام المنصة</h5>
                     <ul style="list-style: none; padding:0;">
                         <li style="margin-bottom:10px;"><a href="levels.html">المستويات العلمية</a></li>
-                        <li style="margin-bottom:10px;"><a href="library.html">المكتبة</a></li>
-                        <li style="margin-bottom:10px;"><a href="research.html">الأبحاث العلمية</a></li>
-                        <li style="margin-bottom:10px;"><a href="fatwa.html">الفتاوى الشرعية</a></li>
+                        <li style="margin-bottom:10px;"><a href="library-books.html">الكتب</a></li>
+                        <li style="margin-bottom:10px;"><a href="library-audio.html">الصوتيات</a></li>
+                        <li style="margin-bottom:10px;"><a href="library-video.html">الفيديو</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1287,7 +1597,9 @@
             const hamburger = document.getElementById('hamburgerBtn');
             const navMenu = document.getElementById('navMenu');
             const overlay = document.getElementById('overlay');
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navBtns = document.querySelectorAll('.nav-btn:not(.dropdown-toggle)');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            const dropdowns = document.querySelectorAll('.dropdown');
 
             function toggleMenu() {
                 navMenu.classList.toggle('active');
@@ -1305,20 +1617,33 @@
                 overlay.addEventListener('click', toggleMenu);
             }
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
                     if (navMenu.classList.contains('active')) {
                         toggleMenu();
                     }
-                    navLinks.forEach(l => l.classList.remove('active'));
+                    navBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
 
+            if (window.innerWidth <= 768) {
+                dropdownToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const parent = this.closest('.dropdown');
+                        parent.classList.toggle('active');
+                    });
+                });
+            }
+
             window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    overlay.classList.remove('active');
+                if (window.innerWidth > 768) {
+                    dropdowns.forEach(d => d.classList.remove('active'));
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                    }
                 }
             });
 
@@ -1348,13 +1673,234 @@
                     }
                 });
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
+                navBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('href') === `#${current}`) {
+                        btn.classList.add('active');
                     }
                 });
             });
+
+            // ===== كود الكاروسيل للكتب =====
+            const track = document.getElementById('carouselTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicatorsContainer = document.getElementById('indicators');
+
+            // بيانات الكتب
+            const books = [
+                { title: 'الأحكام الشرعية - الإمام الهادي', author: 'الإمام الهادي', desc: 'كتاب جامع في الفقه الزيدي للإمام الهادي يحيى بن الحسين، يشمل أبواب العبادات والمعاملات.', icon: 'fa-book-quran' },
+                { title: 'تبصرة المتعلمين - المؤيدي', author: 'العلامة مجدالدين المؤيدي', desc: 'متن فقهي مختصر جامع لأحكام المذهب الزيدي مع شرح للأدلة والتعليقات.', icon: 'fa-scroll' },
+                { title: 'مجموع الفتاوى - المؤيدي', author: 'السيد محمد بن عبدالله', desc: 'مجموع فتاوى وأجوبة في مسائل متنوعة.', icon: 'fa-book' },
+                { title: 'شرح العقيدة الزيدية', author: 'د. أحمد الزيدي', desc: 'شرح مفصل لأصول العقيدة الزيدية.', icon: 'fa-book-open' },
+                { title: 'أصول الفقه الزيدي', author: 'الإمام الهادي', desc: 'كتاب في أصول الفقه عند الزيدية.', icon: 'fa-balance-scale' },
+                { title: 'تاريخ الزيدية', author: 'أ. عبد الكريم هبة', desc: 'دراسة تاريخية عن المذهب الزيدي.', icon: 'fa-history' },
+            ];
+
+            books.forEach((book, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `
+                    <div class="card book-card">
+                        <div class="book-cover"><i class="fas ${book.icon}"></i></div>
+                        <div class="card-body">
+                            <h4>${book.title}</h4>
+                            <p class="text-secondary mt-2">${book.desc}</p>
+                            <div class="research-meta">
+                                <span><i class="fas fa-user"></i> ${book.author}</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary btn-sm"><i class="fas fa-book-open"></i> قراءة</button>
+                                <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> تحميل</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                track.appendChild(slide);
+            });
+
+            let currentIndex = 0;
+            const slides = document.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+            let slidesPerView = getSlidesPerView();
+
+            function getSlidesPerView() {
+                if (window.innerWidth <= 768) return 1;
+                if (window.innerWidth <= 992) return 2;
+                return 3;
+            }
+
+            function updateCarousel() {
+                const slideWidth = slides[0]?.offsetWidth || 0;
+                const gap = 20;
+                const move = -currentIndex * (slideWidth + gap);
+                track.style.transform = `translateX(${move}px)`;
+                updateIndicators();
+            }
+
+            function updateIndicators() {
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((ind, i) => {
+                    ind.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            function createIndicators() {
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('indicator');
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateCarousel();
+                    });
+                    indicatorsContainer.appendChild(dot);
+                }
+                updateIndicators();
+            }
+
+            function nextSlide() {
+                const maxIndex = totalSlides - slidesPerView;
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                const maxIndex = totalSlides - slidesPerView;
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = maxIndex;
+                }
+                updateCarousel();
+            }
+
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            window.addEventListener('resize', () => {
+                slidesPerView = getSlidesPerView();
+                currentIndex = Math.min(currentIndex, totalSlides - slidesPerView);
+                updateCarousel();
+            });
+
+            let autoSlide = setInterval(nextSlide, 4000);
+
+            track.addEventListener('mouseenter', () => clearInterval(autoSlide));
+            track.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(nextSlide, 4000);
+            });
+
+            createIndicators();
+            updateCarousel();
+
+            // ===== كود الكاروسيل للفيديوهات =====
+            const videoTrack = document.getElementById('videoTrack');
+            const videoPrev = document.getElementById('videoPrevBtn');
+            const videoNext = document.getElementById('videoNextBtn');
+            const videoIndicators = document.getElementById('videoIndicators');
+
+            const videos = [
+                { id: 'iGLg8QYmo7I', title: 'خطبة بعنوان: حسابات الجنة والنار' },
+                { id: 'CIkf5DQEcYI', title: 'الدرس الأول: معرفة الله من خلال صفاته' },
+                { id: 'VGlBOLwh3qc', title: 'الزيدية مذهب أهل البيت الحق' }
+            ];
+
+            videos.forEach(video => {
+                const slide = document.createElement('div');
+                slide.className = 'video-slide';
+                slide.innerHTML = `
+                    <iframe src="https://www.youtube.com/embed/${video.id}" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <div class="video-title">${video.title}</div>
+                        <div class="video-meta"><i class="fas fa-eye"></i> 1.2k مشاهدة</div>
+                    </div>
+                `;
+                videoTrack.appendChild(slide);
+            });
+
+            let videoIndex = 0;
+            const videoSlides = document.querySelectorAll('.video-slide');
+            const totalVideoSlides = videoSlides.length;
+            let videoSlidesPerView = getVideoSlidesPerView();
+
+            function getVideoSlidesPerView() {
+                if (window.innerWidth <= 768) return 1;
+                if (window.innerWidth <= 992) return 2;
+                return 3;
+            }
+
+            function updateVideoCarousel() {
+                const slideWidth = videoSlides[0]?.offsetWidth || 0;
+                const gap = 20;
+                const move = -videoIndex * (slideWidth + gap);
+                videoTrack.style.transform = `translateX(${move}px)`;
+                updateVideoIndicators();
+            }
+
+            function updateVideoIndicators() {
+                const indicators = document.querySelectorAll('.video-indicator');
+                indicators.forEach((ind, i) => {
+                    ind.classList.toggle('active', i === videoIndex);
+                });
+            }
+
+            function createVideoIndicators() {
+                for (let i = 0; i < totalVideoSlides; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('video-indicator');
+                    dot.addEventListener('click', () => {
+                        videoIndex = i;
+                        updateVideoCarousel();
+                    });
+                    videoIndicators.appendChild(dot);
+                }
+                updateVideoIndicators();
+            }
+
+            function nextVideoSlide() {
+                const maxIndex = totalVideoSlides - videoSlidesPerView;
+                if (videoIndex < maxIndex) {
+                    videoIndex++;
+                } else {
+                    videoIndex = 0;
+                }
+                updateVideoCarousel();
+            }
+
+            function prevVideoSlide() {
+                const maxIndex = totalVideoSlides - videoSlidesPerView;
+                if (videoIndex > 0) {
+                    videoIndex--;
+                } else {
+                    videoIndex = maxIndex;
+                }
+                updateVideoCarousel();
+            }
+
+            videoNext.addEventListener('click', nextVideoSlide);
+            videoPrev.addEventListener('click', prevVideoSlide);
+
+            window.addEventListener('resize', () => {
+                videoSlidesPerView = getVideoSlidesPerView();
+                videoIndex = Math.min(videoIndex, totalVideoSlides - videoSlidesPerView);
+                updateVideoCarousel();
+            });
+
+            let videoAutoSlide = setInterval(nextVideoSlide, 5000);
+
+            videoTrack.addEventListener('mouseenter', () => clearInterval(videoAutoSlide));
+            videoTrack.addEventListener('mouseleave', () => {
+                videoAutoSlide = setInterval(nextVideoSlide, 5000);
+            });
+
+            createVideoIndicators();
+            updateVideoCarousel();
         })();
     </script>
 </body>
