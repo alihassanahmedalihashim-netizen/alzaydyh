@@ -1,1 +1,116 @@
-css
+/* صفحة الحوار والمناقشة */
+.app-bar {
+    background: var(--primary-dark);
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.chat-area {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.message-box {
+    background: var(--card-bg);
+    padding: 12px 18px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    max-width: 85%;
+    align-self: flex-start;
+    border-bottom-right-radius: 5px;
+}
+
+.message-box.user {
+    background: var(--primary-soft);
+    align-self: flex-end;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 5px;
+    border-right: 4px solid var(--primary-dark);
+}
+
+.sender-name {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.message-text {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.time {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    display: block;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.input-panel {
+    background: var(--card-bg);
+    padding: 15px;
+    border-top: 1px solid var(--border-light);
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 60px 60px 0 0;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.02);
+}
+
+.input-panel input {
+    flex: 1;
+    border: 1px solid var(--border-light);
+    padding: 12px;
+    border-radius: 25px;
+    outline: none;
+    font-family: 'Tajawal', sans-serif;
+    background: var(--gray-bg);
+    color: var(--text-main);
+}
+
+.send-btn {
+    background: var(--primary-dark);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.send-btn:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
