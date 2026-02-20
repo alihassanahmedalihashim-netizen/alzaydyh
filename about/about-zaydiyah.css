@@ -1,0 +1,150 @@
+/* صفحة نبذة عن الزيدية */
+.article-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 35px 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: var(--transition);
+}
+
+.article-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-light);
+}
+
+.article-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.article-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 0;
+    width: 70px;
+    height: 4px;
+    background: var(--primary-light);
+    border-radius: 4px;
+}
+
+.sub-article {
+    margin: 30px 0 20px;
+    padding: 0 15px;
+}
+
+.sub-article h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 15px;
+    border-right: 5px solid var(--primary-light);
+    padding-right: 15px;
+}
+
+.article-content p {
+    font-size: 1.15rem;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+}
+
+.quran-verse {
+    font-size: 1.6rem;
+    line-height: 2;
+    color: var(--primary-dark);
+    font-weight: 600;
+    display: block;
+    margin: 20px 0;
+    background: var(--primary-soft);
+    padding: 15px 25px;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.arabic-quote {
+    background: var(--paper-bg);
+    border-right: 4px solid var(--primary);
+    padding: 18px 25px;
+    border-radius: 24px;
+    font-size: 1.15rem;
+    margin: 20px 0;
+}
+
+.numbered-list {
+    list-style: none;
+    padding-right: 0;
+}
+
+.numbered-list li {
+    margin-bottom: 15px;
+    padding-right: 40px;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.numbered-list li::before {
+    content: "●";
+    color: var(--primary);
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.inline-list {
+    list-style: none;
+    padding-right: 0;
+}
+
+.inline-list li {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-right: 30px;
+    position: relative;
+}
+
+.inline-list li i {
+    color: var(--primary);
+    position: absolute;
+    right: 0;
+    top: 3px;
+}
+
+.argument-card {
+    background: var(--paper-dark);
+    border-radius: 20px;
+    padding: 22px;
+    margin: 15px 0;
+    border: 1px solid rgba(1,111,174,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.refutation {
+    background: #fff4e6;
+    border-right: 4px solid var(--warning);
+    padding: 18px;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+
+.religious-content {
+    background: var(--paper-bg);
+    padding: 35px 30px;
+    border-radius: 40px;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    margin: 20px 0;
+    text-align: center;
+    border: 1px solid var(--border-light);
+}
