@@ -1,0 +1,221 @@
+/* صفحة الفتاوى الصوتية */
+.audio-library-header {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.audio-library-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.audio-library-header h1 i {
+    font-size: 3rem;
+}
+
+.audio-library-header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.back-to-fatwa {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card-bg);
+    color: var(--primary-dark);
+    padding: 10px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.back-to-fatwa:hover {
+    background: var(--primary-soft);
+    transform: translateX(-5px);
+}
+
+.categories-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 5px 15px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    direction: rtl;
+    margin-bottom: 30px;
+}
+
+.categories-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.categories-scroll::-webkit-scrollbar-track {
+    background: var(--border-light);
+    border-radius: 10px;
+}
+
+.categories-scroll::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.audio-category-btn {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-light);
+    border-radius: 40px;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.audio-category-btn:hover {
+    background: var(--primary-soft);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.audio-category-btn.active {
+    background: var(--primary-gradient);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 6px 14px rgba(1,87,155,0.3);
+}
+
+.audio-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.audio-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-light);
+}
+
+.audio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    background: var(--card-bg);
+}
+
+.audio-name {
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.audio-name:before {
+    content: '🎵';
+    font-size: 1.5rem;
+}
+
+.audio-name .audio-size {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-right: 10px;
+}
+
+audio {
+    width: 100%;
+    border-radius: 30px;
+    outline: none;
+}
+
+audio::-webkit-media-controls-panel {
+    background: var(--primary-soft);
+}
+
+.loading, .empty-folder {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--offwhite);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    border: 1px dashed var(--border-light);
+}
+
+.empty-folder i {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 15px;
+    color: var(--primary-light);
+}
+
+.load-more-btn {
+    display: block;
+    margin: 30px auto 0;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    border: 2px solid transparent;
+}
+
+.load-more-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.load-more-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .audio-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    .audio-name {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .audio-name:before {
+        margin-bottom: 5px;
+    }
+}
