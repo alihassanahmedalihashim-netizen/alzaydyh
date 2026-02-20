@@ -257,7 +257,7 @@ function initPage() {
     } else if (document.getElementById('booksGrid')) {
         loadScript('library/library.js', () => window.initEliteLibraryPage?.());
     } else if (document.getElementById('playlists-grid')) {
-        loadScript('library/video-library.js', () => window.initVideoLibraryPage?.());
+        loadScript('library/library-vidoe.js', () => window.initVideoLibraryPage?.());
     } else if (document.querySelector('.levels-container')) {
         loadScript('levels/levels.js', () => window.initLevelsPage?.());
     } else if (document.getElementById('videoTrack')) {
