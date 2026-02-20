@@ -3,502 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>
-المكتبة )فيديو)   </title>
+    <title>مكتبة قوائم التشغيل
+    – منصة الزيدية العلمية
+    
+    </title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Font: Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* ===== متغيرات الألوان والتصميم== === */
-        :root {
-            --primary-dark: #01579b;
-            --primary: #016fae;
-            --primary-light: #4facfe;
-            --primary-soft: #e3f2fd;
-            --accent: #00b0c7;
-            --white: #ffffff;
-            --offwhite: #f9fcff;
-            --gray-bg: #f2f8fd;
-            --text-dark: #0a384b;
-            --text-soft: #2f5a6e;
-            --text-light: #5f7e8c;
-            --border-light: #e0eff7;
-            --shadow-sm: 0 8px 20px rgba(1,87,155,0.06);
-            --shadow-md: 0 12px 30px rgba(1,87,155,0.1);
-            --radius-md: 20px;
-            --radius-lg: 32px;
-            --transition: all 0.25s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background: var(--offwhite);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ===== الهيدر ===== */
-        .header {
-            background: var(--white);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(12px);
-            background: rgba(255,255,255,0.92);
-            border-bottom: 1px solid rgba(1,87,155,0.08);
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-        }
-
-        .logo i {
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-
-        .logo span.mobile-only {
-            display: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            list-style: none;
-        }
-
-        .nav-link {
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-soft);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 6px 16px rgba(1,111,174,0.25);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(1,87,155,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-soft);
-            border-color: var(--primary-dark);
-        }
-
-        .btn-lg {
-            padding: 14px 36px;
-            font-size: 1rem;
-        }
-
-        .btn-block {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--primary);
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(1,87,155,0.3);
-            backdrop-filter: blur(3px);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* ===== عنوان الصفحة ===== */
-        .page-header {
-            padding: 40px 0 20px;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .page-header h1 i {
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        .page-header .subtitle {
-            color: var(--text-soft);
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            border-bottom: 2px solid var(--primary-soft);
-            padding-bottom: 20px;
-        }
-
-        /* ===== شبكة البطاقات ===== */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .playlist-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            transition: var(--transition);
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .playlist-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
-        }
-
-        .thumbnail-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .thumbnail-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .playlist-card:hover .thumbnail-container img {
-            transform: scale(1.05);
-        }
-
-        .video-count {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            background: rgba(1, 87, 155, 0.9);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .video-count i {
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .playlist-card h3 {
-            font-size: 1.1rem;
-            padding: 18px 18px 12px;
-            margin: 0;
-            line-height: 1.5;
-            color: var(--text-dark);
-            flex-grow: 1;
-            font-weight: 700;
-        }
-
-        .card-footer {
-            padding: 0 18px 18px;
-            margin-top: auto;
-        }
-
-        .btn-playlist {
-            text-decoration: none;
-            color: var(--primary-dark);
-            background: var(--primary-soft);
-            display: block;
-            padding: 12px 15px;
-            border-radius: 60px;
-            font-size: 1rem;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid transparent;
-            font-weight: 700;
-        }
-
-        .btn-playlist i {
-            margin-left: 8px;
-            color: var(--primary);
-            transition: 0.3s;
-        }
-
-        .btn-playlist:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .btn-playlist:hover i {
-            color: white;
-        }
-
-        /* ===== حالات التحميل والخطأ ===== */
-        .loading, .error, .no-data {
-            text-align: center;
-            font-size: 1.2rem;
-            padding: 40px;
-            background: var(--white);
-            border-radius: var(--radius-md);
-            margin: 20px 0;
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
-            color: var(--text-soft);
-        }
-        .error { color: #b34a4a; }
-        .no-data { color: var(--text-soft); }
-
-        /* ===== الفوتر ===== */
-        .footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-            border-top-left-radius: 60px;
-            border-top-right-radius: 60px;
-        }
-
-        .footer a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .footer a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        .footer .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* ===== التجاوب ===== */
-        @media (max-width: 992px) {
-            .footer .grid-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                height: 60px;
-            }
-            .logo .desktop-only {
-                display: none;
-            }
-            .logo span.mobile-only {
-                display: inline;
-                font-size: 1.2rem;
-            }
-            .hamburger {
-                display: block;
-            }
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -300px;
-                width: 280px;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 80px 20px 30px;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.05);
-                transition: 0.3s ease-in-out;
-                z-index: 999;
-                gap: 5px;
-            }
-            .nav-menu.active {
-                right: 0;
-            }
-            .nav-link {
-                width: 100%;
-                padding: 14px 20px;
-                border-radius: 12px;
-            }
-            .d-none {
-                display: none;
-            }
-            .d-md-flex {
-                display: none;
-            }
-            .page-header h1 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-        }
-
-        /* helper classes */
-        .d-flex { display: flex; }
-        .align-items-center { align-items: center; }
-        .gap-2 { gap: 12px; }
-        .me-2 { margin-left: 12px; }
-        .text-white { color: white; }
-        .icon-lg { font-size: 1.5rem; }
-        .mt-3 { margin-top: 20px; }
-        .mb-3 { margin-bottom: 20px; }
-        .d-none { display: none; }
-        .d-md-flex { display: flex; }
-        @media (max-width: 768px) {
-            .d-md-none { display: block; }
-            .d-md-flex { display: none; }
-            .flex-column { flex-direction: column; }
-            .w-100 { width: 100%; }
-        }
-    </style>
+    <link rel="stylesheet" href="main/style.css">
+     <link rel="stylesheet" href="library/library-video.css">
 </head>
 <body>
     <!-- ======= الهيدر ======= -->
-    <header class="header">
+      <header class="header">
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
                     <i class="fas fa-book-open"></i>
                     <span class="desktop-only">منصة الزيدية العلمية</span>
-                    <span class="mobile-only">الزيدية (العروة الوثقى)</span>
+                    <span class="mobile-only">الزيدية(العروة الوثقى)</span>
                 </div>
-
-                <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">
-                    <i class="fas fa-bars"></i>
-                </button>
-
+                <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-link">الرئيسية</a></li>
-                    <li><a href="discussion.html" class="nav-link">الحوار والمناقشة</a></li>
-                    <li><a href="levels.html" class="nav-link">الأكاديمية العلمية</a></li>
-                    <li><a href="library.html" class="nav-link active">المكتبة</a></li>
-                    <li><a href="research.html" class="nav-link">الأبحاث</a></li>
-                    <li><a href="fatwa.html" class="nav-link">الفتاوى</a></li>
-                    <li><a href="about.html" class="nav-link">عن المنصة</a></li>
-                    <!-- أزرار للجوال -->
+                    <li><a href="#home" class="nav-btn active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="discussion.html" class="nav-btn"><i class="fas fa-comments"></i> الحوار والمناقشة</a></li>
+                    <li><a href="levels.html" class="nav-btn"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-book"></i> المكتبة <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="library.html" class="dropdown-item"><i class="fas fa-book"></i> الكتب</a></li>
+                            <li><a href="library-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> الصوتيات</a></li>
+                            <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
+                        </ul>
+                    </li>
+                    <li class     ="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-info-circle"></i> الفتاوى
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fatwa.html" class="dropdown-item"><i class= "fas fa-info-circle"></i> فتاوى(مكتوبة)
+                            </a></li>
+                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى(صوت)
+                            </a></li>
+                            <li><a href="#fatwa-video.html" class="dropdown-item"><i class="fas fa-video"></i> فتاوى(فيديو)
+                            </a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
+                 
+                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
                     <li class="d-flex flex-column w-100 mt-3 d-md-none">
                         <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
                         <button class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
                     </li>
                 </ul>
-
-                <!-- أزرار سطح المكتب -->
-                <div class="d-flex align-items-center d-none d-md-flex">
-                    <button class="btn btn-outline me-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
-                    <button class="btn btn-primary"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
+                <div class="auth-icons d-none d-md-flex">
+                    <button class="btn-icon" title="تسجيل الدخول" aria-label="تسجيل الدخول"><i class="fas fa-user"></i><span class="sr-only">تسجيل الدخول</span></button>
+                    <button class="btn-icon" title="إنشاء حساب" aria-label="إنشاء حساب"><i class="fas fa-user-plus"></i><span class="sr-only">إنشاء حساب</span></button>
                 </div>
             </nav>
         </div>
@@ -594,144 +161,6 @@
     <!-- زر العودة للأعلى -->
     <button id="backToTop" style="position:fixed; bottom:20px; left:20px; width:50px; height:50px; border-radius:50%; background:var(--primary); color:white; border:none; font-size:1.2rem; cursor:pointer; box-shadow:0 6px 20px rgba(1,87,155,0.3); display:none; align-items:center; justify-content:center; z-index:999; transition:0.2s;" title="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
 
-    <script>
-        (function() {
-            // ===== وظائف الهيدر والهمبرغر =====
-            const hamburger = document.getElementById('hamburgerBtn');
-            const navMenu = document.getElementById('navMenu');
-            const overlay = document.getElementById('overlay');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            function toggleMenu() {
-                navMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-            }
-
-            if (hamburger) {
-                hamburger.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    toggleMenu();
-                });
-            }
-
-            if (overlay) {
-                overlay.addEventListener('click', toggleMenu);
-            }
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (navMenu.classList.contains('active')) {
-                        toggleMenu();
-                    }
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                }
-            });
-
-            // ===== زر العودة للأعلى =====
-            const backBtn = document.getElementById('backToTop');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backBtn.style.display = 'flex';
-                } else {
-                    backBtn.style.display = 'none';
-                }
-            });
-
-            backBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // ===== كود جلب قوائم التشغيل من YouTube API =====
-            const API_KEY = 'AIzaSyCb2q3nTzsE624UqYU6XqNYs9x0eygTaRM';
-            const CHANNEL_ID = 'UCRhcbj7lBJ7RFj6RPsgLGDA';
-            const grid = document.getElementById('playlists-grid');
-            const channelLink = document.getElementById('channel-link');
-
-            if (channelLink) {
-                channelLink.href = `https://www.youtube.com/channel/${CHANNEL_ID}`;
-            }
-
-            // دالة لجلب البيانات مع مهلة زمنية (timeout)
-            async function fetchWithTimeout(url, options, timeout = 10000) {
-                const controller = new AbortController();
-                const id = setTimeout(() => controller.abort(), timeout);
-                try {
-                    const response = await fetch(url, { ...options, signal: controller.signal });
-                    clearTimeout(id);
-                    return response;
-                } catch (error) {
-                    clearTimeout(id);
-                    throw error;
-                }
-            }
-
-            async function fetchPlaylists() {
-                try {
-                    const url = `https://www.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&channelId=${CHANNEL_ID}&maxResults=50&key=${API_KEY}`;
-                    const response = await fetchWithTimeout(url, {}, 15000); // 15 ثانية مهلة
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error ${response.status}`);
-                    }
-
-                    const data = await response.json();
-
-                    if (data.error) {
-                        throw new Error(data.error.message || 'خطأ في استدعاء API');
-                    }
-
-                    if (!data.items || data.items.length === 0) {
-                        grid.innerHTML = '<div class="no-data"><i class="fas fa-exclamation-triangle"></i> لا توجد قوائم تشغيل متاحة لهذه القناة.</div>';
-                        return;
-                    }
-
-                    let html = '';
-                    for (let playlist of data.items) {
-                        const playlistId = playlist.id;
-                        const title = playlist.snippet.title;
-                        const thumbnail = playlist.snippet.thumbnails.high?.url || playlist.snippet.thumbnails.default?.url;
-                        const videoCount = playlist.contentDetails.itemCount;
-
-                        html += `
-                            <div class="playlist-card">
-                                <div class="thumbnail-container">
-                                    <img src="${thumbnail}" alt="${title}" loading="lazy">
-                                    <span class="video-count"><i class="fas fa-video"></i> ${videoCount} فيديو</span>
-                                </div>
-                                <h3>📌 ${title}</h3>
-                                <div class="card-footer">
-                                    <a href="https://www.youtube.com/playlist?list=${playlistId}" class="btn-playlist">
-                                        <i class="fas fa-external-link-alt"></i> فتح القائمة
-                                    </a>
-                                </div>
-                            </div>
-                        `;
-                    }
-                    grid.innerHTML = html;
-                } catch (error) {
-                    console.error('خطأ في تحميل قوائم التشغيل:', error);
-                    let errorMessage = error.message;
-                    if (error.name === 'AbortError') {
-                        errorMessage = 'انتهت مهلة الاتصال، يرجى التحقق من اتصالك بالإنترنت.';
-                    } else if (error.message.includes('HTTP error 403')) {
-                        errorMessage = 'مشكلة في مفتاح API، يرجى التحقق من صلاحياته.';
-                    } else if (error.message.includes('Failed to fetch')) {
-                        errorMessage = 'تعذر الاتصال بـ YouTube API، تأكد من اتصالك بالإنترنت.';
-                    }
-                    grid.innerHTML = `<div class="error"><i class="fas fa-times-circle"></i> حدث خطأ: ${errorMessage}</div>`;
-                }
-            }
-
-            fetchPlaylists();
-        })();
-    </script>
+ <script src="main/main.js"></script>
 </body>
 </html>
