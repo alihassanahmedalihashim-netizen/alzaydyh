@@ -8,663 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Font: Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* ===== متغيرات الألوان مع خلفية كتابية ===== */
-        :root {
-            --primary-dark: #01579b;
-            --primary: #016fae;
-            --primary-light: #4facfe;
-            --primary-soft: #e3f2fd;
-            --accent: #00b0c7;
-            --white: #ffffff;
-            --offwhite: #f9fcff;
-            --gray-bg: #f2f8fd;
-            --text-dark: #0a384b;
-            --text-soft: #2f5a6e;
-            --text-light: #5f7e8c;
-            --border-light: #e0eff7;
-            --shadow-sm: 0 8px 20px rgba(1,87,155,0.06);
-            --shadow-md: 0 12px 30px rgba(1,87,155,0.1);
-            --radius-md: 20px;
-            --radius-lg: 32px;
-            --transition: all 0.25s ease;
-            --paper-bg: #fcf8f0;
-            --paper-dark: #f5efe6;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background: var(--paper-bg);
-            color: var(--text-dark);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ===== الهيدر ===== */
-        .header {
-            background: var(--white);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(12px);
-            background: rgba(255,255,255,0.92);
-            border-bottom: 1px solid rgba(1,87,155,0.08);
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-        }
-
-        .logo i {
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-
-        .logo span.mobile-only {
-            display: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            list-style: none;
-        }
-
-        .nav-link {
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-soft);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-        }
-
-        /* أيقونات تسجيل الدخول */
-        .auth-icons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-icon {
-            background: transparent;
-            border: none;
-            font-size: 1.4rem;
-            color: var(--primary);
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-icon:hover {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--primary);
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(1,87,155,0.3);
-            backdrop-filter: blur(3px);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* ===== المحتوى الرئيسي ===== */
-        .main-content {
-            width: 100%;
-            margin-top: 30px;
-        }
-
-        /* ===== تنسيق المقالات (بدلاً من الأكورديون) ===== */
-        .article-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 35px 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-            transition: var(--transition);
-        }
-
-        .article-card:hover {
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
-        }
-
-        .article-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .article-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 0;
-            width: 70px;
-            height: 4px;
-            background: var(--primary-light);
-            border-radius: 4px;
-        }
-
-        .sub-article {
-            margin: 30px 0 20px;
-            padding: 0 15px;
-        }
-
-        .sub-article h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-            border-right: 5px solid var(--primary-light);
-            padding-right: 15px;
-        }
-
-        /* ===== تنسيقات النصوص ===== */
-        .article-content p {
-            font-size: 1.15rem;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .quran-verse {
-            font-size: 1.6rem;
-            line-height: 2;
-            color: var(--primary-dark);
-            font-weight: 600;
-            display: block;
-            margin: 20px 0;
-            background: var(--primary-soft);
-            padding: 15px 25px;
-            border-radius: 40px;
-            text-align: center;
-        }
-
-        .arabic-quote {
-            background: #faf3e9;
-            border-right: 4px solid var(--primary);
-            padding: 18px 25px;
-            border-radius: 24px;
-            font-size: 1.15rem;
-            margin: 20px 0;
-        }
-
-        .numbered-list {
-            list-style: none;
-            padding-right: 0;
-        }
-
-        .numbered-list li {
-            margin-bottom: 15px;
-            padding-right: 40px;
-            font-size: 1.1rem;
-            position: relative;
-        }
-
-        .numbered-list li::before {
-            content: "●";
-            color: var(--primary);
-            font-weight: bold;
-            position: absolute;
-            right: 0;
-            width: 30px;
-            height: 30px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .inline-list {
-            list-style: none;
-            padding-right: 0;
-        }
-
-        .inline-list li {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            padding-right: 30px;
-            position: relative;
-        }
-
-        .inline-list li i {
-            color: var(--primary);
-            position: absolute;
-            right: 0;
-            top: 3px;
-        }
-
-        .argument-card {
-            background: #f5f0e7;
-            border-radius: 20px;
-            padding: 22px;
-            margin: 15px 0;
-            border: 1px solid rgba(1,111,174,0.2);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-
-        .refutation {
-            background: #fff4e6;
-            border-right: 4px solid #f39c12;
-            padding: 18px;
-            border-radius: 20px;
-            margin-top: 15px;
-        }
-
-        .badge-coming {
-            background: #d4a373;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-right: 10px;
-            display: inline-block;
-        }
-
-        .religious-content {
-            background: #efe6d8;
-            padding: 35px 30px;
-            border-radius: 40px;
-            color: var(--text-dark);
-            font-size: 1.2rem;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        /* ===== قسم المقالات المشابهة ===== */
-        .related-articles {
-            margin: 60px 0 40px;
-        }
-
-        .related-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .related-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 0;
-            width: 70px;
-            height: 4px;
-            background: var(--primary-light);
-            border-radius: 4px;
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .article-mini-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border: 1px solid var(--border-light);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .article-mini-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
-        }
-
-        .article-image {
-            height: 160px;
-            background: var(--primary-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 3rem;
-        }
-
-        .article-mini-content {
-            padding: 20px;
-            flex: 1;
-        }
-
-        .article-mini-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .article-mini-excerpt {
-            color: var(--text-soft);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .article-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .article-link:hover {
-            color: var(--primary-dark);
-            gap: 12px;
-        }
-
-        /* ===== الفوتر ===== */
-        .footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-            border-top-left-radius: 60px;
-            border-top-right-radius: 60px;
-        }
-
-        .footer a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .footer a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-        }
-
-        /* ===== شبكة الفوتر ===== */
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        @media (max-width: 992px) {
-            .grid-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* ===== زر العودة للأعلى ===== */
-        #backToTop {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(1,87,155,0.3);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            transition: 0.2s;
-        }
-
-        #backToTop:hover {
-            background: var(--primary-dark);
-            transform: scale(1.1);
-        }
-
-        /* ===== نموذج البريد ===== */
-        .form-control {
-            font-family: 'Tajawal', sans-serif;
-            background: white;
-            border: 1px solid #d4e3ed;
-            padding: 14px 20px;
-            border-radius: 60px;
-            width: 100%;
-            outline: none;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 3px rgba(79,172,254,0.2);
-        }
-
-        /* ===== تحسينات إضافية ===== */
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-soft);
-            border-color: var(--primary-dark);
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 700;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-block {
-            width: 100%;
-        }
-
-        .d-flex {
-            display: flex;
-        }
-
-        .gap-3 {
-            gap: 16px;
-        }
-
-        .mt-3 {
-            margin-top: 20px;
-        }
-
-        .mb-3 {
-            margin-bottom: 20px;
-        }
-
-        .text-white {
-            color: white;
-        }
-
-        .fab {
-            font-size: 1.5rem;
-            margin-left: 10px;
-        }
-
-        /* ===== التجاوب ===== */
-        @media (max-width: 992px) {
-            .article-title {
-                font-size: 1.8rem;
-            }
-            .sub-article h3 {
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                height: 60px;
-            }
-
-            .logo .desktop-only {
-                display: none;
-            }
-
-            .logo span.mobile-only {
-                display: inline;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -300px;
-                width: 280px;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 80px 20px 30px;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.05);
-                transition: 0.3s ease-in-out;
-                z-index: 999;
-                gap: 5px;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-link {
-                width: 100%;
-                padding: 14px 20px;
-                border-radius: 12px;
-            }
-
-            .auth-icons .btn-icon {
-                font-size: 1.2rem;
-            }
-
-            .nav-menu .btn-icon .btn-text {
-                display: inline;
-                margin-right: 8px;
-            }
-
-            .grid-4 {
-                grid-template-columns: 1fr;
-            }
-
-            .article-card {
-                padding: 25px 20px;
-            }
-        }
-
-        /* helper classes */
-        .d-md-none {
-            display: none;
-        }
-
-        .flex-column {
-            flex-direction: column;
-        }
-
-        .w-100 {
-            width: 100%;
-        }
-
-        .mb-2 {
-            margin-bottom: 12px;
-        }
-    </style>
-</head>
+        <link rel="stylesheet" href="main/style.css">
+         <link rel="stylesheet" href="about/about-zaydiyah.css">
 <body>
     <!-- ======= الهيدر ======= -->
     <header class="header">
@@ -673,32 +18,50 @@
                 <div class="logo">
                     <i class="fas fa-book-open"></i>
                     <span class="desktop-only">منصة الزيدية العلمية</span>
-                    <span class="mobile-only">الزيدية</span>
+                    <span class="mobile-only">الزيدية(العروة الوثقى)</span>
                 </div>
-
-                <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">
-                    <i class="fas fa-bars"></i>
-                </button>
-
+                <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-link">الرئيسية</a></li>
-                    <li><a href="discussion.html" class="nav-link">الحوار والمناقشة</a></li>
-                    <li><a href="levels.html" class="nav-link">الأكاديمية العلمية</a></li>
-                    <li><a href="library.html" class="nav-link">المكتبة</a></li>
-                    <li><a href="research.html" class="nav-link">الأبحاث</a></li>
-                    <li><a href="fatwa.html" class="nav-link">الفتاوى</a></li>
-                    <li><a href="about.html" class="nav-link">عن المنصة</a></li>
-                    <!-- أزرار تسجيل الدخول في القائمة للجوال -->
+                    <li><a href="#home" class="nav-btn active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="discussion.html" class="nav-btn"><i class="fas fa-comments"></i> الحوار والمناقشة</a></li>
+                    <li><a href="levels.html" class="nav-btn"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-book"></i> المكتبة <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="library.html" class="dropdown-item"><i class="fas fa-book"></i> الكتب</a></li>
+                            <li><a href="library-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> الصوتيات</a></li>
+                            <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
+                        </ul>
+                    </li>
+                    <li class     ="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-info-circle"></i> الفتاوى
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fatwa.html" class="dropdown-item"><i class= "fas fa-info-circle"></i> فتاوى(مكتوبة)
+                            </a></li>
+                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى(صوت)
+                            </a></li>
+                            <li><a href="#fatwa-video.html" class="dropdown-item"><i class="fas fa-video"></i> فتاوى(فيديو)
+                            </a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
+                 
+                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
                     <li class="d-flex flex-column w-100 mt-3 d-md-none">
                         <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
                         <button class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
                     </li>
                 </ul>
-
-                <!-- أيقونات تسجيل الدخول -->
-                <div class="auth-icons">
-                    <button class="btn-icon" title="تسجيل الدخول"><i class="fas fa-user"></i></button>
-                    <button class="btn-icon" title="إنشاء حساب"><i class="fas fa-user-plus"></i></button>
+                <div class="auth-icons d-none d-md-flex">
+                    <button class="btn-icon" title="تسجيل الدخول" aria-label="تسجيل الدخول"><i class="fas fa-user"></i><span class="sr-only">تسجيل الدخول</span></button>
+                    <button class="btn-icon" title="إنشاء حساب" aria-label="إنشاء حساب"><i class="fas fa-user-plus"></i><span class="sr-only">إنشاء حساب</span></button>
                 </div>
             </nav>
         </div>
@@ -712,232 +75,57 @@
             <p style="font-size:1.2rem; color:var(--text-soft);">الأصول والمعتقدات الثابتة عن أئمة العترة الطاهرة عليهم السلام</p>
         </div>
 
-        <!-- المحتوى الرئيسي - مقالات -->
-        <div class="main-content">
-            <!-- المقالة 1: من هم الزيدية -->
-            <article class="article-card">
-                <h2 class="article-title">أ- من هم الزيدية</h2>
-                <div class="article-content">
-                    <p>الزيدية: اسم علم على جماعة المنتسبين إلى مذهب العترة المطهرة الذين أمر الله ورسوله بالتمسك بهم في آياتٍ وأحاديثَ معلومة، منها: قوله تعالى: <span class="quran-verse">﴿قُلْ لَا أَسْأَلُكُمْ عَلَيْهِ أَجْرًا إِلَّا الْمَوَدَّةَ فِي الْقُرْبَى﴾ [الشورى:23]</span>، والمودة تقتضي الاتباع، ونحو قوله صلى الله عليه وآله وسلم: ((تركت فيكم ما إن تمسكتم به لن تضلوا من بعدي أبدًا، كتاب الله وعترتي أهل بيتي، إن اللطيف الخبير نبأني أنهما لن يفترقا حتى يردا عليَّ الحوض)).</p>
-                </div>
-            </article>
-
-            <!-- المقالة 2: من هم العترة -->
-            <article class="article-card">
-                <h2 class="article-title">ب- من هم العترة الذين تنتسب إليهم الزيدية؟</h2>
-                <div class="article-content">
-                    <p>هم أهل الكساء وما تناسل منهم إلى يوم القيامة، فمنهم زين العابدين، وزيد بن علي، والباقر، والصادق، والقاسم بن إبراهيم، والهادي إلى الحق يحيى بن الحسين، والمنصور بالله عبدالله بن حمزة، وصولًا إلى الإمام المجدد للدين في القرن الرابع عشر مجد الدين بن محمد بن منصور المؤيدي، وتلميذه السيد العلامة الحجة الحسين بن يحيى الحوثي عليهم السلام، ويمثلهم في يومنا هذا مولانا السيد العلامة الحجة محمد بن عبدالله عوض المؤيدي (حفظه الله).</p>
-                </div>
-            </article>
-
-            <!-- المقالة 3: التوحيد -->
-            <article class="article-card">
-                <h2 class="article-title">أولاً: التوحيد</h2>
-                <div class="article-content">
-                    <p>هو العلم بما لله جل جلاله من الوحدانية، ونفي الشريك والصاحبة والولد وبما يستحقه من الأسماء الحسنى والصفات العليا، وبما يستحيل عليه تعالى، وبما يلحق بذلك ويتصل به، وقد أوجز أمير المؤمنين عليه السلام معنى التوحيد في عبارة قصيرة فقال عليه السلام: (التوحيد أن لا تتوهمه)، ومعنى هذه العبارة البليغة: أن الله تعالى لا يشابه شيئاً من مخلوقاته، فليس بجسم وليس بذي مكان، ولا يتصف بصفات المخلوقات، فلا تكييف ولا تمثيل.. إلخ. وعبارته عليه السلام قد أفادت جميع ذلك، وذلك أن التوهم هو التصور، والتصور لا يكون إلا لما كان جسماً أو عرضاً، فكل ما تصوره الإنسان فهو جسم أو عرض، فعرفنا من ذلك أن الله تعالى ليس بجسم، وأن صفاته ليست بأعراض كما هي الحال في المخلوقات، وأنه ليس بذي مكان ولا تحله الأعراض، لأن ذلك لا يكون إلا في الجسم الذي يتصور.</p>
-                </div>
-            </article>
-
-            <!-- المقالة 4: العدل -->
-            <article class="article-card">
-                <h2 class="article-title">ثانياً: العدل</h2>
-                <div class="article-content">
-                    <!-- مسائل العدل -->
-                    <div class="sub-article">
-                        <h3>مسائل العدل التي أجمع عليها أئمة العترة</h3>
-                        <ul class="numbered-list">
-                            <li>أَنَّ اللهَ تَعَالَى عَدْلٌ حَكِيْمٌ</li>
-                            <li>أَنَّ أَفْعَالَ العِبَادِ حَسَنَهَا وَقَبِيْحَهَا مِنْهُمْ لَا مِنَ اللهِ تَعَالَى</li>
-                            <li>أَنَّ اللهَ تَعَالَى لاَ يُثِيْبُ أَحَدًا إِلَّا بِعَمَلِهِ، وَلَا يُعَذِّبُهُ إِلَّا بِذَنْبِهِ</li>
-                            <li>أَنَّ اللهَ تَعَالَى لَا يَقْضِي بِالْمَعَاصِي</li>
-                            <li>أَنَّ اللهَ تَعَالَى لَا يُكَلِّفُ أَحَدًا مِنْ عِبَادِهِ مَا لَا يُطِيْقُهُ</li>
-                            <li>أَنَّ جَمِيْعَ الأَمْرَاضِ وَالأَسْقَامِ وَالنَّقَآئِصِ مِنْ فِعْلِ اللهِ تَعَالَى، وأَنَّهَا حِكْمَةٌ وَصَوَابٌ</li>
-                            <li>أَنَّ الله لَا يُرِيْدُ شَيْئًا مِنْ مَعَاصِي العِبَادِ، ولَا يُحِبُّهَا ولَا يَرْضَاهَا</li>
-                        </ul>
-                    </div>
-
-                    <!-- الأدلة الإجمالية -->
-                    <div class="sub-article">
-                        <h3>الأدلة الإجمالية على مسائل العدل</h3>
-                        <p>العبد مختار في أفعاله يحدثها كيفما شاء على حسب إرادته وداعي نفسه، وهذا هو مذهب الزيدية والمعتزلة وغيرهم وجوابهم على من خالفهم في ذلك ما يلي:</p>
-                        <div class="argument-card">
-                            <ul class="inline-list">
-                                <li><i class="fas fa-check-circle"></i> <strong>1- مذهب الجبر متصادم مع ما يجده كل عاقل من نفسه</strong>، ويلمسه بضرورة عقله، من غير أي شعور بأي دافع سوى إرادته. وأقوى الأدلة على الإطلاق ما يحصل عن طريق الوجدان.</li>
-                                <li><i class="fas fa-check-circle"></i> <strong>2- الفرق بين حركة المرتعش وحركة المختار</strong> لا يستطيع الجبري دفعه.</li>
-                                <li><i class="fas fa-check-circle"></i> <strong>3- من القرآن: ﴿اعْمَلُوا مَا شِئْتُمْ﴾ [فصلت:40]</strong> ونحو ذلك كثير.</li>
-                                <li><i class="fas fa-check-circle"></i> <strong>4- لو كان الأمر كما تقوله المجبرة</strong> للزم أن يسمى الباري كافراً وظالماً – تعالى الله عن ذلك.</li>
-                                <li><i class="fas fa-check-circle"></i> <strong>5- ويلزم المجبرة بطلان الأوامر والنواهي</strong> وإرسال الرسل، لأن أمر من لا يستطيع الفعل والترك قبيح.</li>
-                            </ul>
-                        </div>
-                        <p>وعلى الجملة فهذا المذهب مذهب خرافي باطل، تَمُجُّهُ الفطرة، ويكذبه الوجدان والضرورة، وترده نصوص القرآن والسنة، ويتبرأُ منه العدل والحكمة.</p>
-                    </div>
-
-                    <!-- شبه والردود -->
-                    <div class="sub-article">
-                        <h3>شبه والردود عليها</h3>
-                        <div class="refutation">
-                            <p><strong>شبهة:</strong> إن الله لا يرضى لعباده الكفر، ولا يحب الفساد؛ لكنه تعالى يريد ذلك ويشاؤه.</p>
-                            <p><strong>الرد:</strong> لا يصح اجتماع ذلك لما فيه من المنافاة. ألا ترى لو أن رجلاً قال لأولاده: لا أرضى لكم أكل القات ولا أحبه، ولكني أريد لكم أكله وأشاؤه، كيف يكون موقف السامعين؟ لاشك أنهم يحكمون بجهل الرجل وتناقضه.</p>
-                        </div>
-                        <div class="refutation mt-3">
-                            <p><strong>شبهة أخرى:</strong> إن الصائم قد يحب الأكل في نهار رمضان لما فيه من الجوع، ولكنه لا يريده لما فيه من معصية الله.</p>
-                            <p><strong>الرد:</strong> المؤمن الصائم لا يحب الأكل في نهار رمضان لما فيه من معصية الله، بل ينفر عن ذلك أشد النفور ويكرهه، ولا يريده ولا يشاؤه.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- المقالة 5: الوعد والوعيد -->
-            <article class="article-card">
-                <h2 class="article-title">ثالثاً: الوعد والوعيد</h2>
-                <div class="article-content">
-                    <div class="sub-article">
-                        <h3>مسائل الوعد والوعيد</h3>
-                        <ul class="numbered-list">
-                            <li>أَنَّ مَنْ وَعَدَهُ اللهُ بِالثَّوَابِ مِنَ الْمُؤْمِنِيْنَ فإِنَّهُ مَتَى مَاتَ مُسْتَقِيْمًا عَلَى إِيْمَانِهِ صَآئِرٌ إِلَى الْجَنَّةِ لَا مَحَالَةَ، وَمُخَلَّدٌ فِيْهَا خُلُودًا دَائِمًا فِي ثَوَابٍ لَا يَنْقَطِعُ</li>
-                            <li>أَنَّ مَنْ تَوَعَّدَهُ اللهُ تَعَالَى بِالْعِقَابِ مِنَ الْكُفَّارِ، فَإِنَّهُ مَتَى مَاتَ مُصِرًّا عَلَى كُفْرِهِ، صَآئِرٌ إِلَى النَّارِ لَا مَحَالَة، مُخَلَّدٌ فِيْهَا خُلُودًا دَائِمًا</li>
-                            <li>أَنَّ مَنْ تَوَعَّدَهُ اللهُ بِالْعِقَابِ مِنَ الفُسَّاقِ، فَإِنَّهُ مَتَى مَاتَ مُصِرًّا عَلَى فِسْقِهِ فَإِنَّهُ يُدْخِلُهُ النَّارَ وَيُخَلِّدُهُ فِيْهَا خُلُودًا دَائِمًا</li>
-                            <li>أَنَّ أَصْحَابَ الكَبَائِرَِ مِنْ هَذِهِ الأُمَّةِ يُسَمَّوْنَ فُسَّاقًا وَلَا يُسَمَّوْنَ كُفَّارًا</li>
-                            <li>أَنَّ شَفَاعَةَ النَّبِيِّ صلى الله عليه وآله وسلم يَوْمَ الْقِيَامَةِ ثَابِتَةٌ قَاطِعَةٌ.</li>
-                        </ul>
-                    </div>
-
-                    <div class="sub-article">
-                        <h3>معنى الوعد والوعيد <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                        <p class="text-soft">النص الكامل لهذا المحور قيد الإعداد وسيتم نشره قريباً.</p>
-                    </div>
-
-                    <div class="sub-article">
-                        <h3>خلف الوعد والوعيد <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                        <p class="text-soft">قيد التجهيز.</p>
-                    </div>
-
-                    <div class="sub-article">
-                        <h3>الأدلة على خلود من دخل النار <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>اعتراضات والرد عليها <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>تابع اعتراضات والرد عليها <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>الشفاعة <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                </div>
-            </article>
-
-            <!-- المقالة 6: الإمامة -->
-            <article class="article-card">
-                <h2 class="article-title">رابعاً: الإمامة</h2>
-                <div class="article-content">
-                    <div class="sub-article">
-                        <h3>مسائل الإمامة عند أهل البيت <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>أهمية الإمامة <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>لا يخلو زمان ممن يصلح للإمامة <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>أهم شروط الإمامة <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>لا تدين الزيدية بإمام إلا إذا كان شاغلاً لمقام الرسول <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>الطريق للإمامة <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>حجج الزيدية على قولها في الإمامة <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>تابع حجج الزيدية على قولهم في الإمامة <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>إشكال وارد على الإمامة عند الزيدية <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>الإمامة الإسلامية عند الزيدية <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>نموذج من ورع العترة عن تحمل أعباء الخلافة <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>نموذج من زهدهم عليهم السلام <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>نموذج من سيرة أئمة العترة اليومية في رعيتهم <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>نموذج من اهتمام أئمة العترة بإقامة معالم الدين <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>نموذج من حرص أئمة العترة على ترسيخ الحق <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                    <div class="sub-article">
-                        <h3>نموذج من معاناة أهل البيت في سبيل الحق <span class="badge-coming">سيضاف لاحقاً</span></h3>
-                    </div>
-                </div>
-            </article>
-
-            <!-- خاتمة -->
-            <div class="religious-content">
-                <i class="fas fa-book-open" style="font-size:2rem; color:var(--primary);"></i>
-                <p class="mt-2">هذه نبذة مختصرة عن أصول العقيدة الزيدية، وسيتم استكمال الأقسام الأخرى تباعاً. نسأل الله أن ينفع بها.</p>
+        <!-- مقالة واحدة فقط (من هم الزيدية) -->
+        <article class="article-card">
+            <h2 class="article-title">أ- من هم الزيدية</h2>
+            <div class="article-content">
+                <p>الزيدية: اسم علم على جماعة المنتسبين إلى مذهب العترة المطهرة الذين أمر الله ورسوله بالتمسك بهم في آياتٍ وأحاديثَ معلومة، منها: قوله تعالى: <span class="quran-verse">﴿قُلْ لَا أَسْأَلُكُمْ عَلَيْهِ أَجْرًا إِلَّا الْمَوَدَّةَ فِي الْقُرْبَى﴾ [الشورى:23]</span>، والمودة تقتضي الاتباع، ونحو قوله صلى الله عليه وآله وسلم: ((تركت فيكم ما إن تمسكتم به لن تضلوا من بعدي أبدًا، كتاب الله وعترتي أهل بيتي، إن اللطيف الخبير نبأني أنهما لن يفترقا حتى يردا عليَّ الحوض)).</p>
             </div>
+        </article>
 
-            <!-- ======= قسم المقالات المشابهة ======= -->
-            <section class="related-articles">
-                <h2 class="related-title">مقالات مشابهة</h2>
-                <div class="articles-grid">
-                    <!-- المقالة 1 -->
-                    <div class="article-mini-card">
-                        <div class="article-image">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="article-mini-content">
-                            <h3 class="article-mini-title">أصول الفقه الزيدي</h3>
-                            <p class="article-mini-excerpt">نظرة على المنهج الأصولي عند أئمة أهل البيت عليهم السلام وقواعده الكلية...</p>
-                            <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </div>
-                    <!-- المقالة 2 -->
-                    <div class="article-mini-card">
-                        <div class="article-image">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <div class="article-mini-content">
-                            <h3 class="article-mini-title">تاريخ المذهب الزيدي</h3>
-                            <p class="article-mini-excerpt">نشأة المذهب وتطوره عبر القرون وأبرز أعلامه ومؤلفاته...</p>
-                            <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </div>
-                    <!-- المقالة 3 -->
-                    <div class="article-mini-card">
-                        <div class="article-image">
-                            <i class="fas fa-mosque"></i>
-                        </div>
-                        <div class="article-mini-content">
-                            <h3 class="article-mini-title">العدل عند الزيدية</h3>
-                            <p class="article-mini-excerpt">تفصيل القول في مسألة العدل الإلهي وأهميتها في العقيدة...</p>
-                            <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </div>
-                    <!-- المقالة 4 -->
-                    <div class="article-mini-card">
-                        <div class="article-image">
-                            <i class="fas fa-hand-holding-heart"></i>
-                        </div>
-                        <div class="article-mini-content">
-                            <h3 class="article-mini-title">الشفاعة في المذهب الزيدي</h3>
-                            <p class="article-mini-excerpt">حقيقة الشفاعة وشروطها ومن هم أهلها وفق منهج العترة...</p>
-                            <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
+        <!-- قسم المقالات المشابهة -->
+        <section class="related-articles">
+            <h2 class="related-title">مقالات مشابهة</h2>
+            <div class="articles-grid">
+                <div class="article-mini-card">
+                    <div class="article-image"><i class="fas fa-book"></i></div>
+                    <div class="article-mini-content">
+                        <h3 class="article-mini-title">من هم العترة؟</h3>
+                        <p class="article-mini-excerpt">تعريف العترة النبوية ومن هم أهل البيت الذين أمرنا بالتمسك بهم...</p>
+                        <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
-            </section>
+                <div class="article-mini-card">
+                    <div class="article-image"><i class="fas fa-star"></i></div>
+                    <div class="article-mini-content">
+                        <h3 class="article-mini-title">التوحيد عند الزيدية</h3>
+                        <p class="article-mini-excerpt">رؤية الزيدية في توحيد الله وتنزيهه عن مشابهة المخلوقات...</p>
+                        <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="article-mini-card">
+                    <div class="article-image"><i class="fas fa-balance-scale"></i></div>
+                    <div class="article-mini-content">
+                        <h3 class="article-mini-title">العدل الإلهي</h3>
+                        <p class="article-mini-excerpt">مسائل العدل عند أئمة العترة وأدلتهم على أن الله لا يظلم أحداً...</p>
+                        <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="article-mini-card">
+                    <div class="article-image"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="article-mini-content">
+                        <h3 class="article-mini-title">الوعد والوعيد</h3>
+                        <p class="article-mini-excerpt">حقيقة الوعد والوعيد في العقيدة الزيدية والفرق بين الفاسق والكافر...</p>
+                        <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- خاتمة ثابتة (اختياري) -->
+        <div class="religious-content">
+            <i class="fas fa-book-open" style="font-size:2rem; color:var(--primary);"></i>
+            <p class="mt-2">هذه نبذة مختصرة عن أصول العقيدة الزيدية، وسيتم استكمال الأقسام الأخرى تباعاً. نسأل الله أن ينفع بها.</p>
         </div>
     </main>
 
@@ -992,43 +180,6 @@
     <!-- زر العودة للأعلى -->
     <button id="backToTop" title="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
 
-    <script>
-        (function() {
-            // هامبرغر
-            const hamburger = document.getElementById('hamburgerBtn');
-            const navMenu = document.getElementById('navMenu');
-            const overlay = document.getElementById('overlay');
-
-            function toggleMenu() {
-                navMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-            }
-
-            if (hamburger) hamburger.addEventListener('click', toggleMenu);
-            if (overlay) overlay.addEventListener('click', toggleMenu);
-
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (navMenu.classList.contains('active')) toggleMenu();
-                });
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                }
-            });
-
-            // زر العودة للأعلى
-            const backBtn = document.getElementById('backToTop');
-            window.addEventListener('scroll', function() {
-                backBtn.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
-            });
-            backBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        })();
-    </script>
+ <script src="main/main.js"></script>
 </body>
 </html>
