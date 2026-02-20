@@ -1,106 +1,165 @@
+<!-- updated: research.html -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز البحوث والدراسات العلمية</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-        
-        body {
-            margin: 0; background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
-            font-family: 'Tajawal', sans-serif; min-height: 100vh; color: #333;
-            background-attachment: fixed;
-        }
-        .container { width: 94%; max-width: 650px; margin: 20px auto; }
-        
-        /* الهيدر */
-        .research-header { 
-            background: #01579b; color: white; padding: 25px; border-radius: 25px; 
-            text-align: center; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        /* أدوات التصفية والبحث */
-        .filter-bar {
-            display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px;
-        }
-        .filter-chip {
-            background: white; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem;
-            cursor: pointer; white-space: nowrap; border: 1px solid #eee; transition: 0.3s;
-        }
-        .filter-chip.active { background: #01579b; color: white; border-color: #01579b; }
-
-        /* بطاقة البحث العلمي */
-        .research-card {
-            background: white; border-radius: 20px; padding: 20px; margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-right: 6px solid #01579b;
-            transition: 0.3s;
-        }
-        .research-card:hover { transform: translateY(-5px); }
-        
-        .res-category { color: #01579b; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        .res-title { font-size: 1.1rem; font-weight: bold; margin: 8px 0; color: #222; }
-        .res-author { font-size: 0.85rem; color: #666; display: flex; align-items: center; gap: 5px; }
-        .res-abstract { font-size: 0.9rem; color: #444; margin: 12px 0; line-height: 1.6; }
-        
-        .res-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid #eee; padding-top: 15px; margin-top: 10px;
-        }
-        .btn-download {
-            background: #e3f2fd; color: #01579b; padding: 8px 15px; border-radius: 10px;
-            text-decoration: none; font-size: 0.85rem; font-weight: bold;
-        }
-        .res-date { font-size: 0.75rem; color: #999; }
-
-        .back-btn { display: inline-block; margin-bottom: 15px; color: white; text-decoration: none; background: rgba(0,0,0,0.2); padding: 8px 15px; border-radius: 10px; }
-    </style>
+    <title>مركز البحوث والدراسات العلمية - الزيدية العلمية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main/style.css">
+   <link rel="stylesheet" href="research/research.css">
 </head>
 <body>
+    <button class="close-menu" id="closeMenuBtn" aria-label="إغلاق القائمة"><i class="fas fa-times"></i></button>
 
-<div class="container">
-    <a href="index.html" class="back-btn">⬅ العودة للرئيسية</a>
-    
-    <div class="research-header">
-        <h2 style="margin:0;">🔬 مركز البحوث والدراسات</h2>
-        <p style="margin:5px 0 0 0; font-size: 0.9rem;">تحقيق التراث وتأصيل المعرفة العلمية</p>
-    </div>
+       <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    <span class="desktop-only">منصة الزيدية العلمية</span>
+                    <span class="mobile-only">الزيدية(العروة الوثقى)</span>
+                </div>
+                <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-btn active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="discussion.html" class="nav-btn"><i class="fas fa-comments"></i> الحوار والمناقشة</a></li>
+                    <li><a href="levels.html" class="nav-btn"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-book"></i> المكتبة <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="library.html" class="dropdown-item"><i class="fas fa-book"></i> الكتب</a></li>
+                            <li><a href="library-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> الصوتيات</a></li>
+                            <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
+                        </ul>
+                    </li>
+                    <li class     ="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-info-circle"></i> الفتاوى
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fatwa.html" class="dropdown-item"><i class= "fas fa-info-circle"></i> فتاوى(مكتوبة)
+                            </a></li>
+                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى(صوت)
+                            </a></li>
+                            <li><a href="#fatwa-video.html" class="dropdown-item"><i class="fas fa-video"></i> فتاوى(فيديو)
+                            </a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
+                 
+                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
+                    <li class="d-flex flex-column w-100 mt-3 d-md-none">
+                        <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
+                        <button class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
+                    </li>
+                </ul>
+                <div class="auth-icons d-none d-md-flex">
+                    <button class="btn-icon" title="تسجيل الدخول" aria-label="تسجيل الدخول"><i class="fas fa-user"></i><span class="sr-only">تسجيل الدخول</span></button>
+                    <button class="btn-icon" title="إنشاء حساب" aria-label="إنشاء حساب"><i class="fas fa-user-plus"></i><span class="sr-only">إنشاء حساب</span></button>
+                </div>
+            </nav>
+        </div>
+        <div class="overlay" id="overlay"></div>
+    </header>
 
-    <div class="filter-bar">
-        <div class="filter-chip active">كل الأبحاث</div>
-        <div class="filter-chip">تحقيق تراث</div>
-        <div class="filter-chip">دراسات معاصرة</div>
-        <div class="filter-chip">رسائل علمية</div>
-    </div>
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+            
+            <div class="research-header">
+                <h2 style="margin:0;">🔬 مركز البحوث والدراسات</h2>
+                <p style="margin:5px 0 0 0; font-size: 0.9rem;">تحقيق التراث وتأصيل المعرفة العلمية</p>
+            </div>
 
-    <div id="researchList">
-        <div class="research-card">
-            <div class="res-category">تحقيق تراث</div>
-            <div class="res-title">منهج الإمام الهادي إلى الحق في استنباط الأحكام</div>
-            <div class="res-author">👤 إعداد: أ.د. يحيى بن محمد المتوكل</div>
-            <p class="res-abstract">دراسة تحليلية مقارنة تتناول القواعد الأصولية التي اعتمد عليها الإمام الهادي في تأسيس مدرسته الفقهية..</p>
-            <div class="res-footer">
-                <a href="#" class="btn-download">💾 تحميل البحث (PDF)</a>
-                <span class="res-date">نشر في: رجب 1447هـ</span>
+            <div class="filter-bar">
+                <div class="filter-chip active">كل الأبحاث</div>
+                <div class="filter-chip">تحقيق تراث</div>
+                <div class="filter-chip">دراسات معاصرة</div>
+                <div class="filter-chip">رسائل علمية</div>
+            </div>
+
+            <div id="researchList">
+                <div class="research-card">
+                    <div class="res-category">تحقيق تراث</div>
+                    <div class="res-title">منهج الإمام الهادي إلى الحق في استنباط الأحكام</div>
+                    <div class="res-author">👤 إعداد: أ.د. يحيى بن محمد المتوكل</div>
+                    <p class="res-abstract">دراسة تحليلية مقارنة تتناول القواعد الأصولية التي اعتمد عليها الإمام الهادي في تأسيس مدرسته الفقهية..</p>
+                    <div class="res-footer">
+                        <a href="#" class="btn-download">💾 تحميل البحث (PDF)</a>
+                        <span class="res-date">نشر في: رجب 1447هـ</span>
+                    </div>
+                </div>
+
+                <div class="research-card">
+                    <div class="res-category">دراسات معاصرة</div>
+                    <div class="res-title">الفكر الزيدي ومواجهة التحديات الحديثة</div>
+                    <div class="res-author">👤 الباحث: إبراهيم بن علي الوزير</div>
+                    <p class="res-abstract">بحث يتطرق إلى مرونة الفكر الزيدي وقدرته على استيعاب المستجدات العصرية مع الحفاظ على الأصول الثابتة.</p>
+                    <div class="res-footer">
+                        <a href="#" class="btn-download">💾 تحميل البحث (PDF)</a>
+                        <span class="res-date">نشر في: شوال 1446هـ</span>
+                    </div>
+                </div>
             </div>
         </div>
+    </main>
 
-        <div class="research-card">
-            <div class="res-category">دراسات معاصرة</div>
-            <div class="res-title">الفكر الزيدي ومواجهة التحديات الحديثة</div>
-            <div class="res-author">👤 الباحث: إبراهيم بن علي الوزير</div>
-            <p class="res-abstract">بحث يتطرق إلى مرونة الفكر الزيدي وقدرته على استيعاب المستجدات العصرية مع الحفاظ على الأصول الثابتة.</p>
-            <div class="res-footer">
-                <a href="#" class="btn-download">💾 تحميل البحث (PDF)</a>
-                <span class="res-date">نشر في: شوال 1446هـ</span>
+    <footer class="footer">
+        <div class="container">
+            <div class="grid grid-4">
+                <div>
+                    <h4 class="text-white mb-3">المنصة العلمية الزيدية</h4>
+                    <p style="opacity:0.9;">نشر التراث العلمي الزيدي والفكر الإسلامي الأصيل.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="javascript:void(0)" aria-label="تويتر"><i class="fab fa-twitter icon-lg"></i></a>
+                        <a href="javascript:void(0)" aria-label="فيسبوك"><i class="fab fa-facebook icon-lg"></i></a>
+                        <a href="javascript:void(0)" aria-label="تيليغرام"><i class="fab fa-telegram icon-lg"></i></a>
+                        <a href="javascript:void(0)" aria-label="يوتيوب"><i class="fab fa-youtube icon-lg"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">أقسام المنصة</h5>
+                    <ul style="list-style: none; padding:0;">
+                        <li style="margin-bottom:10px;"><a href="levels.html">المستويات العلمية</a></li>
+                        <li style="margin-bottom:10px;"><a href="library.html">الكتب</a></li>
+                        <li style="margin-bottom:10px;"><a href="library-audio.html">الصوتيات</a></li>
+                        <li style="margin-bottom:10px;"><a href="library-video.html">الفيديو</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">روابط مهمة</h5>
+                    <ul style="list-style: none; padding:0;">
+                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">شروط الاستخدام</a></li>
+                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">سياسة الخصوصية</a></li>
+                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">اتصل بنا</a></li>
+                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">النشرة البريدية</h5>
+                    <p style="opacity:0.9;">اشترك في نشرتنا البريدية ليصلك جديد المنصة.</p>
+                    <div class="form-group mt-3">
+                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني" style="background:rgba(255,255,255,0.1); color:white; margin-bottom:10px;">
+                        <button class="btn btn-outline" style="border-color:white; color:white; width:100%;">اشتراك</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة © منصة الزيدية العلمية 2024</p>
+                <p class="mt-2">تم التطوير بواسطة فريق المنصة - للإبلاغ عن أخطاء: <a href="mailto:support@alzaydiyah.org">support@alzaydiyah.org</a></p>
             </div>
         </div>
-    </div>
-</div>
+    </footer>
 
-<script>
-    // يمكن إضافة وظيفة التصفية هنا لاحقاً
-</script>
+    <button id="backToTop" title="عودة إلى الأعلى" aria-label="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
 
+ <script src="main/main.js"></script>
 </body>
 </html>
