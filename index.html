@@ -3,1197 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>منصة الزيدية العلمية – البوابة الرئيسية</title>
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font: Tajawal -->
+    <title>منصة الزيدية العلمية – الرئيسية</title>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* ===== متغيرات الألوان والتصميم ===== */
-        :root {
-            --primary-dark: #01579b;
-            --primary: #016fae;
-            --primary-light: #4facfe;
-            --primary-soft: #e3f2fd;
-            --accent: #00b0c7;
-            --white: #ffffff;
-            --offwhite: #f9fcff;
-            --gray-bg: #f2f8fd;
-            --text-dark: #0a384b;
-            --text-soft: #2f5a6e;
-            --text-light: #5f7e8c;
-            --border-light: #e0eff7;
-            --shadow-sm: 0 8px 20px rgba(1,87,155,0.06);
-            --shadow-md: 0 12px 30px rgba(1,87,155,0.1);
-            --radius-md: 20px;
-            --radius-lg: 32px;
-            --transition: all 0.25s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background: var(--offwhite);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ===== الهيدر ===== */
-        .header {
-            background: var(--white);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(12px);
-            background: rgba(255,255,255,0.92);
-            border-bottom: 1px solid rgba(1,87,155,0.08);
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-        }
-
-        .logo i {
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-
-        .logo span.mobile-only {
-            display: none;
-        }
-
-        /* القائمة الرئيسية */
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            list-style: none;
-        }
-
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-soft);
-            text-decoration: none;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            background: transparent;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .nav-btn i {
-            font-size: 1.1rem;
-            color: var(--primary);
-            transition: 0.2s;
-        }
-
-        .nav-btn:hover {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-            border-color: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .nav-btn:hover i {
-            color: var(--primary-dark);
-        }
-
-        .nav-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 6px 16px rgba(1,111,174,0.25);
-        }
-
-        .nav-btn.active i {
-            color: white;
-        }
-
-        /* القائمة المنسدلة */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            padding-left: 12px;
-        }
-
-        .dropdown-toggle i:last-child {
-            font-size: 0.8rem;
-            margin-right: 5px;
-            transition: transform 0.2s;
-        }
-
-        .dropdown:hover .dropdown-toggle i:last-child {
-            transform: rotate(-90deg);
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            min-width: 200px;
-            background: var(--white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            padding: 8px 0;
-            list-style: none;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.2s;
-            z-index: 1001;
-            border: 1px solid var(--border-light);
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            color: var(--text-soft);
-            text-decoration: none;
-            transition: 0.2s;
-            font-weight: 500;
-        }
-
-        .dropdown-item i {
-            color: var(--primary);
-            width: 20px;
-            font-size: 1rem;
-        }
-
-        .dropdown-item:hover {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-        }
-
-        .dropdown-item:hover i {
-            color: var(--primary-dark);
-        }
-
-        /* أزرار تسجيل الدخول */
-        .auth-icons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-icon {
-            background: transparent;
-            border: none;
-            font-size: 1.4rem;
-            color: var(--primary);
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-icon:hover {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-            transform: scale(1.1);
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--primary);
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(1,87,155,0.3);
-            backdrop-filter: blur(3px);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* ===== قسم الهيرو ===== */
-        .hero {
-            padding: 60px 0 30px;
-            background: linear-gradient(145deg, #f0faff, white);
-            border-bottom-left-radius: 60px;
-            border-bottom-right-radius: 60px;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .arabic-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .hero-description {
-            font-size: 1.15rem;
-            color: var(--text-soft);
-            margin-bottom: 32px;
-            font-weight: 500;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 6px 16px rgba(1,111,174,0.25);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(1,87,155,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-soft);
-            border-color: var(--primary-dark);
-        }
-
-        .btn-lg {
-            padding: 14px 36px;
-            font-size: 1rem;
-        }
-
-        .btn-block {
-            width: 100%;
-        }
-
-        /* ===== القسم: منهجنا نحن الزيدية ===== */
-        .message-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 40px 35px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(1,87,155,0.12);
-            margin: 40px 0 20px;
-            position: relative;
-            border-right: 8px solid var(--primary-dark);
-        }
-
-        .message-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .message-title i {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .message-text {
-            font-size: 1.15rem;
-            color: var(--text-dark);
-            line-height: 1.9;
-        }
-
-        .message-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .message-text .ayah {
-            font-weight: 700;
-            color: var(--primary-dark);
-            background: var(--primary-soft);
-            display: inline-block;
-            padding: 0 8px;
-            border-radius: 12px;
-            font-size: 1.3rem;
-        }
-
-        .message-text .ayah-number {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-right: 5px;
-        }
-
-        .signature {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 2px dashed var(--border-light);
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .signature i {
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        .signature-name {
-            font-weight: 800;
-            letter-spacing: 0.3px;
-        }
-
-        .signature-title {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        /* ===== بطاقات الإحصائيات ===== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin: 50px 0 60px;
-        }
-
-        .stat-card {
-            background: var(--white);
-            padding: 28px 16px;
-            border-radius: var(--radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border: 1px solid rgba(79,172,254,0.2);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .stat-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 8px;
-            font-weight: 600;
-        }
-
-        /* ===== القسم الجديد: الأكاديمية العلمية ===== */
-        .academy-card {
-            background: linear-gradient(145deg, #ffffff, #f6fbfe);
-            border-radius: var(--radius-lg);
-            padding: 45px 40px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--primary-soft);
-            margin: 30px 0 50px;
-            text-align: center;
-        }
-
-        .academy-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .academy-title i {
-            font-size: 2.8rem;
-            color: var(--primary);
-        }
-
-        .academy-quote {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 15px 0 20px;
-            line-height: 1.4;
-        }
-
-        .academy-quote small {
-            font-size: 1rem;
-            color: var(--text-light);
-            display: block;
-            margin-top: 5px;
-        }
-
-        .academy-description {
-            font-size: 1.2rem;
-            color: var(--text-soft);
-            max-width: 800px;
-            margin: 0 auto 35px;
-            line-height: 1.8;
-        }
-
-        .academy-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            text-align: right;
-            margin: 40px 0 30px;
-        }
-
-        .academy-item {
-            background: var(--white);
-            padding: 20px 25px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        .academy-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
-        }
-
-        .academy-item i {
-            font-size: 1.8rem;
-            color: var(--primary);
-            width: 40px;
-            text-align: center;
-        }
-
-        .academy-item span {
-            flex: 1;
-        }
-
-        .academy-btn {
-            margin-top: 30px;
-            display: inline-block;
-            padding: 16px 50px;
-            font-size: 1.2rem;
-            background: var(--primary-dark);
-            color: white;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 800;
-            box-shadow: 0 10px 25px rgba(1,87,155,0.3);
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .academy-btn:hover {
-            background: var(--primary);
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(1,111,174,0.4);
-        }
-
-        /* ===== المكتبة المتحركة (كاروسيل) ===== */
-        .library-carousel {
-            position: relative;
-            margin: 30px 0;
-        }
-
-        .carousel-container {
-            overflow: hidden;
-            border-radius: var(--radius-md);
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-slide {
-            flex: 0 0 calc(33.333% - 20px);
-            min-width: 280px;
-            margin: 0 10px;
-        }
-
-        .carousel-slide .card {
-            height: 100%;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--white);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            z-index: 10;
-            box-shadow: var(--shadow-md);
-        }
-
-        .carousel-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .carousel-btn.prev {
-            right: -25px;
-        }
-
-        .carousel-btn.next {
-            left: -25px;
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--border-light);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .indicator.active {
-            background: var(--primary);
-            transform: scale(1.3);
-        }
-
-        /* ===== قسم أحدث الفيديوهات (مضاف حديثاً) ===== */
-        .videos-section {
-            margin-top: 60px;
-        }
-
-        .video-carousel {
-            position: relative;
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 30px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-light);
-        }
-
-        .video-track {
-            display: flex;
-            transition: transform 0.5s ease;
-            gap: 20px;
-        }
-
-        .video-slide {
-            flex: 0 0 calc(33.333% - 14px);
-            min-width: 280px;
-            background: var(--offwhite);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-        }
-
-        .video-slide iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-        }
-
-        .video-info {
-            padding: 15px;
-        }
-
-        .video-title {
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 5px;
-            font-size: 1rem;
-        }
-
-        .video-meta {
-            color: var(--text-light);
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .video-carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--white);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-            z-index: 10;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .video-carousel-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .video-carousel-btn.prev {
-            right: -15px;
-        }
-
-        .video-carousel-btn.next {
-            left: -15px;
-        }
-
-        .video-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .video-indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border-light);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .video-indicator.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-
-        /* باقي الأقسام (الأبحاث، الفتاوى، النقاش، إلخ) */
-        .grid {
-            display: grid;
-            gap: 28px;
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .grid-4 {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 32px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 0;
-            width: 70px;
-            height: 4px;
-            background: var(--primary-light);
-            border-radius: 4px;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid white;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-soft);
-        }
-
-        .card-body {
-            padding: 20px;
-            flex: 1;
-        }
-
-        .card-footer {
-            padding: 16px 20px;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .book-cover {
-            background: var(--primary-soft);
-            padding: 20px;
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        .research-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        .fatwa-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
-        }
-
-        .fatwa-tag {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
-        .arabic-quote {
-            background: #f6fdff;
-            border-right: 4px solid var(--primary);
-            padding: 16px;
-            border-radius: 12px;
-            font-style: italic;
-            color: var(--text-dark);
-            margin-top: 12px;
-        }
-
-        .message-bubble {
-            background: #f2f8fd;
-            padding: 16px 20px;
-            border-radius: 22px;
-            margin-bottom: 16px;
-            max-width: 85%;
-            border-bottom-right-radius: 6px;
-        }
-
-        .message-bubble.sent {
-            background: var(--primary-soft);
-            margin-right: auto;
-            border-bottom-left-radius: 6px;
-            border-bottom-right-radius: 22px;
-        }
-
-        .religious-content {
-            background: linear-gradient(145deg, #f1faff, white);
-            padding: 32px 28px;
-            border-radius: 32px;
-            border: 1px solid rgba(1,111,174,0.1);
-            color: var(--text-dark);
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-            border-top-left-radius: 60px;
-            border-top-right-radius: 60px;
-        }
-
-        .footer a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .footer a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        #backToTop {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(1,87,155,0.3);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            transition: 0.2s;
-        }
-
-        #backToTop:hover {
-            background: var(--primary-dark);
-            transform: scale(1.1);
-        }
-
-        /* تحسينات للجوال */
-        @media (max-width: 992px) {
-            .carousel-slide {
-                flex: 0 0 calc(50% - 20px);
-            }
-            .video-slide {
-                flex: 0 0 calc(50% - 10px);
-            }
-            .grid-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .academy-list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .carousel-slide {
-                flex: 0 0 calc(100% - 20px);
-            }
-            .video-slide {
-                flex: 0 0 calc(100% - 20px);
-            }
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            .carousel-btn.prev {
-                right: -10px;
-            }
-            .carousel-btn.next {
-                left: -10px;
-            }
-            .video-carousel-btn.prev {
-                right: -5px;
-            }
-            .video-carousel-btn.next {
-                left: -5px;
-            }
-
-            .arabic-title {
-                font-size: 2rem;
-            }
-            .navbar {
-                height: 60px;
-            }
-            .logo .desktop-only {
-                display: none;
-            }
-            .logo span.mobile-only {
-                display: inline;
-                font-size: 1.2rem;
-            }
-            .hamburger {
-                display: block;
-            }
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -300px;
-                width: 280px;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 80px 20px 30px;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.05);
-                transition: 0.3s ease-in-out;
-                z-index: 999;
-                gap: 5px;
-                overflow-y: auto;
-            }
-            .nav-menu.active {
-                right: 0;
-            }
-            .nav-btn {
-                width: 100%;
-                padding: 14px 20px;
-                border-radius: 12px;
-                font-size: 1rem;
-                justify-content: flex-start;
-            }
-            .nav-btn i {
-                width: 25px;
-            }
-            .dropdown {
-                width: 100%;
-            }
-            .dropdown-toggle {
-                justify-content: space-between;
-            }
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                padding: 0 10px;
-                margin-top: 5px;
-                background: transparent;
-                border: none;
-                display: none;
-            }
-            .dropdown.active .dropdown-menu {
-                display: block;
-            }
-            .dropdown-item {
-                padding: 12px 30px;
-            }
-            .d-none {
-                display: none;
-            }
-            .d-md-flex {
-                display: none;
-            }
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
-            }
-            .hero-buttons .btn {
-                width: 100%;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-            }
-            .stat-card {
-                padding: 20px 12px;
-            }
-            .stat-number {
-                font-size: 1.8rem;
-            }
-            .message-card {
-                padding: 30px 20px;
-            }
-            .message-title {
-                font-size: 1.8rem;
-            }
-            .academy-card {
-                padding: 30px 20px;
-            }
-            .academy-title {
-                font-size: 2rem;
-            }
-            .academy-quote {
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            .grid-4 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* helper classes */
-        .text-center { text-align: center; }
-        .mt-2 { margin-top: 12px; }
-        .mt-3 { margin-top: 20px; }
-        .mt-4 { margin-top: 28px; }
-        .mt-5 { margin-top: 50px; }
-        .mb-2 { margin-bottom: 12px; }
-        .mb-3 { margin-bottom: 20px; }
-        .mb-4 { margin-bottom: 28px; }
-        .mb-5 { margin-bottom: 50px; }
-        .d-flex { display: flex; }
-        .align-items-center { align-items: center; }
-        .justify-content-center { justify-content: center; }
-        .gap-2 { gap: 12px; }
-        .me-2 { margin-left: 12px; }
-        .me-3 { margin-left: 16px; }
-        .text-white { color: white; }
-        .text-primary { color: var(--primary); }
-        .text-secondary { color: var(--text-soft); }
-
-        .form-control {
-            font-family: 'Tajawal', sans-serif;
-            background: white;
-            border: 1px solid #d4e3ed;
-            padding: 14px 20px;
-            border-radius: 60px;
-            width: 100%;
-            outline: none;
-            transition: 0.2s;
-        }
-        .form-control:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 3px rgba(79,172,254,0.2);
-        }
-        .d-none {
-            display: none;
-        }
-        .d-md-flex {
-            display: flex;
-        }
-        @media (max-width: 768px) {
-            .d-md-none {
-                display: block;
-            }
-            .d-md-flex {
-                display: none;
-            }
-            .flex-column {
-                flex-direction: column;
-            }
-            .w-100 {
-                width: 100%;
-            }
-        }
-        .btn-block {
-            width: 100%;
-        }
-        .icon-lg {
-            font-size: 1.5rem;
-        }
-        .gap-3 { gap: 16px; }
-    </style>
+    <link rel="stylesheet" href="main/style.css">
+   <link rel="stylesheet" href="home/index.css">
+  
 </head>
 <body>
-    <!-- ======= الهيدر بشريط التنقل ======= -->
+    <button class="close-menu" id="closeMenuBtn" aria-label="إغلاق القائمة"><i class="fas fa-times"></i></button>
+
     <header class="header">
         <div class="container">
             <nav class="navbar">
@@ -1202,83 +22,105 @@
                     <span class="desktop-only">منصة الزيدية العلمية</span>
                     <span class="mobile-only">الزيدية(العروة الوثقى)</span>
                 </div>
-
-                <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">
-                    <i class="fas fa-bars"></i>
-                </button>
-
+                <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-btn active"><i class="fas fa-home"></i> الرئيسية</a></li>
                     <li><a href="discussion.html" class="nav-btn"><i class="fas fa-comments"></i> الحوار والمناقشة</a></li>
                     <li><a href="levels.html" class="nav-btn"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</a></li>
-                    
-                    <!-- قائمة المكتبة المنسدلة -->
                     <li class="dropdown">
-                        <a href="#" class="nav-btn dropdown-toggle" id="libraryDropdown">
-                            <i class="fas fa-book"></i> المكتبة
-                            <i class="fas fa-chevron-down"></i>
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-book"></i> المكتبة <i class="fas fa-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="library.html" class="dropdown-item"><i class="fas fa-book"></i> الكتب</a></li>
                             <li><a href="library-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> الصوتيات</a></li>
-                            <li><a href="library-vidue.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
+                            <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
                         </ul>
                     </li>
-
-                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
-                    <li><a href="fatwa.html" class="nav-btn"><i class="fas fa-balance-scale"></i> الفتاوى</a></li>
-                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
+                    <li class     ="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-info-circle"></i> الفتاوى
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fatwa.html" class="dropdown-item"><i class= "fas fa-info-circle"></i> فتاوى(مكتوبة)
+                            </a></li>
+                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى(صوت)
+                            </a></li>
+                            <li><a href="#fatwa-video.html" class="dropdown-item"><i class="fas fa-video"></i> فتاوى(فيديو)
+                            </a></li>
+                        </ul>
+                    </li>
                     
-                    <!-- أزرار للجوال -->
+                    
+                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
+                 
+                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
                     <li class="d-flex flex-column w-100 mt-3 d-md-none">
                         <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
                         <button class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
                     </li>
                 </ul>
-
-                <!-- أزرار سطح المكتب -->
                 <div class="auth-icons d-none d-md-flex">
-                    <button class="btn-icon" title="تسجيل الدخول"><i class="fas fa-user"></i></button>
-                    <button class="btn-icon" title="إنشاء حساب"><i class="fas fa-user-plus"></i></button>
+                    <button class="btn-icon" title="تسجيل الدخول" aria-label="تسجيل الدخول"><i class="fas fa-user"></i><span class="sr-only">تسجيل الدخول</span></button>
+                    <button class="btn-icon" title="إنشاء حساب" aria-label="إنشاء حساب"><i class="fas fa-user-plus"></i><span class="sr-only">إنشاء حساب</span></button>
                 </div>
             </nav>
         </div>
-        <!-- طبقة الخلفية للقائمة المنسدلة -->
         <div class="overlay" id="overlay"></div>
     </header>
 
     <main>
-        <!-- ======= قسم الهيرو ======= -->
+      
+      
+      
+<!-- ========== الشريط الذهبي (مقتطفات علمية) ========== -->
+<div class="marquee-container" dir="ltr">
+    <div class="marquee-content" id="marquee-inner">
+        <div class="marquee-part">
+            <img src="sydy.png" alt="رمز">
+            <span>
+                قال الامام الحجة مجدالدين بن محمد المؤيدي:
+                "قسماً بالله العلي الكبير، قسماً يعلم صدقه العليم الخبير، أن لا غرض ولا هوى لنا غير النزول عند حكم الله، والوقوف على مقتضى أمره، وأنا لو علمنا الحق في جانب أقصى الخلق من عربي أو عجمي، أو قرشي أو حبشي لقبلناه منه، وتقبلناه عنه، ولما أنفنا من اتباعه، ولكنا من أعوانه عليه وأتباعه؛ فليقل الناظر ما شاء، ولا يراقب إلا ربه، ولا يخش إلا ذنبه؛ فالحكم لله، والموعد القيامة، وإلى الله ترجع الأمور"
+            </span>
+            <img src="majd.png" alt="رمز">
+            <span>
+                قال السيد العلامة الحسين بن يحيى المطهر:
+                "فيا ليت الأمة كلها يبعثون لهم هيئة من العلماء، الأذكياء، الأزكياء، الحلماء، المبتعدين عن الدنيا، واتباع الهوى، يتدارسون موضوع الآخرة، ويبحثون عن السبيل التي تقودهم إلى الجنة، وتصرفهم عن النار، بجد وإخلاص، وتواضع وانقياد، وينظرون في كل المذاهب، إلى الإيجابيات والسلبيات، ويفرقون بين الدليل والشبهة، حتى تكون الأمة كلها على بصيرة، ويقين من أمرهم. فوالله الذي لا إله إلا هو، إنا نكون على هذه الطريقة والشروط، ونعاهد الله تعالى على الإنصاف، والتواضع للحق، وترك التعصب، فليس بيننا وبين الحق عداوة."
+            </span>
+            <img src="hsyn.png" alt="رمز">
+        </div>
+    </div>
+</div>
+      
+      
+      
+      
+      
         <section id="home" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="arabic-title">المنصة الزيدية العلمية</h1>
-                    <h1 class="arabic-title">(العروة الوثقى)</h1>
-                    <p class="hero-description">
-                        منصة علمية متكاملة تقدم تراث المذهب الزيدي والفكر الإسلامي الأصيل عبر دروس علمية، مكتبة شاملة، أبحاث محكمة وفتاوى شرعية
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="library-books.html" class="btn btn-outline btn-lg"><i class="fas fa-book"></i> استكشف المكتبة</a>
-                        <a href="levels.html" class="btn btn-primary btn-lg"><i class="fas fa-graduation-cap"></i> المستويات العلمية</a>
-                        <a href="fatwa.html" class="btn btn-primary btn-lg"><i class="fas fa-fatwa"></i> استكشف الفتاوى</a>
-                    </div>
+                    <h1>
+                      المنصة الزيدية العلمية
+                      </h1>
+                    <h2>(العروة الوثقى)</h2>
+
                 </div>
             </div>
         </section>
 
-        <!-- ======= منهجنا نحن الزيدية ======= -->
         <div class="container">
             <div class="message-card">
-                <div class="message-title">
-                    <i class="fas fa-quote-right"></i>
-                    منهجنا نحن الزيدية
-                </div>
-                <div class="message-text">
+                <h2><i class="fas fa-quote-right"></i> منهجنا نحن الزيدية</h2>
+                <div class="message-text" id="messageText">
                     <p>قال تعالى: <span class="ayah">﴿ وَبِٱلۡحَقِّ أَنزَلۡنَٰهُ وَبِٱلۡحَقِّ نَزَلَۗ وَمَآ أَرۡسَلۡنَٰكَ إِلَّا مُبَشِّرٗا وَنَذِيرٗا ﴾</span> <span class="ayah-number">(الإسراء: ١٠٥)</span> فدين الحق هو واحد، وما سواه فهو غير حق.</p>
                     <p>وصف الله تعالى نبيه محمداً صلى الله عليه وآله وسلم بقوله تعالى: <span class="ayah">﴿ يَأۡمُرُهُم بِٱلۡمَعۡرُوفِ وَيَنۡهَىٰهُمۡ عَنِ ٱلۡمُنكَرِ ﴾</span><span class="ayah-number">(الأعراف: ١٥٧)</span> أي: بالمعروف المعهود عندهم في فطر عقولهم، وينهاهم عن المنكر الذي تنكره فطر عقولهم.</p>
-                    <p>وقد بُني المذهب الزيدي على أُسس قوية: أولها فطر العقول، ثم محكمات الكتاب الكريم، وما صح وثبت عند طوائف المسلمين من الحديث، وما أجمعوا على صحته وروايته أو ثبت تواتره عندهم، فهذا هو أساس دينهم ومذهبهم في عقائدهم، فلا وجود فيه للخرافات أو الغلو أو ما تستنكره العقول.</p>
-                    <p>أما الروايات للأحاديث النبوية التي ليست كما ذكرنا فلا يجوز الاعتماد عليها في العقائد؛ لأن المطلوب في العقائد هو حصول العلم والإيمان والتصديق الجازم، والأحاديث التي ليست كما ذكرنا لا توجب العلم الجازم.</p>
-                    <p>هذا هو منهجنا نحن الزيدية في ديننا، ومن الله التوفيق.</p>
+                    <div class="extra-content" id="extraContent">
+                        <p>وقد بُني المذهب الزيدي على أُسس قوية: أولها فطر العقول، ثم محكمات الكتاب الكريم، وما صح وثبت عند طوائف المسلمين من الحديث، وما أجمعوا على صحته وروايته أو ثبت تواتره عندهم، فهذا هو أساس دينهم ومذهبهم في عقائدهم، فلا وجود فيه للخرافات أو الغلو أو ما تستنكره العقول.</p>
+                        <p>أما الروايات للأحاديث النبوية التي ليست كما ذكرنا فلا يجوز الاعتماد عليها في العقائد؛ لأن المطلوب في العقائد هو حصول العلم والإيمان والتصديق الجازم، والأحاديث التي ليست كما ذكرنا لا توجب العلم الجازم.</p>
+                        <p>هذا هو منهجنا نحن الزيدية في ديننا، ومن الله التوفيق.</p>
+                    </div>
+                    <button class="read-more-btn" id="readMoreBtn"><i class="fas fa-chevron-down"></i> اقرأ المزيد</button>
                 </div>
                 <div class="signature">
                     <i class="fas fa-feather-alt"></i>
@@ -1288,29 +130,20 @@
             </div>
         </div>
 
-        <section id="courses" class="container mt-5">
-            <div class="academy-card">
-                <a href="#levels" class="academy-btn">
-                    <i class="fas fa-graduation-cap"></i> تعرف على العقيدة الزيدية ماهي؟
-                </a>
-            </div>
-        </section>
 
-        <!-- ======= قسم الأكاديمية العلمية ======= -->
+
+
+
+
+
+
+
+
         <section id="courses" class="container mt-5">
             <div class="academy-card">
-                <div class="academy-title">
-                    <i class="fas fa-kaaba"></i>
-                    الأكاديمية العلمية
-                    <i class="fas fa-kaaba"></i>
-                </div>
-                <div class="academy-quote">
-                    <span class="ayah">"وعلَّمك ما لم تكن تعلم وكان فضلُ الله عليك عظيماً"</span>
-                    <small>(النساء: 113)</small>
-                </div>
-                <p class="academy-description">
-                    بين يدي نبع العلم الصافي، وبأيدي نخبة من أهل الاختصاص، تدعوكم الأكاديمية العلمية للانضمام إلى برامجها التعليمية المتكاملة، لنهجٍ يجمع بين نور الروح وقوة الدليل.
-                </p>
+                <h2><i class="fas fa-kaaba"></i> الأكاديمية العلمية <i class="fas fa-kaaba"></i></h2>
+                <div class="academy-quote"><span class="ayah">"وعلَّمك ما لم تكن تعلم وكان فضلُ الله عليك عظيماً"</span><small>(النساء: 113)</small></div>
+                <p class="academy-description">بين يدي نبع العلم الصافي، وبأيدي نخبة من أهل الاختصاص، تدعوكم الأكاديمية العلمية للانضمام إلى برامجها التعليمية المتكاملة، لنهجٍ يجمع بين نور الروح وقوة الدليل.</p>
                 <h3 style="font-size:1.8rem; color:var(--primary-dark); margin:30px 0 20px;">💎 مساراتنا المعرفية والتربوية:</h3>
                 <div class="academy-list">
                     <div class="academy-item"><i class="fas fa-shield-alt"></i><span>🛡️ عقيدة راسخة: بناء اليقين وتثبيت أصول الإيمان بوعيٍ وبصيرة.</span></div>
@@ -1322,43 +155,48 @@
             </div>
         </section>
 
-        <!-- ======= المكتبة المتحركة (كاروسيل) ======= -->
+        <!-- ========== قسم الفيديو (بطاقة واحدة) ========== -->
+        <section class="video-slider-section container">
+            <div class="slider-header">
+                <h2>📺 مكتبة الفيديو | العروة الوثقى</h2>
+                <div class="d-flex gap-2">
+                    <button class="pause-btn" id="pauseVideoBtn"><i class="fas fa-pause"></i> إيقاف</button>
+                </div>
+            </div>
+            <div class="single-card-slider" dir="ltr">
+                <button class="slider-nav prev" id="prevVideo"><i class="fas fa-chevron-right"></i></button>
+                <div class="single-card-container">
+                    <div class="single-card-track" id="videoTrack"></div>
+                </div>
+                <button class="slider-nav next" id="nextVideo"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <p class="slider-hint"><i class="fas fa-hand-pointer"></i> اضغط على البطاقة للمشاهدة على يوتيوب</p>
+        </section>
+
+        <!-- ========== قسم الكتب (بطاقة واحدة) ========== -->
         <section id="library" class="container mt-5">
-            <h2 class="section-title">مكتبة المنصة</h2>
-            <div class="library-carousel">
-                <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-right"></i></button>
-                <div class="carousel-container" dir="ltr">
-                    <div class="carousel-track" id="carouselTrack">
-                        <!-- البطاقات ستضاف هنا عبر JavaScript -->
-                    </div>
+            <div class="slider-header">
+                <h2 class="section-title">📚 مكتبة المنصة</h2>
+                <div class="d-flex gap-2">
+                    <button class="pause-btn" id="pauseBooksBtn"><i class="fas fa-pause"></i> إيقاف</button>
                 </div>
-                <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-left"></i></button>
-                <div class="carousel-indicators" id="indicators"></div>
             </div>
+            <div class="single-card-slider" dir="ltr">
+                <button class="slider-nav prev" id="prevBook"><i class="fas fa-chevron-right"></i></button>
+                <div class="single-card-container">
+                    <div class="single-card-track" id="booksTrack"></div>
+                </div>
+                <button class="slider-nav next" id="nextBook"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <p class="slider-hint"><i class="fas fa-hand-pointer"></i> اضغط على البطاقة لعرض التفاصيل</p>
         </section>
 
-        <!-- ======= قسم أحدث الفيديوهات (مضاف حديثاً) ======= -->
-        <section class="videos-section container mt-5">
-            <h2 class="section-title">أحدث فيديوهات قناة العروة الوثقى الزيدية</h2>
-            <div class="video-carousel" dir="ltr">
-                <button class="video-carousel-btn prev" id="videoPrevBtn"><i class="fas fa-chevron-right"></i></button>
-                <div class="carousel-container">
-                    <div class="video-track" id="videoTrack">
-                        <!-- الفيديوهات ستضاف هنا عبر JavaScript -->
-                    </div>
-                </div>
-                <button class="video-carousel-btn next" id="videoNextBtn"><i class="fas fa-chevron-left"></i></button>
-                <div class="video-indicators" id="videoIndicators"></div>
-            </div>
-        </section>
-
-        <!-- ======= الأبحاث العلمية ======= -->
         <section id="research" class="container mt-5">
             <h2 class="section-title">الأبحاث العلمية</h2>
             <div class="grid grid-2">
                 <div class="card research-card">
                     <div class="card-body">
-                        <h4>منهج الاستدلال عند الإمام زيد بن علي</h4>
+                        <h3>منهج الاستدلال عند الإمام زيد بن علي</h3>
                         <p class="text-secondary mt-2">بحث أكاديمي يدرس منهج الإمام زيد بن علي في الاستدلال الفقهي والأصولي، مع تحليل لأبرز مؤلفاته.</p>
                         <div class="research-meta">
                             <span><i class="fas fa-user-graduate"></i> د. أحمد الزيدي</span>
@@ -1377,7 +215,7 @@
                 <div class="card research-card featured">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-start">
-                            <h4>التراث الزيدي في المكتبات العالمية</h4>
+                            <h3>التراث الزيدي في المكتبات العالمية</h3>
                             <span class="badge badge-warning">مميز</span>
                         </div>
                         <p class="text-secondary mt-2">دراسة توثيقية للمخطوطات الزيدية المحفوظة في المكتبات العالمية، مع فهرس شامل.</p>
@@ -1398,17 +236,14 @@
             </div>
         </section>
 
-        <!-- ======= الفتاوى الشرعية ======= -->
         <section id="fatwa" class="container mt-5">
             <h2 class="section-title">الفتاوى الشرعية</h2>
             <div class="grid grid-2">
                 <div class="card fatwa-card">
                     <div class="card-body">
-                        <h4>حكم التعامل مع العملات الرقمية</h4>
+                        <h3>حكم التعامل مع العملات الرقمية</h3>
                         <p class="text-secondary mt-2">س: ما حكم التعامل بالعملات الرقمية مثل البيتكوين من وجهة النظر الفقهية الزيدية؟</p>
-                        <div class="arabic-quote">
-                            ج: بعد دراسة طبيعة هذه العملات ومدى تطابقها مع شروط النقد الشرعي، فإن الراجح عدم جواز التعامل بها لوجود الغرر والجهالة...
-                        </div>
+                        <div class="arabic-quote">ج: بعد دراسة طبيعة هذه العملات ومدى تطابقها مع شروط النقد الشرعي، فإن الراجح عدم جواز التعامل بها لوجود الغرر والجهالة...</div>
                         <div class="fatwa-tags">
                             <span class="fatwa-tag">المعاملات المالية</span>
                             <span class="fatwa-tag">العملات الرقمية</span>
@@ -1424,11 +259,9 @@
                 </div>
                 <div class="card fatwa-card">
                     <div class="card-body">
-                        <h4>ضوابط الاختلاط في المؤسسات التعليمية</h4>
+                        <h3>ضوابط الاختلاط في المؤسسات التعليمية</h3>
                         <p class="text-secondary mt-2">س: ما هي الضوابط الشرعية للاختلاط بين الجنسين في الجامعات؟</p>
-                        <div class="arabic-quote">
-                            ج: الأصل في الشريعة الإسلامية الفصل بين الجنسين، بضوابط شرعية صارمة...
-                        </div>
+                        <div class="arabic-quote">ج: الأصل في الشريعة الإسلامية الفصل بين الجنسين، بضوابط شرعية صارمة...</div>
                         <div class="fatwa-tags">
                             <span class="fatwa-tag">الأسرة والمجتمع</span>
                             <span class="fatwa-tag">الأحكام المعاصرة</span>
@@ -1445,11 +278,10 @@
             </div>
         </section>
 
-        <!-- ======= نقاشات علمية ======= -->
         <section class="container mt-5">
             <div class="card">
                 <div class="card-header" style="background: var(--primary-dark);">
-                    <h4 class="text-white">نقاش: منهج الاجتهاد في المذهب الزيدي المعاصر</h4>
+                    <h3 class="text-white">نقاش: منهج الاجتهاد في المذهب الزيدي المعاصر (نموذج توضيحي)</h3>
                 </div>
                 <div class="card-body">
                     <div class="message-bubble received">
@@ -1474,14 +306,13 @@
                         <p class="mt-2">هناك تجارب رائدة في اليمن والمغرب في تجديد الفقه الزيدي يمكن الاستفادة منها، مثل مؤلفات العلامة مجد الدين المؤيدي.</p>
                     </div>
                     <div class="form-group mt-4">
-                        <textarea class="form-control" placeholder="أضف مشاركتك في النقاش..." style="width:100%; padding:16px; border-radius:30px; border:1px solid var(--border-light); font-family: 'Tajawal';"></textarea>
+                        <textarea class="form-control" placeholder="أضف مشاركتك في النقاش... (هذه واجهة تجريبية)"></textarea>
                         <button class="btn btn-primary mt-2">إرسال المشاركة</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ======= مقتطفات دينية ======= -->
         <section class="container mt-5">
             <h2 class="section-title">مقتطفات دينية</h2>
             <div class="grid grid-2">
@@ -1496,7 +327,6 @@
             </div>
         </section>
 
-        <!-- ======= عن المنصة ======= -->
         <section id="about" class="container mt-5">
             <div class="card">
                 <div class="card-body">
@@ -1504,9 +334,9 @@
                     <div class="grid grid-2">
                         <div>
                             <p class="arabic-text">منصة الزيدية العلمية هي مبادرة غير ربحية تهدف إلى نشر التراث العلمي للمذهب الزيدي والفكر الإسلامي الأصيل، عبر توفير مصادر علمية موثوقة، ودروس تعليمية متخصصة، وأبحاث محكمة، وفتاوى شرعية.</p>
-                            <p class="arabic-text mt-3">تأسست المنصة عام 2026 بمشاركة علماء وباحثين متخصصين في التراث الزيدي، وتهدف إلى خدمة طلبة العلم والباحثين في مختلف أنحاء العالم.</p>
+                            <p class="arabic-text mt-3">تأسست المنصة عام 2024 بمشاركة علماء وباحثين متخصصين في التراث الزيدي، وتهدف إلى خدمة طلبة العلم والباحثين في مختلف أنحاء العالم.</p>
                             <div class="mt-4">
-                                <h5 class="text-primary">قيم المنصة:</h5>
+                                <h3 class="text-primary">قيم المنصة:</h3>
                                 <ul style="list-style: none; padding-right:0;">
                                     <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-left:8px;"></i>الالتزام بالأصالة العلمية والمنهجية</li>
                                     <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-left:8px;"></i>الانفتاح على مختلف المدارس الفكرية الإسلامية</li>
@@ -1516,7 +346,7 @@
                             </div>
                         </div>
                         <div>
-                            <h5 class="text-primary">فريق المنصة:</h5>
+                            <h3 class="text-primary">فريق المنصة:</h3>
                             <div style="background: var(--primary-soft); padding:20px; border-radius:20px; margin-bottom:20px;">
                                 <div class="d-flex align-items-center gap-3">
                                     <i class="fas fa-users" style="font-size:2rem; color:var(--primary);"></i>
@@ -1540,7 +370,6 @@
         </section>
     </main>
 
-    <!-- ======= الفوتر ======= -->
     <footer class="footer">
         <div class="container">
             <div class="grid grid-4">
@@ -1548,17 +377,17 @@
                     <h4 class="text-white mb-3">المنصة العلمية الزيدية</h4>
                     <p style="opacity:0.9;">نشر التراث العلمي الزيدي والفكر الإسلامي الأصيل.</p>
                     <div class="d-flex gap-3 mt-3">
-                        <a href="#"><i class="fab fa-twitter icon-lg"></i></a>
-                        <a href="#"><i class="fab fa-facebook icon-lg"></i></a>
-                        <a href="#"><i class="fab fa-telegram icon-lg"></i></a>
-                        <a href="#"><i class="fab fa-youtube icon-lg"></i></a>
+                        <a href="javascript:void(0)" aria-label="تويتر"><i class="fab fa-twitter icon-lg"></i></a>
+                        <a href="javascript:void(0)" aria-label="فيسبوك"><i class="fab fa-facebook icon-lg"></i></a>
+                        <a href="javascript:void(0)" aria-label="تيليغرام"><i class="fab fa-telegram icon-lg"></i></a>
+                        <a href="javascript:void(0)" aria-label="يوتيوب"><i class="fab fa-youtube icon-lg"></i></a>
                     </div>
                 </div>
                 <div>
                     <h5 class="text-white mb-3">أقسام المنصة</h5>
                     <ul style="list-style: none; padding:0;">
                         <li style="margin-bottom:10px;"><a href="levels.html">المستويات العلمية</a></li>
-                        <li style="margin-bottom:10px;"><a href="library-books.html">الكتب</a></li>
+                        <li style="margin-bottom:10px;"><a href="library.html">الكتب</a></li>
                         <li style="margin-bottom:10px;"><a href="library-audio.html">الصوتيات</a></li>
                         <li style="margin-bottom:10px;"><a href="library-video.html">الفيديو</a></li>
                     </ul>
@@ -1566,17 +395,17 @@
                 <div>
                     <h5 class="text-white mb-3">روابط مهمة</h5>
                     <ul style="list-style: none; padding:0;">
-                        <li style="margin-bottom:10px;"><a href="#">شروط الاستخدام</a></li>
-                        <li style="margin-bottom:10px;"><a href="#">سياسة الخصوصية</a></li>
-                        <li style="margin-bottom:10px;"><a href="#">اتصل بنا</a></li>
-                        <li style="margin-bottom:10px;"><a href="#">الأسئلة الشائعة</a></li>
+                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">شروط الاستخدام</a></li>
+                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">سياسة الخصوصية</a></li>
+                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">اتصل بنا</a></li>
+                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">الأسئلة الشائعة</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="text-white mb-3">النشرة البريدية</h5>
                     <p style="opacity:0.9;">اشترك في نشرتنا البريدية ليصلك جديد المنصة.</p>
                     <div class="form-group mt-3">
-                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني" style="width:100%; padding:12px 20px; border-radius:60px; border:none; background:rgba(255,255,255,0.1); color:white; margin-bottom:10px;">
+                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني" style="background:rgba(255,255,255,0.1); color:white; margin-bottom:10px;">
                         <button class="btn btn-outline" style="border-color:white; color:white; width:100%;">اشتراك</button>
                     </div>
                 </div>
@@ -1588,320 +417,8 @@
         </div>
     </footer>
 
-    <!-- زر العودة للأعلى -->
-    <button id="backToTop" title="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
+    <button id="backToTop" title="عودة إلى الأعلى" aria-label="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
 
-    <script>
-        (function() {
-            // === عناصر القائمة والهمبرغر ===
-            const hamburger = document.getElementById('hamburgerBtn');
-            const navMenu = document.getElementById('navMenu');
-            const overlay = document.getElementById('overlay');
-            const navBtns = document.querySelectorAll('.nav-btn:not(.dropdown-toggle)');
-            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-            const dropdowns = document.querySelectorAll('.dropdown');
-
-            function toggleMenu() {
-                navMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-            }
-
-            if (hamburger) {
-                hamburger.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    toggleMenu();
-                });
-            }
-
-            if (overlay) {
-                overlay.addEventListener('click', toggleMenu);
-            }
-
-            navBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    if (navMenu.classList.contains('active')) {
-                        toggleMenu();
-                    }
-                    navBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-
-            if (window.innerWidth <= 768) {
-                dropdownToggles.forEach(toggle => {
-                    toggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const parent = this.closest('.dropdown');
-                        parent.classList.toggle('active');
-                    });
-                });
-            }
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    dropdowns.forEach(d => d.classList.remove('active'));
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        overlay.classList.remove('active');
-                    }
-                }
-            });
-
-            // === زر العودة للأعلى ===
-            const backBtn = document.getElementById('backToTop');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backBtn.style.display = 'flex';
-                } else {
-                    backBtn.style.display = 'none';
-                }
-            });
-
-            backBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // === تفعيل الرابط النشط عند التمرير ===
-            const sections = document.querySelectorAll('section[id]');
-            window.addEventListener('scroll', function() {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100;
-                    const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navBtns.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('href') === `#${current}`) {
-                        btn.classList.add('active');
-                    }
-                });
-            });
-
-            // ===== كود الكاروسيل للكتب =====
-            const track = document.getElementById('carouselTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const indicatorsContainer = document.getElementById('indicators');
-
-            // بيانات الكتب
-            const books = [
-                { title: 'الأحكام الشرعية - الإمام الهادي', author: 'الإمام الهادي', desc: 'كتاب جامع في الفقه الزيدي للإمام الهادي يحيى بن الحسين، يشمل أبواب العبادات والمعاملات.', icon: 'fa-book-quran' },
-                { title: 'تبصرة المتعلمين - المؤيدي', author: 'العلامة مجدالدين المؤيدي', desc: 'متن فقهي مختصر جامع لأحكام المذهب الزيدي مع شرح للأدلة والتعليقات.', icon: 'fa-scroll' },
-                { title: 'مجموع الفتاوى - المؤيدي', author: 'السيد محمد بن عبدالله', desc: 'مجموع فتاوى وأجوبة في مسائل متنوعة.', icon: 'fa-book' },
-                { title: 'شرح العقيدة الزيدية', author: 'د. أحمد الزيدي', desc: 'شرح مفصل لأصول العقيدة الزيدية.', icon: 'fa-book-open' },
-                { title: 'أصول الفقه الزيدي', author: 'الإمام الهادي', desc: 'كتاب في أصول الفقه عند الزيدية.', icon: 'fa-balance-scale' },
-                { title: 'تاريخ الزيدية', author: 'أ. عبد الكريم هبة', desc: 'دراسة تاريخية عن المذهب الزيدي.', icon: 'fa-history' },
-            ];
-
-            books.forEach((book, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                slide.innerHTML = `
-                    <div class="card book-card">
-                        <div class="book-cover"><i class="fas ${book.icon}"></i></div>
-                        <div class="card-body">
-                            <h4>${book.title}</h4>
-                            <p class="text-secondary mt-2">${book.desc}</p>
-                            <div class="research-meta">
-                                <span><i class="fas fa-user"></i> ${book.author}</span>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-primary btn-sm"><i class="fas fa-book-open"></i> قراءة</button>
-                                <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> تحميل</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                track.appendChild(slide);
-            });
-
-            let currentIndex = 0;
-            const slides = document.querySelectorAll('.carousel-slide');
-            const totalSlides = slides.length;
-            let slidesPerView = getSlidesPerView();
-
-            function getSlidesPerView() {
-                if (window.innerWidth <= 768) return 1;
-                if (window.innerWidth <= 992) return 2;
-                return 3;
-            }
-
-            function updateCarousel() {
-                const slideWidth = slides[0]?.offsetWidth || 0;
-                const gap = 20;
-                const move = -currentIndex * (slideWidth + gap);
-                track.style.transform = `translateX(${move}px)`;
-                updateIndicators();
-            }
-
-            function updateIndicators() {
-                const indicators = document.querySelectorAll('.indicator');
-                indicators.forEach((ind, i) => {
-                    ind.classList.toggle('active', i === currentIndex);
-                });
-            }
-
-            function createIndicators() {
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.createElement('span');
-                    dot.classList.add('indicator');
-                    dot.addEventListener('click', () => {
-                        currentIndex = i;
-                        updateCarousel();
-                    });
-                    indicatorsContainer.appendChild(dot);
-                }
-                updateIndicators();
-            }
-
-            function nextSlide() {
-                const maxIndex = totalSlides - slidesPerView;
-                if (currentIndex < maxIndex) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0;
-                }
-                updateCarousel();
-            }
-
-            function prevSlide() {
-                const maxIndex = totalSlides - slidesPerView;
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    currentIndex = maxIndex;
-                }
-                updateCarousel();
-            }
-
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-
-            window.addEventListener('resize', () => {
-                slidesPerView = getSlidesPerView();
-                currentIndex = Math.min(currentIndex, totalSlides - slidesPerView);
-                updateCarousel();
-            });
-
-            let autoSlide = setInterval(nextSlide, 4000);
-
-            track.addEventListener('mouseenter', () => clearInterval(autoSlide));
-            track.addEventListener('mouseleave', () => {
-                autoSlide = setInterval(nextSlide, 4000);
-            });
-
-            createIndicators();
-            updateCarousel();
-
-            // ===== كود الكاروسيل للفيديوهات =====
-            const videoTrack = document.getElementById('videoTrack');
-            const videoPrev = document.getElementById('videoPrevBtn');
-            const videoNext = document.getElementById('videoNextBtn');
-            const videoIndicators = document.getElementById('videoIndicators');
-
-            const videos = [
-                { id: 'iGLg8QYmo7I', title: 'خطبة بعنوان: حسابات الجنة والنار' },
-                { id: 'CIkf5DQEcYI', title: 'الدرس الأول: معرفة الله من خلال صفاته' },
-                { id: 'VGlBOLwh3qc', title: 'الزيدية مذهب أهل البيت الحق' }
-            ];
-
-            videos.forEach(video => {
-                const slide = document.createElement('div');
-                slide.className = 'video-slide';
-                slide.innerHTML = `
-                    <iframe src="https://www.youtube.com/embed/${video.id}" allowfullscreen></iframe>
-                    <div class="video-info">
-                        <div class="video-title">${video.title}</div>
-                        <div class="video-meta"><i class="fas fa-eye"></i> 1.2k مشاهدة</div>
-                    </div>
-                `;
-                videoTrack.appendChild(slide);
-            });
-
-            let videoIndex = 0;
-            const videoSlides = document.querySelectorAll('.video-slide');
-            const totalVideoSlides = videoSlides.length;
-            let videoSlidesPerView = getVideoSlidesPerView();
-
-            function getVideoSlidesPerView() {
-                if (window.innerWidth <= 768) return 1;
-                if (window.innerWidth <= 992) return 2;
-                return 3;
-            }
-
-            function updateVideoCarousel() {
-                const slideWidth = videoSlides[0]?.offsetWidth || 0;
-                const gap = 20;
-                const move = -videoIndex * (slideWidth + gap);
-                videoTrack.style.transform = `translateX(${move}px)`;
-                updateVideoIndicators();
-            }
-
-            function updateVideoIndicators() {
-                const indicators = document.querySelectorAll('.video-indicator');
-                indicators.forEach((ind, i) => {
-                    ind.classList.toggle('active', i === videoIndex);
-                });
-            }
-
-            function createVideoIndicators() {
-                for (let i = 0; i < totalVideoSlides; i++) {
-                    const dot = document.createElement('span');
-                    dot.classList.add('video-indicator');
-                    dot.addEventListener('click', () => {
-                        videoIndex = i;
-                        updateVideoCarousel();
-                    });
-                    videoIndicators.appendChild(dot);
-                }
-                updateVideoIndicators();
-            }
-
-            function nextVideoSlide() {
-                const maxIndex = totalVideoSlides - videoSlidesPerView;
-                if (videoIndex < maxIndex) {
-                    videoIndex++;
-                } else {
-                    videoIndex = 0;
-                }
-                updateVideoCarousel();
-            }
-
-            function prevVideoSlide() {
-                const maxIndex = totalVideoSlides - videoSlidesPerView;
-                if (videoIndex > 0) {
-                    videoIndex--;
-                } else {
-                    videoIndex = maxIndex;
-                }
-                updateVideoCarousel();
-            }
-
-            videoNext.addEventListener('click', nextVideoSlide);
-            videoPrev.addEventListener('click', prevVideoSlide);
-
-            window.addEventListener('resize', () => {
-                videoSlidesPerView = getVideoSlidesPerView();
-                videoIndex = Math.min(videoIndex, totalVideoSlides - videoSlidesPerView);
-                updateVideoCarousel();
-            });
-
-            let videoAutoSlide = setInterval(nextVideoSlide, 5000);
-
-            videoTrack.addEventListener('mouseenter', () => clearInterval(videoAutoSlide));
-            videoTrack.addEventListener('mouseleave', () => {
-                videoAutoSlide = setInterval(nextVideoSlide, 5000);
-            });
-
-            createVideoIndicators();
-            updateVideoCarousel();
-        })();
-    </script>
+<script src="main/main.js"></script>
 </body>
 </html>
