@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>مكتبة قوائم التشغيل
+    – منصة الزيدية العلمية
+    
+    </title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main/style.css">
+     <link rel="stylesheet" href="library/library-video.css">
+</head>
+<body>
+    <!-- ======= الهيدر ======= -->
+      <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    <span class="desktop-only">منصة الزيدية العلمية</span>
+                    <span class="mobile-only">الزيدية(العروة الوثقى)</span>
+                </div>
+                <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-btn active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="discussion.html" class="nav-btn"><i class="fas fa-comments"></i> الحوار والمناقشة</a></li>
+                    <li><a href="levels.html" class="nav-btn"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-book"></i> المكتبة <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="library.html" class="dropdown-item"><i class="fas fa-book"></i> الكتب</a></li>
+                            <li><a href="library-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> الصوتيات</a></li>
+                            <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
+                        </ul>
+                    </li>
+                    <li class     ="dropdown">
+                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
+                            <i class="fas fa-info-circle"></i> الفتاوى
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fatwa.html" class="dropdown-item"><i class= "fas fa-info-circle"></i> فتاوى(مكتوبة)
+                            </a></li>
+                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى(صوت)
+                            </a></li>
+                            <li><a href="#fatwa-video.html" class="dropdown-item"><i class="fas fa-video"></i> فتاوى(فيديو)
+                            </a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
+                 
+                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
+                    <li class="d-flex flex-column w-100 mt-3 d-md-none">
+                        <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
+                        <button class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
+                    </li>
+                </ul>
+                <div class="auth-icons d-none d-md-flex">
+                    <button class="btn-icon" title="تسجيل الدخول" aria-label="تسجيل الدخول"><i class="fas fa-user"></i><span class="sr-only">تسجيل الدخول</span></button>
+                    <button class="btn-icon" title="إنشاء حساب" aria-label="إنشاء حساب"><i class="fas fa-user-plus"></i><span class="sr-only">إنشاء حساب</span></button>
+                </div>
+            </nav>
+        </div>
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <main>
+        <!-- ======= عنوان الصفحة ======= -->
+        <section class="page-header">
+            <div class="container">
+                <h1>
+                    <i class="fas fa-list-ul"></i>
+               المكتبة الرقمية (فيديو)
+                    <i class="fas fa-play-circle" style="color: var(--primary);"></i>
+                </h1>
+                <div class="subtitle">
+                    <i class="fas fa-dharmachakra"></i> 
+                    قناة العروة الوثقى الزيدية – جميع السلاسل والدروس مرتبة
+                    <i class="fas fa-dharmachakra"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= حاوية البطاقات ======= -->
+        <div class="container">
+            <div id="playlists-grid" class="grid">
+                <div class="loading"><i class="fas fa-spinner fa-spin"></i> جاري تحميل قوائم التشغيل...</div>
+            </div>
+        </div>
+
+        <!-- ======= رابط إضافي ======= -->
+        <div class="container">
+            <div class="footer-note" style="text-align: center; color: var(--text-light); margin: 20px 0 40px;">
+                <i class="fas fa-dharmachakra"></i> 
+                جميع قوائم التشغيل تابعة لقناة <strong>العروة الوثقى الزيدية</strong> – يتم التحديث مباشرة من YouTube
+                <span class="badge" style="background: var(--primary); color:white; padding:4px 12px; border-radius:60px; font-size:0.8rem; display:inline-block; margin-right:8px;">محدث آنياً</span>
+                <br>
+                <a href="https://www.youtube.com/channel/UCRhcbj7lBJ7RFj6RPsgLGDA" target="_blank" id="channel-link" style="color: var(--primary); font-weight: 700; text-decoration: none; display: inline-block; margin-top: 10px;">
+                    <i class="fab fa-youtube"></i> زيارة القناة الرئيسية
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ======= الفوتر ======= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid-4">
+                <div>
+                    <h4 class="text-white mb-3">المنصة العلمية الزيدية</h4>
+                    <p style="opacity:0.9;">نشر التراث العلمي الزيدي والفكر الإسلامي الأصيل.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#"><i class="fab fa-twitter icon-lg"></i></a>
+                        <a href="#"><i class="fab fa-facebook icon-lg"></i></a>
+                        <a href="#"><i class="fab fa-telegram icon-lg"></i></a>
+                        <a href="#"><i class="fab fa-youtube icon-lg"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">أقسام المنصة</h5>
+                    <ul style="list-style: none; padding:0;">
+                        <li style="margin-bottom:10px;"><a href="levels.html">المستويات العلمية</a></li>
+                        <li style="margin-bottom:10px;"><a href="library.html">المكتبة</a></li>
+                        <li style="margin-bottom:10px;"><a href="research.html">الأبحاث العلمية</a></li>
+                        <li style="margin-bottom:10px;"><a href="fatwa.html">الفتاوى الشرعية</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">روابط مهمة</h5>
+                    <ul style="list-style: none; padding:0;">
+                        <li style="margin-bottom:10px;"><a href="#">شروط الاستخدام</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">سياسة الخصوصية</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">اتصل بنا</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white mb-3">النشرة البريدية</h5>
+                    <p style="opacity:0.9;">اشترك في نشرتنا البريدية ليصلك جديد المنصة.</p>
+                    <div class="form-group mt-3">
+                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني" style="width:100%; padding:12px 20px; border-radius:60px; border:none; background:rgba(255,255,255,0.1); color:white; margin-bottom:10px;">
+                        <button class="btn btn-outline" style="border-color:white; color:white; width:100%;">اشتراك</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة © منصة الزيدية العلمية 2024</p>
+                <p class="mt-2">تم التطوير بواسطة فريق المنصة - للإبلاغ عن أخطاء: <a href="mailto:support@alzaydiyah.org">support@alzaydiyah.org</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" style="position:fixed; bottom:20px; left:20px; width:50px; height:50px; border-radius:50%; background:var(--primary); color:white; border:none; font-size:1.2rem; cursor:pointer; box-shadow:0 6px 20px rgba(1,87,155,0.3); display:none; align-items:center; justify-content:center; z-index:999; transition:0.2s;" title="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
+
+ <script src="main/main.js"></script>
+</body>
+</html>
