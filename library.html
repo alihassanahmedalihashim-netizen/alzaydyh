@@ -1,194 +1,0 @@
-<!-- updated: library.html -->
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="المكتبة العلمية الشاملة - كتب التراث الزيدي والعلم الشرعي">
-    <title>المكتبة العلمية - الزيدية العلمية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Bootstrap for modal -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="main/style.css">
-    <link rel="stylesheet" href="library/library.css">
-</head>
-<body>
-    <button class="close-menu" id="closeMenuBtn" aria-label="إغلاق القائمة"><i class="fas fa-times"></i></button>
-
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <i class="fas fa-book-open"></i>
-                    <span class="desktop-only">منصة الزيدية العلمية</span>
-                    <span class="mobile-only">الزيدية(العروة الوثقى)</span>
-                </div>
-                <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-btn"><i class="fas fa-home"></i> الرئيسية</a></li>
-                    <li><a href="discussion.html" class="nav-btn"><i class="fas fa-comments"></i> الحوار والمناقشة</a></li>
-                    <li><a href="levels.html" class="nav-btn"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
-                            <i class="fas fa-book"></i> المكتبة <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="library.html" class="dropdown-item"><i class="fas fa-book"></i> الكتب</a></li>
-                            <li><a href="library-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> الصوتيات</a></li>
-                            <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="fatwaDropdown" aria-label="فتح قائمة الفتاوى">
-                            <i class="fas fa-info-circle"></i> الفتاوى <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="fatwa.html" class="dropdown-item"><i class="fas fa-info-circle"></i> فتاوى (مكتوبة)</a></li>
-                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى (صوت)</a></li>
-                            <li><a href="javascript:void(0)" class="dropdown-item"><i class="fas fa-video"></i> فتاوى (فيديو)</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
-                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
-                    <li class="d-flex flex-column w-100 mt-3 d-md-none">
-                        <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
-                        <button class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
-                    </li>
-                </ul>
-                <div class="auth-icons d-none d-md-flex">
-                    <button class="btn-icon" title="تسجيل الدخول" aria-label="تسجيل الدخول"><i class="fas fa-user"></i><span class="sr-only">تسجيل الدخول</span></button>
-                    <button class="btn-icon" title="إنشاء حساب" aria-label="إنشاء حساب"><i class="fas fa-user-plus"></i><span class="sr-only">إنشاء حساب</span></button>
-                </div>
-            </nav>
-        </div>
-        <div class="overlay" id="overlay"></div>
-    </header>
-
-    <main>
-        <div class="container">
-            <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
-            
-            <div class="header-lib">
-                <div class="header-content">
-                    <h1><i class="fas fa-book"></i> المكتبة العلمية الشاملة</h1>
-                    <p class="subtitle">كنوز التراث الزيدي والعلم الشرعي بين يديك</p>
-                </div>
-            </div>
-            
-            <!-- مربع البحث فقط (بدون تصنيفات وترتيب وإعادة تعيين) -->
-            <div class="search-container">
-                <div class="d-flex gap-2">
-                    <input type="text" id="searchInput" class="form-control" placeholder="ابحث عن اسم الكتاب، المؤلف...">
-                    <button class="search-btn"><i class="fas fa-search"></i> بحث</button>
-                </div>
-            </div>
-
-            <!-- أزرار تبديل العرض: كتب / مؤلفين -->
-            <div class="view-toggle">
-                <button class="view-toggle-btn active" data-view="books"><i class="fas fa-book"></i> عرض الكتب</button>
-                <button class="view-toggle-btn" data-view="authors"><i class="fas fa-users"></i> عرض المؤلفين</button>
-            </div>
-
-            <!-- شريط التصنيفات الأفقي (الوحيد المتبقي) -->
-            <div class="category-tabs" id="categoryContainer"></div>
-
-            <!-- شريط التقدم -->
-            <div class="progress-bar" id="progressBar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-
-            <!-- حاوية العرض الرئيسية (بدون الشريط الجانبي) -->
-            <div class="library-content-full">
-                <div class="books-section">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span id="booksCount" class="text-muted">📚 جاري التحميل...</span>
-                        <button class="btn btn-outline btn-sm" id="refreshBtn"><i class="fas fa-sync-alt"></i> تحديث</button>
-                    </div>
-                    <div class="books-grid" id="booksGrid"></div>
-                    <div class="no-results" id="noResults" style="display: none;">
-                        <i class="fas fa-book-open"></i>
-                        <h3>عذراً، لا يوجد كتاب بهذا الاسم</h3>
-                        <p>حاول البحث بكلمات مختلفة أو تصفح التصنيفات المتاحة</p>
-                    </div>
-                    <div class="load-more-container" id="loadMoreContainer" style="display: none;">
-                        <button class="load-more" id="loadMoreBtn"><i class="fas fa-plus"></i> تحميل المزيد</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="grid grid-4">
-                <div>
-                    <h4 class="text-white mb-3">المنصة العلمية الزيدية</h4>
-                    <p style="opacity:0.9;">نشر التراث العلمي الزيدي والفكر الإسلامي الأصيل.</p>
-                    <div class="d-flex gap-3 mt-3">
-                        <a href="javascript:void(0)" aria-label="تويتر"><i class="fab fa-twitter icon-lg"></i></a>
-                        <a href="javascript:void(0)" aria-label="فيسبوك"><i class="fab fa-facebook icon-lg"></i></a>
-                        <a href="javascript:void(0)" aria-label="تيليغرام"><i class="fab fa-telegram icon-lg"></i></a>
-                        <a href="javascript:void(0)" aria-label="يوتيوب"><i class="fab fa-youtube icon-lg"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h5 class="text-white mb-3">أقسام المنصة</h5>
-                    <ul style="list-style: none; padding:0;">
-                        <li style="margin-bottom:10px;"><a href="levels.html">المستويات العلمية</a></li>
-                        <li style="margin-bottom:10px;"><a href="library.html">الكتب</a></li>
-                        <li style="margin-bottom:10px;"><a href="library-audio.html">الصوتيات</a></li>
-                        <li style="margin-bottom:10px;"><a href="library-video.html">الفيديو</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white mb-3">روابط مهمة</h5>
-                    <ul style="list-style: none; padding:0;">
-                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">شروط الاستخدام</a></li>
-                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">سياسة الخصوصية</a></li>
-                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">اتصل بنا</a></li>
-                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">الأسئلة الشائعة</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white mb-3">النشرة البريدية</h5>
-                    <p style="opacity:0.9;">اشترك في نشرتنا البريدية ليصلك جديد المنصة.</p>
-                    <div class="form-group mt-3">
-                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني" style="background:rgba(255,255,255,0.1); color:white; margin-bottom:10px;">
-                        <button class="btn btn-outline" style="border-color:white; color:white; width:100%;">اشتراك</button>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>جميع الحقوق محفوظة © منصة الزيدية العلمية 2024</p>
-                <p class="mt-2">تم التطوير بواسطة فريق المنصة - للإبلاغ عن أخطاء: <a href="mailto:support@alzaydiyah.org">support@alzaydiyah.org</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <button id="backToTop" title="عودة إلى الأعلى" aria-label="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
-
-    <!-- Modal للمعاينة -->
-    <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalBookTitle"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="iframeContainer" style="height: 80vh;">
-                    <!-- iframe will be inserted here -->
-                </div>
-                <div class="modal-footer">
-                    <div class="reading-progress w-100">
-                        <div class="progress-fill" id="readingProgress"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="main/main.js"></script>
-</body>
-</html>
