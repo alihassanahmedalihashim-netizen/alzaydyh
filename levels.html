@@ -8,17 +8,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main/style.css">
-     <link rel="stylesheet" href="levels/levels.css">
+    <link rel="stylesheet" href="levels/levels.css">
+    <!-- تحسين إضافي لشريط التصفية -->
+    <style>
+        /* شريط التصفية الأفقي السلس */
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: nowrap; /* منع الالتفاف */
+            overflow-x: auto; /* تمرير أفقي */
+            padding-bottom: 10px; /* مساحة للتمرير */
+            -webkit-overflow-scrolling: touch; /* تمرير ناعم على iOS */
+            scrollbar-width: thin; /* تصغير شريط التمرير */
+        }
+        .filter-buttons::-webkit-scrollbar {
+            height: 5px;
+        }
+        .filter-buttons::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+        .filter-btn {
+            flex: 0 0 auto; /* منع تصغير الأزرار */
+            white-space: nowrap; /* منع كسر النص داخل الزر */
+        }
+        /* استجابة للجوال */
+        @media (max-width: 768px) {
+            .filter-buttons {
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <button class="close-menu" id="closeMenuBtn" aria-label="إغلاق القائمة"><i class="fas fa-times"></i></button>
 
-       <header class="header">
+    <header class="header">
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
                     <i class="fas fa-book-open"></i>
-                    <span class="desktop-only">المنصة الزيدية العلمية</span>
+                    <span class="desktop-only">منصة الزيدية العلمية</span>
                     <span class="mobile-only">الزيدية(العروة الوثقى)</span>
                 </div>
                 <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
@@ -36,24 +66,18 @@
                             <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
                         </ul>
                     </li>
-                    <li class     ="dropdown">
+                    <li class="dropdown">
                         <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
                             <i class="fas fa-info-circle"></i> الفتاوى
                             <i class="fas fa-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="fatwa.html" class="dropdown-item"><i class= "fas fa-info-circle"></i> فتاوى(مكتوبة)
-                            </a></li>
-                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى(صوت)
-                            </a></li>
-                            <li><a href="#fatwa-video.html" class="dropdown-item"><i class="fas fa-video"></i> فتاوى(فيديو)
-                            </a></li>
+                            <li><a href="fatwa.html" class="dropdown-item"><i class="fas fa-info-circle"></i> فتاوى(مكتوبة)</a></li>
+                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى(صوت)</a></li>
+                            <li><a href="#fatwa-video.html" class="dropdown-item"><i class="fas fa-video"></i> فتاوى(فيديو)</a></li>
                         </ul>
                     </li>
-                    
-                    
                     <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
-                 
                     <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
                     <li class="d-flex flex-column w-100 mt-3 d-md-none">
                         <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
@@ -72,7 +96,6 @@
     <main>
         <div class="container">
             
-
             <header class="page-header" style="background: var(--primary-gradient); margin-bottom: 30px;">
                 <h1 class="page-title"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</h1>
                 <p class="page-subtitle">مسيرتك العلمية الشاملة في علوم آل محمد ﷺ على منهج الزيدية</p>
@@ -89,7 +112,7 @@
             </div>
 
             <div class="levels-container">
-                <!-- تمهيد -->
+                <!-- ========== تمهيدي ========== -->
                 <div class="level-card active" data-category="foundation">
                     <div class="level-header" onclick="toggleLevel(this)">
                         <div class="level-info">
@@ -100,216 +123,115 @@
                     </div>
                     <div class="sections-container">
                         <div class="sections-grid">
-                            <!-- محتوى تمهيدي أول ... (نفس السابق) -->
-                 <!-- تمهيدي أول -->
-<div class="section-box">
-    <div class="section-header">
-        <div class="section-title">تمهيدي أول</div>
-        <div class="section-badge">4 مواد</div>
-    </div>
-    <div class="section-content">
-        <p class="section-description">المدخل إلى العلوم الشرعية - أساسيات العقيدة - مبادئ الفقه - السيرة النبوية الميسرة</p>
-        <div class="learning-resources">
-            <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
-            <div class="subjects-grid">
-                <!-- مادة 1 -->
-                <div class="subject-item">
-                    <span class="subject-name">مدخل العلوم</span>
-                    <div class="subject-media">
-                        <a href="https://youtu.be/fyp3VP-KMw8?si=-_vaze0Nu4cQhUkS" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
+                            <!-- تمهيدي أول -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">تمهيدي أول</div>
+                                    <div class="section-badge">4 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">المدخل إلى العلوم الشرعية - أساسيات العقيدة - مبادئ الفقه - السيرة النبوية الميسرة</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item">
+                                                <span class="subject-name">مدخل العلوم</span>
+                                                <div class="subject-media">
+                                                    <a href="https://youtu.be/fyp3VP-KMw8?si=-_vaze0Nu4cQhUkS" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
+                                                    <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
+                                                    <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="subject-item">
+                                                <span class="subject-name">العقيدة الأساسية</span>
+                                                <div class="subject-media">
+                                                    <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
+                                                    <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
+                                                    <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="subject-item">
+                                                <span class="subject-name">الفقه الميسر</span>
+                                                <div class="subject-media">
+                                                    <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
+                                                    <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
+                                                    <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="subject-item">
+                                                <span class="subject-name">السيرة النبوية</span>
+                                                <div class="subject-media">
+                                                    <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
+                                                    <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
+                                                    <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- تمهيدي ثاني -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">تمهيدي ثاني</div>
+                                    <div class="section-badge">4 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">المدخل إلى العلوم الشرعية - أساسيات العقيدة - مبادئ الفقه - السيرة النبوية الميسرة</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">مدخل العلوم</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">العقيدة الأساسية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">الفقه الميسر</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">السيرة النبوية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- تمهيدي ثالث -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">تمهيدي ثالث</div>
+                                    <div class="section-badge">4 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">المدخل إلى العلوم الشرعية - أساسيات العقيدة - مبادئ الفقه - السيرة النبوية الميسرة</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">مدخل العلوم</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">العقيدة الأساسية</span><div class="subject-media"><a href="https://youtu.be/fyp3VP-KMw8?si=-_vaze0Nu4cQhUkS" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">الفقه الميسر</span><div class="subject-media"><a href="https://youtu.be/fyp3VP-KMw8?si=-_vaze0Nu4cQhUkS" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">السيرة النبوية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- تمهيدي رابع -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">تمهيدي رابع</div>
+                                    <div class="section-badge">4 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">المدخل إلى العلوم الشرعية - أساسيات العقيدة - مبادئ الفقه - السيرة النبوية الميسرة</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">مدخل العلوم</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">العقيدة الأساسية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">الفقه الميسر</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">السيرة النبوية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- مادة 2 -->
-                <div class="subject-item">
-                    <span class="subject-name">العقيدة الأساسية</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 3 -->
-                <div class="subject-item">
-                    <span class="subject-name">الفقه الميسر</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 4 -->
-                <div class="subject-item">
-                    <span class="subject-name">السيرة النبوية</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- تمهيدي ثاني -->
-<div class="section-box">
-    <div class="section-header">
-        <div class="section-title">تمهيدي ثاني</div>
-        <div class="section-badge">4 مواد</div>
-    </div>
-    <div class="section-content">
-        <p class="section-description">المدخل إلى العلوم الشرعية - أساسيات العقيدة - مبادئ الفقه - السيرة النبوية الميسرة</p>
-        <div class="learning-resources">
-            <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
-            <div class="subjects-grid">
-                <!-- مادة 1 -->
-                <div class="subject-item">
-                    <span class="subject-name">مدخل العلوم</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 2 -->
-                <div class="subject-item">
-                    <span class="subject-name">العقيدة الأساسية</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 3 -->
-                <div class="subject-item">
-                    <span class="subject-name">الفقه الميسر</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 4 -->
-                <div class="subject-item">
-                    <span class="subject-name">السيرة النبوية</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- تمهيدي ثالث -->
-<div class="section-box">
-    <div class="section-header">
-        <div class="section-title">تمهيدي ثالث</div>
-        <div class="section-badge">4 مواد</div>
-    </div>
-    <div class="section-content">
-        <p class="section-description">المدخل إلى العلوم الشرعية - أساسيات العقيدة - مبادئ الفقه - السيرة النبوية الميسرة</p>
-        <div class="learning-resources">
-            <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
-            <div class="subjects-grid">
-                <!-- مادة 1 -->
-                <div class="subject-item">
-                    <span class="subject-name">مدخل العلوم</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 2 -->
-                <div class="subject-item">
-                    <span class="subject-name">العقيدة الأساسية</span>
-                    <div class="subject-media">
-                        <a href="https://youtu.be/fyp3VP-KMw8?si=-_vaze0Nu4cQhUkS" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 3 -->
-                <div class="subject-item">
-                    <span class="subject-name">الفقه الميسر</span>
-                    <div class="subject-media">
-                        <a href="https://youtu.be/fyp3VP-KMw8?si=-_vaze0Nu4cQhUkS" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 4 -->
-                <div class="subject-item">
-                    <span class="subject-name">السيرة النبوية</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- تمهيدي رابع -->
-<div class="section-box">
-    <div class="section-header">
-        <div class="section-title">تمهيدي رابع</div>
-        <div class="section-badge">4 مواد</div>
-    </div>
-    <div class="section-content">
-        <p class="section-description">المدخل إلى العلوم الشرعية - أساسيات العقيدة - مبادئ الفقه - السيرة النبوية الميسرة</p>
-        <div class="learning-resources">
-            <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
-            <div class="subjects-grid">
-                <!-- مادة 1 -->
-                <div class="subject-item">
-                    <span class="subject-name">مدخل العلوم</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 2 -->
-                <div class="subject-item">
-                    <span class="subject-name">العقيدة الأساسية</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 3 -->
-                <div class="subject-item">
-                    <span class="subject-name">الفقه الميسر</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-                <!-- مادة 4 -->
-                <div class="subject-item">
-                    <span class="subject-name">السيرة النبوية</span>
-                    <div class="subject-media">
-                        <a href="#" class="media-link video" title="فيديو"><i class="fas fa-video"></i></a>
-                        <a href="#" class="media-link audio" title="صوت"><i class="fas fa-headphones"></i></a>
-                        <a href="#" class="media-link pdf" title="ملف PDF"><i class="fas fa-file-pdf"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-                    </div>
-</div>
-                    
-                <!-- ابتدائي -->
+
+                <!-- ========== ابتدائي ========== -->
                 <div class="level-card active" data-category="foundation">
                     <div class="level-header" onclick="toggleLevel(this)">
                         <div class="level-info">
@@ -320,13 +242,68 @@
                     </div>
                     <div class="sections-container">
                         <div class="sections-grid">
-                            <div class="section-box"><div class="section-header"><div class="section-title">أول ابتدائي</div><div class="section-badge">4 مواد</div></div><div class="section-content"><p class="section-description">العقيدة الزيدية - فقه العبادات - تفسير أجزاء القرآن - سيرة أهل البيت</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> العقيدة الزيدية</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> فقه العبادات</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> تفسير الأجزاء (1-5)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> سيرة أهل البيت</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">ثاني ابتدائي</div><div class="section-badge">4 مواد</div></div><div class="section-content"><p class="section-description">أصول الدين - فقه المعاملات - تفسير تحليلي - علوم الحديث</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول الدين</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> فقه المعاملات</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> تفسير تحليلي (البقرة)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> علوم الحديث</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">ثالث ابتدائي</div><div class="section-badge">4 مواد</div></div><div class="section-content"><p class="section-description">العدل الإلهي - فقه الأسرة - التفسير المقارن - أصول التفسير</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> العدل الإلهي</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> فقه الأسرة</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> التفسير المقارن</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول التفسير</span></div></div></div></div>
+                            <!-- أول ابتدائي -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">أول ابتدائي</div>
+                                    <div class="section-badge">4 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">العقيدة الزيدية - فقه العبادات - تفسير أجزاء القرآن - سيرة أهل البيت</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">العقيدة الزيدية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">فقه العبادات</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">تفسير الأجزاء (1-5)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">سيرة أهل البيت</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ثاني ابتدائي -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">ثاني ابتدائي</div>
+                                    <div class="section-badge">4 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">أصول الدين - فقه المعاملات - تفسير تحليلي - علوم الحديث</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">أصول الدين</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">فقه المعاملات</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">تفسير تحليلي (البقرة)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">علوم الحديث</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ثالث ابتدائي -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">ثالث ابتدائي</div>
+                                    <div class="section-badge">4 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">العدل الإلهي - فقه الأسرة - التفسير المقارن - أصول التفسير</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">العدل الإلهي</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">فقه الأسرة</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">التفسير المقارن</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">أصول التفسير</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- أساسي -->
+
+                <!-- ========== أساسي ========== -->
                 <div class="level-card active" data-category="intermediate">
                     <div class="level-header" onclick="toggleLevel(this)">
                         <div class="level-info">
@@ -337,15 +314,111 @@
                     </div>
                     <div class="sections-container">
                         <div class="sections-grid">
-                            <div class="section-box"><div class="section-header"><div class="section-title">أساسي أول</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">الفقه المقارن - التفسير التحليلي - مصطلح الحديث - أصول الفقه - اللغة العربية</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> فقه مقارن (1)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> تفسير تحليلي</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> مصطلح الحديث</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول الفقه (3)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> النحو والصرف</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">أساسي ثاني</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">فقه الجنايات - التفسير الموضوعي - علوم الحديث - القواعد الفقهية - البلاغة</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> فقه الجنايات</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> تفسير موضوعي</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> علوم الحديث</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> قواعد فقهية</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> البلاغة</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">أساسي ثالث</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">فقه المواريث - تفسير آيات الأحكام - الجرح والتعديل - أصول الفقه (4) - المنطق</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> فقه المواريث</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> تفسير آيات الأحكام</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> الجرح والتعديل</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول الفقه (4)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> المنطق</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">أساسي رابع</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">فقه الأقضية - التفسير البياني - علل الحديث - مقاصد الشريعة - أصول الفقه (5)</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> فقه الأقضية</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> تفسير بياني</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> علل الحديث</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> مقاصد الشريعة</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول الفقه (5)</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">أساسي خامس</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">فقه النوازل - التفسير الفقهي - تخريج الحديث - السياسة الشرعية - العروض</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> فقه النوازل</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> تفسير فقهي</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> تخريج الحديث</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> السياسة الشرعية</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> العروض</span></div></div></div></div>
+                            <!-- أساسي أول -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">أساسي أول</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">الفقه المقارن - التفسير التحليلي - مصطلح الحديث - أصول الفقه - اللغة العربية</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">فقه مقارن (1)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">تفسير تحليلي</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">مصطلح الحديث</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">أصول الفقه (3)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">النحو والصرف</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- أساسي ثاني -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">أساسي ثاني</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">فقه الجنايات - التفسير الموضوعي - علوم الحديث - القواعد الفقهية - البلاغة</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">فقه الجنايات</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">تفسير موضوعي</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">علوم الحديث</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">قواعد فقهية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">البلاغة</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- أساسي ثالث -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">أساسي ثالث</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">فقه المواريث - تفسير آيات الأحكام - الجرح والتعديل - أصول الفقه (4) - المنطق</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">فقه المواريث</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">تفسير آيات الأحكام</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">الجرح والتعديل</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">أصول الفقه (4)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">المنطق</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- أساسي رابع -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">أساسي رابع</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">فقه الأقضية - التفسير البياني - علل الحديث - مقاصد الشريعة - أصول الفقه (5)</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">فقه الأقضية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">تفسير بياني</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">علل الحديث</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">مقاصد الشريعة</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">أصول الفقه (5)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- أساسي خامس -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">أساسي خامس</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">فقه النوازل - التفسير الفقهي - تخريج الحديث - السياسة الشرعية - العروض</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">فقه النوازل</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">تفسير فقهي</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">تخريج الحديث</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">السياسة الشرعية</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">العروض</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- علوم آلة -->
+
+                <!-- ========== علوم آلة ========== -->
                 <div class="level-card active" data-category="intermediate">
                     <div class="level-header" onclick="toggleLevel(this)">
                         <div class="level-info">
@@ -356,14 +429,91 @@
                     </div>
                     <div class="sections-container">
                         <div class="sections-grid">
-                            <div class="section-box"><div class="section-header"><div class="section-title">علوم آلة 1</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">النحو (1) - الصرف (1) - البلاغة (1) - المنطق (1) - أصول الفقه (1)</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> النحو (الأجرومية)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> الصرف (بناء الأفعال)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> البلاغة (البيان)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> المنطق (مقدمة)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول الفقه (الورقات)</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">علوم آلة 2</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">النحو (2) - الصرف (2) - البلاغة (2) - المنطق (2) - أصول الفقه (2)</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> النحو (قطر الندى)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> الصرف (الأفعال)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> البلاغة (المعاني)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> المنطق (العبارة)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول الفقه (الورقات)</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">علوم آلة 3</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">النحو (3) - الصرف (3) - البلاغة (3) - المنطق (3) - أصول الفقه (3)</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> النحو (أوضح المسالك)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> الصرف (الاشتقاق)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> البلاغة (البديع)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> المنطق (الحجة)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول الفقه (المنتخب)</span></div></div></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">علوم آلة 4</div><div class="section-badge">5 مواد</div></div><div class="section-content"><p class="section-description">النحو (4) - الصرف (4) - البلاغة (4) - المنطق (4) - أصول الفقه (4)</p><div class="learning-resources"><h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4><div class="resources-grid"><span class="resource-item book"><i class="fas fa-book resource-icon"></i> النحو (مغني اللبيب)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> الصرف (شذور الذهب)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> البلاغة (الإيضاح)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> المنطق (المطالع)</span><span class="resource-item book"><i class="fas fa-book resource-icon"></i> أصول الفقه (المستصفى)</span></div></div></div></div>
+                            <!-- علوم آلة 1 -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">علوم آلة 1</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">النحو (1) - الصرف (1) - البلاغة (1) - المنطق (1) - أصول الفقه (1)</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">النحو (الأجرومية)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">الصرف (بناء الأفعال)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">البلاغة (البيان)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">المنطق (مقدمة)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">أصول الفقه (الورقات)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- علوم آلة 2 -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">علوم آلة 2</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">النحو (2) - الصرف (2) - البلاغة (2) - المنطق (2) - أصول الفقه (2)</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">النحو (قطر الندى)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">الصرف (الأفعال)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">البلاغة (المعاني)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">المنطق (العبارة)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">أصول الفقه (الورقات)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- علوم آلة 3 -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">علوم آلة 3</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">النحو (3) - الصرف (3) - البلاغة (3) - المنطق (3) - أصول الفقه (3)</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">النحو (أوضح المسالك)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">الصرف (الاشتقاق)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">البلاغة (البديع)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">المنطق (الحجة)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">أصول الفقه (المنتخب)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- علوم آلة 4 -->
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">علوم آلة 4</div>
+                                    <div class="section-badge">5 مواد</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">النحو (4) - الصرف (4) - البلاغة (4) - المنطق (4) - أصول الفقه (4)</p>
+                                    <div class="learning-resources">
+                                        <h4 class="resources-title"><i class="fas fa-book-open"></i> المواد الدراسية</h4>
+                                        <div class="subjects-grid">
+                                            <div class="subject-item"><span class="subject-name">النحو (مغني اللبيب)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">الصرف (شذور الذهب)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">البلاغة (الإيضاح)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">المنطق (المطالع)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                            <div class="subject-item"><span class="subject-name">أصول الفقه (المستصفى)</span><div class="subject-media"><a href="#" class="media-link video"><i class="fas fa-video"></i></a><a href="#" class="media-link audio"><i class="fas fa-headphones"></i></a><a href="#" class="media-link pdf"><i class="fas fa-file-pdf"></i></a></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- البحث والمطالعة -->
+
+                <!-- ========== البحث والمطالعة ========== -->
                 <div class="level-card active" data-category="advanced">
                     <div class="level-header" onclick="toggleLevel(this)">
                         <div class="level-info">
@@ -374,12 +524,51 @@
                     </div>
                     <div class="sections-container">
                         <div class="sections-grid">
-                            <div class="section-box"><div class="section-header"><div class="section-title">القسم الأول: دراسات عقدية وفقهية</div><div class="section-badge">4 مواد اختيارية</div></div><div class="section-content"><p class="section-description">يختار الطالب أربع مواد من بين المقررات التالية:</p><div class="elective-grid"><div class="elective-item"><i class="fas fa-check-circle"></i> <span>عقيدة الإمامة</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>الفقه المقارن المتقدم</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>مقاصد الشريعة</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>الاجتهاد والتقليد</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>فقه الأولويات</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>القواعد الفقهية الكبرى</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>تفسير آيات الأحكام</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>نقد المذاهب الفقهية</span></div></div><p style="margin-top:15px;"><i class="fas fa-info-circle"></i> يختار الطالب 4 مواد فقط من القائمة.</p></div></div>
-                            <div class="section-box"><div class="section-header"><div class="section-title">القسم الثاني: دراسات حديثية وتفسيرية</div><div class="section-badge">4 مواد اختيارية</div></div><div class="section-content"><p class="section-description">يختار الطالب أربع مواد من بين المقررات التالية:</p><div class="elective-grid"><div class="elective-item"><i class="fas fa-check-circle"></i> <span>علل الحديث</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>تفسير القرآن بالقرآن</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>المناسبات في القرآن</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>الحديث التحليلي</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>التفسير الإشاري</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>دراسة الأسانيد</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>الجرح والتعديل (تطبيقات)</span></div><div class="elective-item"><i class="fas fa-check-circle"></i> <span>التفسير الموضوعي المتقدم</span></div></div><p style="margin-top:15px;"><i class="fas fa-info-circle"></i> يختار الطالب 4 مواد فقط من القائمة.</p></div></div>
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">القسم الأول: دراسات عقدية وفقهية</div>
+                                    <div class="section-badge">4 مواد اختيارية</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">يختار الطالب أربع مواد من بين المقررات التالية:</p>
+                                    <div class="elective-grid">
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>عقيدة الإمامة</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>الفقه المقارن المتقدم</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>مقاصد الشريعة</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>الاجتهاد والتقليد</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>فقه الأولويات</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>القواعد الفقهية الكبرى</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>تفسير آيات الأحكام</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>نقد المذاهب الفقهية</span></div>
+                                    </div>
+                                    <p style="margin-top:15px;"><i class="fas fa-info-circle"></i> يختار الطالب 4 مواد فقط من القائمة.</p>
+                                </div>
+                            </div>
+                            <div class="section-box">
+                                <div class="section-header">
+                                    <div class="section-title">القسم الثاني: دراسات حديثية وتفسيرية</div>
+                                    <div class="section-badge">4 مواد اختيارية</div>
+                                </div>
+                                <div class="section-content">
+                                    <p class="section-description">يختار الطالب أربع مواد من بين المقررات التالية:</p>
+                                    <div class="elective-grid">
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>علل الحديث</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>تفسير القرآن بالقرآن</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>المناسبات في القرآن</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>الحديث التحليلي</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>التفسير الإشاري</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>دراسة الأسانيد</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>الجرح والتعديل (تطبيقات)</span></div>
+                                        <div class="elective-item"><i class="fas fa-check-circle"></i> <span>التفسير الموضوعي المتقدم</span></div>
+                                    </div>
+                                    <p style="margin-top:15px;"><i class="fas fa-info-circle"></i> يختار الطالب 4 مواد فقط من القائمة.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- التطبيق والاجتهاد -->
+
+                <!-- ========== التطبيق والاجتهاد ========== -->
                 <div class="level-card active" data-category="advanced">
                     <div class="level-header" onclick="toggleLevel(this)">
                         <div class="level-info">
@@ -448,7 +637,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>جميع الحقوق محفوظة © منصة الزيدية العلمية 2024</p>
+                <p>جميع الحقوق محفوظة © المنصة الزيدية العلمية 2026</p>
                 <p class="mt-2">تم التطوير بواسطة فريق المنصة - للإبلاغ عن أخطاء: <a href="mailto:support@alzaydiyah.org">support@alzaydiyah.org</a></p>
             </div>
         </div>
@@ -456,6 +645,6 @@
 
     <button id="backToTop" title="عودة إلى الأعلى" aria-label="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
 
- <script src="main/main.js"></script>
+    <script src="main/main.js"></script>
 </body>
 </html>
