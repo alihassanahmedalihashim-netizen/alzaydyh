@@ -1,201 +1,0 @@
-<!-- updated: about.html -->
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="منصة الزيدية العلمية - من نحن، رؤيتنا، رسالتنا، وهيئتنا العلمية">
-    <title>منصة الزيدية العلمية · عن المنصة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="main/style.css">
-    <link rel="stylesheet" href="about/about.css"> 
-</head>
-<body>
-    <button class="close-menu" id="closeMenuBtn" aria-label="إغلاق القائمة"><i class="fas fa-times"></i></button>
-
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <i class="fas fa-book-open"></i>
-                    <span class="desktop-only">منصة الزيدية العلمية</span>
-                    <span class="mobile-only">الزيدية(العروة الوثقى)</span>
-                </div>
-                <button class="hamburger" id="hamburgerBtn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="nav-btn active"><i class="fas fa-home"></i> الرئيسية</a></li>
-                    <li><a href="discussion.html" class="nav-btn"><i class="fas fa-comments"></i> الحوار والمناقشة</a></li>
-                    <li><a href="levels.html" class="nav-btn"><i class="fas fa-graduation-cap"></i> الأكاديمية العلمية</a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
-                            <i class="fas fa-book"></i> المكتبة <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="library.html" class="dropdown-item"><i class="fas fa-book"></i> الكتب</a></li>
-                            <li><a href="library-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> الصوتيات</a></li>
-                            <li><a href="library-video.html" class="dropdown-item"><i class="fas fa-video"></i> الفيديو</a></li>
-                        </ul>
-                    </li>
-                    <li class     ="dropdown">
-                        <a href="javascript:void(0)" class="nav-btn dropdown-toggle" id="libraryDropdown" aria-label="فتح قائمة المكتبة">
-                            <i class="fas fa-info-circle"></i> الفتاوى
-                            <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="fatwa.html" class="dropdown-item"><i class= "fas fa-info-circle"></i> فتاوى(مكتوبة)
-                            </a></li>
-                            <li><a href="fatwa-audio.html" class="dropdown-item"><i class="fas fa-headphones"></i> فتاوى(صوت)
-                            </a></li>
-                            <li><a href="#fatwa-video.html" class="dropdown-item"><i class="fas fa-video"></i> فتاوى(فيديو)
-                            </a></li>
-                        </ul>
-                    </li>
-                    
-                    
-                    <li><a href="research.html" class="nav-btn"><i class="fas fa-scroll"></i> الأبحاث</a></li>
-                 
-                    <li><a href="about.html" class="nav-btn"><i class="fas fa-info-circle"></i> عن المنصة</a></li>
-                    <li class="d-flex flex-column w-100 mt-3 d-md-none">
-                        <button class="btn btn-outline btn-block mb-2"><i class="fas fa-user"></i> تسجيل الدخول</button>
-                        <button class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
-                    </li>
-                </ul>
-                <div class="auth-icons d-none d-md-flex">
-                    <button class="btn-icon" title="تسجيل الدخول" aria-label="تسجيل الدخول"><i class="fas fa-user"></i><span class="sr-only">تسجيل الدخول</span></button>
-                    <button class="btn-icon" title="إنشاء حساب" aria-label="إنشاء حساب"><i class="fas fa-user-plus"></i><span class="sr-only">إنشاء حساب</span></button>
-                </div>
-            </nav>
-        </div>
-        <div class="overlay" id="overlay"></div>
-    </header>
-
-    <main>
-        <div class="container">
-            <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
-            
-            <div class="page-header">
-                <h1 class="page-title"><i class="fas fa-info-circle" style="margin-left: 10px;"></i> عن المنصة</h1>
-                <p class="page-subtitle">منصة الزيدية العلمية: هوية، رسالة، وإرث علمي مفتوح للعالم</p>
-            </div>
-
-            <div style="background: white; border-radius: var(--radius-md); padding: 40px; margin-bottom: 40px; box-shadow: var(--shadow-sm);">
-                <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
-                    <div style="flex: 1; min-width: 250px;"><div style="background: var(--primary-soft); border-radius: 30px; padding: 30px; text-align: center;"><i class="fas fa-book-open" style="font-size: 4rem; color: var(--primary);"></i></div></div>
-                    <div style="flex: 2; min-width: 300px;">
-                        <h2 style="color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 15px; font-weight: 800;">منصة الزيدية العلمية</h2>
-                        <p style="font-size: 1.1rem; color: var(--text-soft); line-height: 1.8; margin-bottom: 15px;">انطلقت المنصة عام <strong>2020م</strong> بمبادرة من نخبة من العلماء والباحثين المتخصصين في التراث الزيدي، بهدف إحياء ونشر العلوم الشرعية وفق منهج آل البيت عليهم السلام، وتيسير الوصول إلى المصادر الموثوقة، وبناء جسر معرفي بين المدرسة الزيدة والعالم الإسلامي.</p>
-                        <p style="font-size: 1.1rem; color: var(--text-soft); line-height: 1.8;">نعمل ككيان غير ربحي، ونسعى لأن نكون المنصة الرائدة في تقديم المحتوى العلمي المحقق، والدروس المنهجية، والبحوث المحكمة، والفتاوى المعاصرة بروح أصيلة ومنهج وسطي.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-2" style="margin-bottom: 30px;">
-                <div class="card"><div class="card-icon"><i class="fas fa-eye"></i></div><h3 class="card-title">رؤيتنا</h3><p class="card-text">أن نكون المرجعية العلمية الرقمية الأولى للتراث الزيدي والفكر الإسلامي الأصيل، وبناء بيئة تعليمية تفاعلية تخرج علماء ربانيين قادرين على الاجتهاد والمساهمة في حضارة الأمة.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-bullseye"></i></div><h3 class="card-title">رسالتنا</h3><p class="card-text">إحياء وتأصيل العلوم الشرعية في المذهب الزيدي من خلال مصادر محققة، ومناهج تعليمية متدرجة، وتقنيات حديثة، مع الانفتاح على المذاهب الإسلامية الأخرى بروح التسامح والتعاون.</p></div>
-            </div>
-
-            <h2 style="color: var(--primary-dark); font-size: 2rem; margin-bottom: 20px;">قيمنا<span style="display: block; width: 70px; height: 4px; background: var(--primary-light); border-radius: 4px; margin-top: 8px;"></span></h2>
-            <div class="grid-3" style="margin-bottom: 50px;">
-                <div class="card"><div class="card-icon"><i class="fas fa-check-double"></i></div><h4 class="card-title">الأصالة</h4><p class="card-text">الاعتماد على أمهات الكتب والمخطوطات، والتحقيق العلمي الدقيق قبل النشر.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-balance-scale"></i></div><h4 class="card-title">الوسطية</h4><p class="card-text">منهج يتسع للاجتهاد، ويحترم التنوع، ويجمع بين الثوابت والمتغيرات.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-laptop-code"></i></div><h4 class="card-title">الابتكار</h4><p class="card-text">توظيف التقنية لخدمة العلم الشرعي، وتطوير أدوات تعليمية تفاعلية.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div><h4 class="card-title">المجانية</h4><p class="card-text">نؤمن بأن العلم زكاة، وجميع خدماتنا متاحة بدون مقابل.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-users"></i></div><h4 class="card-title">التشاركية</h4><p class="card-text">نعمل مع المؤسسات العلمية والأفراد لبناء محتوى ثري ومتنوع.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-mosque"></i></div><h4 class="card-title">الربانية</h4><p class="card-text">الإخلاص لله وتقوى الله أساس كل عمل نقدمه.</p></div>
-            </div>
-
-            <h2 style="color: var(--primary-dark); font-size: 2rem; margin-bottom: 20px;"><i class="fas fa-user-graduate" style="margin-left: 10px;"></i> هيئتنا العلمية</h2>
-            <p style="color: var(--text-soft); margin-bottom: 30px; font-size: 1.1rem;">يشرف على المنصة نخبة من العلماء الأجلاء والمتخصصين في مختلف الفنون، ويسهرون على دقة المحتوى ومنهجيته.</p>
-            <div class="team-grid">
-                <div class="team-member"><div class="member-icon"><i class="fas fa-user-tie"></i></div><h4 class="member-name">السيد العلامة:محمد عبدالله عوض المؤيدي</h4><div class="member-role">رئيس الهيئة العلمية</div><p class="member-bio">متخصص في الفقه المقارن وأصول الفقه، له مؤلفات في الاجتهاد المعاصر والتفسير والعقيدة وغيرها...</p></div>
-                <div class="team-member"><div class="member-icon"><i class="fas fa-user-astronaut"></i></div><h4 class="member-name">السيد العلامة:طه الحوثي</h4><div class="member-role">خبير في التفسير وعلوم القرآن</div><p class="member-bio">عضو رابطة علماء اليمن، باحث في التفسير الموضوعي.</p></div>
-                <div class="team-member"><div class="member-icon"><i class="fas fa-user-ninja"></i></div><h4 class="member-name">السيد العلامة محمد عبدالله عوض المؤيدي</h4><div class="member-role">لجنة الفتوى</div><p class="member-bio">من كبار تلاميذ المدرسة الزيدية باليمن، له عناية بالحديث والفقه.</p></div>
-                <div class="team-member"><div class="member-icon"><i class="fas fa-user-secret"></i></div><h4 class="member-name">أ فارس هوشان</h4><div class="member-role">مدير المحتوى</div><p class="member-bio">مشرف ومساعد لحلقات العلم وباحث في العقيدة</p></div>
-                <div class="team-member"><div class="member-icon"><i class="fas fa-user-pen"></i></div><h4 class="member-name">د. عمر الشرفي</h4><div class="member-role">محقق تراث</div><p class="member-bio">حقق العديد من المخطوطات الزيدية، عضو مركز الدراسات والبحوث.</p></div>
-                <div class="team-member"><div class="member-icon"><i class="fas fa-user-cog"></i></div><h4 class="member-name">م. يحيى المتوكل</h4><div class="member-role">مدير التطوير التقني</div><p class="member-bio">مهندس برمجيات، مطور حلول تعليمية رقمية.</p></div>
-            </div>
-
-            <div class="stats-section">
-                <div class="stat-item"><div class="stat-number">١٢٠+</div><div class="stat-label">دورة علمية</div></div>
-                <div class="stat-item"><div class="stat-number">١٬٢٥٠+</div><div class="stat-label">كتاب ومصدر</div></div>
-                <div class="stat-item"><div class="stat-number">٨٩٠+</div><div class="stat-label">فتوى</div></div>
-                <div class="stat-item"><div class="stat-number">٥٬٣٠٠+</div><div class="stat-label">طالب</div></div>
-                <div class="stat-item"><div class="stat-number">٣٥+</div><div class="stat-label">باحث</div></div>
-            </div>
-
-            <div style="background: white; border-radius: var(--radius-md); padding: 30px; margin-bottom: 40px; box-shadow: var(--shadow-sm);">
-                <h3 style="color: var(--primary-dark); font-size: 1.6rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-handshake"></i> شركاء النجاح</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-around; align-items: center;">
-                    <span style="background: var(--primary-soft); padding: 12px 25px; border-radius: 40px; font-weight: 600;">مكتبة الإمام زيد بن علي</span>
-                    <span style="background: var(--primary-soft); padding: 12px 25px; border-radius: 40px; font-weight: 600;">مركز البحوث - جامعة صنعاء</span>
-                    <span style="background: var(--primary-soft); padding: 12px 25px; border-radius: 40px; font-weight: 600;">مجلة الحكمة</span>
-                    <span style="background: var(--primary-soft); padding: 12px 25px; border-radius: 40px; font-weight: 600;">رابطة علماء اليمن</span>
-                </div>
-            </div>
-
-            <div style="background: linear-gradient(145deg, var(--primary-dark), #023b5c); color: white; border-radius: var(--radius-lg); padding: 40px; text-align: center;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: white;"><i class="fas fa-envelope"></i> تواصل معنا</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 25px;">نحن على بعد نقرة واحدة، نسعد بملاحظاتكم ومقترحاتكم.</p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-                    <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 60px;"><i class="fas fa-envelope"></i><a href="mailto:info@alzaydiyah.org" style="color: white; text-decoration: none; font-weight: 600;">info@alzaydiyah.org</a></div>
-                    <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 60px;"><i class="fas fa-phone-alt"></i><span>+967 1 234 567</span></div>
-                    <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 60px;"><i class="fab fa-twitter"></i><span>@alzaydiyah</span></div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="grid grid-4">
-                <div>
-                    <h4 class="text-white mb-3">المنصة العلمية الزيدية</h4>
-                    <p style="opacity:0.9;">نشر التراث العلمي الزيدي والفكر الإسلامي الأصيل.</p>
-                    <div class="d-flex gap-3 mt-3">
-                        <a href="javascript:void(0)" aria-label="تويتر"><i class="fab fa-twitter icon-lg"></i></a>
-                        <a href="javascript:void(0)" aria-label="فيسبوك"><i class="fab fa-facebook icon-lg"></i></a>
-                        <a href="javascript:void(0)" aria-label="تيليغرام"><i class="fab fa-telegram icon-lg"></i></a>
-                        <a href="javascript:void(0)" aria-label="يوتيوب"><i class="fab fa-youtube icon-lg"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h5 class="text-white mb-3">أقسام المنصة</h5>
-                    <ul style="list-style: none; padding:0;">
-                        <li style="margin-bottom:10px;"><a href="levels.html">المستويات العلمية</a></li>
-                        <li style="margin-bottom:10px;"><a href="library.html">الكتب</a></li>
-                        <li style="margin-bottom:10px;"><a href="library-audio.html">الصوتيات</a></li>
-                        <li style="margin-bottom:10px;"><a href="library-video.html">الفيديو</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white mb-3">روابط مهمة</h5>
-                    <ul style="list-style: none; padding:0;">
-                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">شروط الاستخدام</a></li>
-                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">سياسة الخصوصية</a></li>
-                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">اتصل بنا</a></li>
-                        <li style="margin-bottom:10px;"><a href="javascript:void(0)">الأسئلة الشائعة</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white mb-3">النشرة البريدية</h5>
-                    <p style="opacity:0.9;">اشترك في نشرتنا البريدية ليصلك جديد المنصة.</p>
-                    <div class="form-group mt-3">
-                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني" style="background:rgba(255,255,255,0.1); color:white; margin-bottom:10px;">
-                        <button class="btn btn-outline" style="border-color:white; color:white; width:100%;">اشتراك</button>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>جميع الحقوق محفوظة © منصة الزيدية العلمية 2024</p>
-                <p class="mt-2">تم التطوير بواسطة فريق المنصة - للإبلاغ عن أخطاء: <a href="mailto:support@alzaydiyah.org">support@alzaydiyah.org</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <button id="backToTop" title="عودة إلى الأعلى" aria-label="عودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
-    <a href="index.html" class="floating-home" title="الرئيسية">🏠</a>
-
-    <script src="main/main.js"></script>
-</body>
-</html>
