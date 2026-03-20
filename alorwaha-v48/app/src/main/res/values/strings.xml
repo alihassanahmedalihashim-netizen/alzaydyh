@@ -1,1 +1,23 @@
+<resources>
+    <string name="app_name">العروة الوثقى</string>
+    <string name="offline_ready">النسخة المحلية جاهزة</string>
+    <string name="sync_now">مزامنة الآن</string>
+    <string name="sync_done">تمت المزامنة بنجاح</string>
+    <string name="sync_failed">فشلت المزامنة: %1$s</string>
+    <string name="last_sync">آخر مزامنة: %1$s</string>
+    <string name="open_site">الرئيسية المحلية</string>
+    <string name="refresh_view">تحديث العرض</string>
+    <string name="syncing">جارٍ تحديث المحتوى…</string>
+    <string name="version_name">50.0</string>
+    <string name="download_started">بدأ تنزيل الملف</string>
+    <string name="live_site_mode">نسخة الموقع الكاملة مع حفظ الصفحات والوسائط المفتوحة</string>
+    <string name="local_mode">واجهة محلية كاملة مع تنزيلات وأرشيف منظم</string>
 
+    <string name="downloads_opened">تم فتح التنزيلات</string>
+    <string name="resume_site">متابعة نسخة الموقع</string>
+    <string name="saved_content">المحتوى المحفوظ</string>
+    <string name="saved_pages">أرشيف الصفحات</string>
+    <string name="offline_fallback">تم فتح نسخة محفوظة بسبب تعذر الاتصال</string>
+    <string name="archive_mode">عرض النسخة المؤرشفة المحفوظة داخل التطبيق</string>
+    <string name="archive_missing">تعذر العثور على الأرشيف المحلي، سيتم فتح النسخة الحية</string>
+</resources>
