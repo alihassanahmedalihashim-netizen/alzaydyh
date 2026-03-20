@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>العروة الوثقى</title>
+  <meta name="description" content="نسخة محلية من تطبيق العروة الوثقى لعرض المحتوى المحفوظ بعد المزامنة مع دعم القراءة والبحث والتنقل السريع." />
+  <meta name="theme-color" content="#0f766e" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+  <link rel="preconnect" href="https://appassets.androidplatform.net" />
+  <link rel="dns-prefetch" href="https://appassets.androidplatform.net" />
+
+  <link rel="stylesheet" href="https://appassets.androidplatform.net/assets/offline/styles.css" />
+
+  <style>
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      right: 12px;
+      z-index: 9999;
+      background: #0f766e;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: top .2s ease;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .app-loading {
+      display: grid;
+      place-items: center;
+      min-height: 30vh;
+      padding: 24px;
+      text-align: center;
+      color: var(--muted, #6b7280);
+    }
+
+    .app-loading strong {
+      display: block;
+      color: var(--text, #111827);
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .noscript-warning {
+      margin: 12px auto;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: #fff4e5;
+      color: #8a5800;
+      border: 1px solid #f3d19c;
+      width: min(1280px, calc(100% - 20px));
+    }
+  </style>
+</head>
+<body>
+  <a href="#viewRoot" class="skip-link">تجاوز إلى المحتوى</a>
+
+  <noscript>
+    <div class="noscript-warning" role="alert">
+      يلزم تفعيل JavaScript لعرض المحتوى المحلي والتفاعل مع التطبيق بشكل كامل.
+    </div>
+  </noscript>
+
+  <div id="app" class="app-shell" data-app="alorwaha-offline">
+    <!-- الرأس -->
+    <header class="topbar glass-card" role="banner" aria-label="رأس التطبيق">
+      <div class="brand-row">
+        <img
+          id="siteLogo"
+          class="brand-logo hidden"
+          alt="شعار موقع العروة الوثقى"
+          loading="eager"
+          decoding="async"
+        />
+
+        <div
+          class="brand-mark"
+          id="brandFallback"
+          aria-hidden="true"
+          title="العروة الوثقى"
+        >
+          ع
+        </div>
+
+        <div class="brand-copy">
+          <h1 id="siteTitle">العروة الوثقى</h1>
+          <p id="syncInfo" aria-live="polite">نسخة محلية تعمل بعد المزامنة</p>
+        </div>
+      </div>
+
+      <div class="header-actions" aria-label="إجراءات سريعة">
+        <button
+          class="ghost-btn"
+          id="nativeSyncBtn"
+          type="button"
+          aria-label="بدء المزامنة الآن"
+          title="مزامنة الآن"
+        >
+          مزامنة الآن
+        </button>
+
+        <button
+          class="ghost-btn"
+          id="reloadBtn"
+          type="button"
+          aria-label="تحديث عرض الصفحة"
+          title="تحديث العرض"
+        >
+          تحديث العرض
+        </button>
+      </div>
+    </header>
+
+    <!-- التنقل الرئيسي -->
+    <nav
+      class="main-nav glass-card"
+      id="tabs"
+      role="navigation"
+      aria-label="التنقل الرئيسي"
+    ></nav>
+
+    <!-- البحث -->
+    <section
+      class="search-box glass-card"
+      role="search"
+      aria-label="البحث في المحتوى"
+    >
+      <label for="globalSearchInput" class="sr-only">ابحث في المحتوى المحفوظ</label>
+
+      <input
+        id="globalSearchInput"
+        type="search"
+        inputmode="search"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        placeholder="ابحث في كامل المحتوى المحفوظ..."
+        aria-describedby="searchHint"
+      />
+
+      <button
+        id="clearSearchBtn"
+        class="ghost-btn small"
+        type="button"
+        aria-label="مسح البحث"
+        title="مسح البحث"
+      >
+        مسح
+      </button>
+    </section>
+
+    <p id="searchHint" class="sr-only">
+      يمكنك البحث في المقالات والفتاوى والكتب والأخبار وسائر المحتوى المحفوظ.
+    </p>
+
+    <!-- مساعدات البحث -->
+    <section
+      id="searchAssist"
+      class="search-assist"
+      aria-label="اقتراحات البحث والتصفية"
+    ></section>
+
+    <!-- المحتوى الرئيسي -->
+    <main
+      id="viewRoot"
+      tabindex="-1"
+      role="main"
+      aria-live="polite"
+      aria-busy="false"
+    >
+      <section class="app-loading glass-card" id="initialLoadingState">
+        <div>
+          <strong>جارِ تجهيز المحتوى المحلي...</strong>
+          <p>يرجى الانتظار قليلًا حتى يتم تحميل البيانات المحفوظة.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- شريط التنقل السفلي -->
+    <nav
+      class="bottom-dock glass-card"
+      id="bottomDock"
+      role="navigation"
+      aria-label="التنقل السفلي"
+    ></nav>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (!root.dataset.theme || root.dataset.theme === 'auto') {
+        root.dataset.theme = prefersDark ? 'dark' : 'light';
+      }
+
+      window.addEventListener('error', function () {
+        const loading = document.getElementById('initialLoadingState');
+        if (loading) {
+          loading.innerHTML = `
+            <div>
+              <strong>حدث خطأ أثناء تحميل الواجهة</strong>
+              <p>حاول تحديث العرض أو إعادة المزامنة ثم افتح الصفحة مرة أخرى.</p>
+            </div>
+          `;
+        }
+      });
+    })();
+  </script>
+
+  <script src="https://appassets.androidplatform.net/assets/offline/app.js" defer></script>
+  <script src="link-fix.js" defer></script>
+</body>
+</html>
